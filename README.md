@@ -56,6 +56,7 @@ docker run -it -p 3000:3000 -e PULSAR_PROMETHEUS_URL="${PULSAR_PROMETHEUS_URL}" 
 ```
 
 Now, you can access the Grafana Dashboard at http://localhost:3000.
+The default password for `admin` is set as `happypulsaring` in file [conf/grafana.ini](conf/grafana.ini)
 
 ## Details
 
