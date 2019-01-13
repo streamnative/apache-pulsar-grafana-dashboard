@@ -1,5 +1,38 @@
 # Apache Pulsar Grafana Dashboard
 
+The Grafana dashboard docker image is available at
+[Docker Hub](https://hub.docker.com/r/streamnative/apache-pulsar-grafana-dashboard).
+
+You have to provide following environment variables when using this dashboard image.
+
+- *PULSAR_PROMETHEUS_URL*: The HTTP url that points to your prometheus service. E.g. `http://<prometheus-host>:9090`.
+- *PULSAR_CLUSTER*: The pulsar cluster name. The cluster name should be aligned with your prometheus configuration.
+  See [Prometheus](#prometheus) for more details.
+
+## Prometheus
+
+In order to make sure this dashboard can display the metrics correctly, you have to
+configure your Prometheus server to collect metrics from Pulsar correctly.
+
+1. Make sure your prometheus service attach an extra label - `cluster`. The cluster name
+   should be aligned with the `PULSAR_CLUSTER` you provided to the grafana dashboard
+   ```yaml
+   global:
+     ...
+     external_labels:
+       cluster: <your-cluster-name>
+   ```
+
+2. Make sure each component's job name meet the ones used in this dashboard.
+   - job *proxy*: the machines that run pulsar proxies.
+   - job *broker*: the machines that run pulsar brokers.
+   - job *bookie*: the machines that run bookies.
+   - job *zookeeper*: the machines that run zookeeper.
+   - job *node_metrics*: all the machines of the pulsar cluster.
+
+You can checkout the [example prometheus config](prometheus/cluster.yml.template) for
+how to configure your prometheus server to collect the metrics of a Pulsar cluster.
+
 ## Usage
 
 Use this Grafana Dashboard on ...
