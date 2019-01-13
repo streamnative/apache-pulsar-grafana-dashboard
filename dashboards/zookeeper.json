@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_TEST-CLUSTER",
-      "label": "apache-cluster",
+      "label": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -39,7 +39,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "apache-cluster",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -78,7 +78,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -159,7 +159,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -239,7 +239,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -319,7 +319,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -399,7 +399,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -488,7 +488,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "decimals": 1,
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
@@ -574,7 +574,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "All read operations (getData / getChildren / ...)",
       "fill": 0,
       "gridPos": {
@@ -662,7 +662,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
       "gridPos": {
@@ -750,7 +750,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "decimals": 1,
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
@@ -839,7 +839,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "decimals": 1,
       "description": "Request Throughput (break down by type)",
       "fill": 1,
@@ -928,7 +928,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
       "gridPos": {
@@ -1016,7 +1016,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Size of the data stored in a ZK server",
       "fill": 0,
       "gridPos": {
@@ -1104,7 +1104,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Number of opened connections",
       "fill": 1,
       "gridPos": {
@@ -1192,7 +1192,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 1,
       "gridPos": {
@@ -1280,7 +1280,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
       "gridPos": {
@@ -1375,7 +1375,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "apache-cluster",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "hide": 0,
         "includeAll": true,
         "label": "job",
@@ -1396,7 +1396,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "apache-cluster",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "hide": 0,
         "includeAll": true,
         "label": "zookeeper server",

@@ -31,16 +31,18 @@ USER grafana
 RUN mkdir -p /var/lib/grafana/pulsar
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning/dashboards
+RUN mkdir -p /var/lib/grafana/pulsar_provisioning/dashboard_templates
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning/datasources
 COPY conf/grafana.ini /etc/grafana/grafana.ini
 COPY conf/provisioning/dashboards.yml /var/lib/grafana/pulsar_provisioning/dashboards/pulsar.yml
 COPY conf/provisioning/datasources.yml /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml
-COPY dashboards/* /var/lib/grafana/pulsar_provisioning/dashboards/
+COPY dashboards/* /var/lib/grafana/pulsar_provisioning/dashboard_templates/
 COPY entrypoint.sh /pulsar_grafana_entrypoint.sh
 
 EXPOSE 3000
 
 ENV PULSAR_PROMETHEUS_URL http://localhost:9090
+ENV PULSAR_CLUSTER pulsar-cluster
 ENV GF_PATHS_PROVISIONING /var/lib/grafana/pulsar_provisioning
 
 ENTRYPOINT ["/pulsar_grafana_entrypoint.sh"]

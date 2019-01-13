@@ -21,10 +21,14 @@
 
 echo 'Starting Grafana...'
 
-ls -l /var/lib/grafana/pulsar_provisioning/
+# apply environment variables to pulsar datasource provisioning yaml file
+mv /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml /tmp/datasources_pulsar.yml.bak
+j2 /tmp/datasources_pulsar.yml.bak > /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml
 
-mv /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml /var/lib/grafana/pulsar_provisioning/datasources_pulsar.yml.bak
-j2 /var/lib/grafana/pulsar_provisioning/datasources_pulsar.yml.bak > /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml
+# apply environment variables to pulsar provisioned dashboards
+for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
+  sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
+done
 
 echo "Initialized the pulsar data source."
 

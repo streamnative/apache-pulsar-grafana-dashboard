@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_TEST-CLUSTER",
-      "label": "apache-cluster",
+      "label": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -78,7 +78,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -158,7 +158,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -240,7 +240,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -322,7 +322,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -404,7 +404,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -486,7 +486,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "apache-cluster",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -574,7 +574,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -662,7 +662,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -748,7 +748,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -835,7 +835,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "description": "",
           "fill": 1,
           "gridPos": {
@@ -924,7 +924,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "decimals": 0,
           "fill": 1,
           "gridPos": {
@@ -1043,7 +1043,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1157,7 +1157,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 5,
           "gridPos": {
             "h": 7,
@@ -1338,7 +1338,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1426,7 +1426,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "description": "Rate of writes into storage (can be lower than publish rate, when batching is enabled)",
           "fill": 1,
           "gridPos": {
@@ -1514,7 +1514,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "description": "Reads from bookies",
           "fill": 1,
           "gridPos": {
@@ -1602,7 +1602,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 6,
           "gridPos": {
             "h": 6,
@@ -1788,7 +1788,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1875,7 +1875,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1961,7 +1961,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "apache-cluster",
+          "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2059,7 +2059,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "apache-cluster",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
@@ -2080,7 +2080,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "apache-cluster",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
