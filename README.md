@@ -91,6 +91,26 @@ docker run -it -p 3000:3000 -e PULSAR_PROMETHEUS_URL="${PULSAR_PROMETHEUS_URL}" 
 Now, you can access the Grafana Dashboard at http://localhost:3000.
 The default password for `admin` is set as `happypulsaring` in file [conf/grafana.ini](conf/grafana.ini)
 
+## Import dashboard to your Grafana installation
+
+> First of all, you need to make sure your prometheus is configured to attach `cluster`
+> label as described in section [#prometheus](#prometheus).
+
+If you already have a grafana installation and you would like to import the dashboards to your grafana installation.
+
+You can run [scripts/generate_dashboards.sh](scripts/generate_dashboards.sh) to generate a datasource and
+the dashboard files that you can use to import to your installation.
+
+```bash
+./scripts/generate_dashboards.sh <prometheus-url> <clustername>
+```
+
+- `<prometheus-url>`: The url points to your prometheus servcie. E.g. `http://localhost:9090`
+- `<clustername>`: Your pulsar cluster name.
+
+The datasource yaml file and dashboard json files will be generated under `target/datasources` and `target/dashboards`.
+You can then import those files into your grafana installation.
+
 ## Details
 
 This Grafana Docker Image contains following built-in dashboards for different components in an Apache Pulsar cluster.
