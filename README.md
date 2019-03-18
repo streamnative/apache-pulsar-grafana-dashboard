@@ -132,11 +132,7 @@ So you have to configure each pulsar machine to run node exporter and also confi
 If you'd like to customize and build your own dashboard image, you can do as following:
 
 ```bash
-docker build -t <your-docker-org>/<your-docker-image>[:<tag>] .
+make
 ```
 
-Example command:
-
-```bash
-docker build -t streamnative/apache-pulsar-grafana-dashboard .
-```
+Checkout [Makefile](Makefile) for the details of the command used for building the docker image.
