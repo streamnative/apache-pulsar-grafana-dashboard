@@ -624,7 +624,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -705,7 +705,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1263,7 +1263,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }}",
@@ -1348,14 +1348,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in) by (cluster)",
+          "expr": "sum(pulsar_rate_in{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_rate_out) by (cluster)",
+          "expr": "sum(pulsar_rate_out{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ cluster }} - Out",
@@ -1476,7 +1476,7 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_msg_backlog) by (topic))",
+          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\"broker\"}) by (topic))",
           "format": "table",
           "instant": true,
           "intervalFactor": 2,
@@ -1525,7 +1525,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }}",
@@ -1610,14 +1610,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_throughput_out) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{job=~\"broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ cluster }} - Out",
