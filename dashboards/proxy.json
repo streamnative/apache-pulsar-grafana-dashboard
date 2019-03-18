@@ -88,7 +88,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", instance=~\"$instance\"}) by (instance)",
+          "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -175,7 +175,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_new_connections{cluster=~\"$cluster\", instance=~\"$instance\"}[30s])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_new_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -262,7 +262,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_connections{cluster=~\"$cluster\", instance=~\"$instance\"}[30s])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -348,7 +348,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -433,7 +433,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -603,7 +603,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -690,7 +690,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -777,7 +777,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -864,7 +864,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -951,7 +951,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1038,7 +1038,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\",\n            instance=~\"$instance\"}[1m]\n    )\n  ) \nby (instance)",
+          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\", job=~\"proxy\", \n            instance=~\"$instance\"}[1m]\n    )\n  ) \nby (instance)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1106,7 +1106,7 @@
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "pulsar_proxy_active_connections{cluster=~\".+\"}",
+        "query": "pulsar_proxy_active_connections{cluster=~\".+\", job=~\"proxy\"}",
         "refresh": 2,
         "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -1127,7 +1127,7 @@
         "multi": true,
         "name": "instance",
         "options": [],
-        "query": "pulsar_proxy_active_connections{instance=~\".+\"}",
+        "query": "pulsar_proxy_active_connections{instance=~\".+\", job=~\"proxy\"}",
         "refresh": 2,
         "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
