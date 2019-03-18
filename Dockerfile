@@ -19,9 +19,9 @@
 
 FROM grafana/grafana:5.3.2
 
-ARG BUILD_DATE="2019-03-01 00:00:00"
-ARG VCS_REF=master
-ARG VERSION=0.0.0
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="Apache Pulsar Grafana Dashboard" \
       org.label-schema.description="An Apache Pulsar Grafana Dashboard for monitoring Pulsar clusters" \
