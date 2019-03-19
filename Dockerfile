@@ -19,6 +19,19 @@
 
 FROM grafana/grafana:5.3.2
 
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="Apache Pulsar Grafana Dashboard" \
+      org.label-schema.description="An Apache Pulsar Grafana Dashboard for monitoring Pulsar clusters" \
+      org.label-schema.url="https://github.com/streamnative/apache-pulsar-grafana-dashboard" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/streamnative/apache-pulsar-grafana-dashboard" \
+      org.label-schema.vendor="StreamNative Limited" \
+      org.label-schema.version=$VERSION \
+      org.label-schema.schema-version="1.0"
+
 USER root
 
 RUN apt-get update \
