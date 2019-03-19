@@ -34,7 +34,6 @@ How to configure your prometheus server to collect the metrics of a Pulsar clust
 
 Use this Grafana Dashboard on a standalone cluster.
 
-<!--incomplete info-->
 #### Start Pulsar Standalone
 
 Download the pulsar binary and follow the instruction to
