@@ -29,7 +29,7 @@ docker run -p 9090:9090 -v /tmp/standalone.prometheus.yml:/etc/prometheus/promet
 
 To display the metrics correctly with the dashboard, configure your Prometheus server to collect metrics from Pulsar correctly.
 
-1. Attach your prometheus service to an extra label - `cluster`. The cluster name is aligned with the `PULSAR_CLUSTER` name you have provided to the grafana dashboard.
+1. Configure Prometheus service, and make sure your Prometheus service attaches an extra label `cluster` to the metrics collected from Pulsar cluster. The cluster name is aligned with the `PULSAR_CLUSTER` name you have provided to the grafana dashboard.
    ```yaml
    global:
      ...
