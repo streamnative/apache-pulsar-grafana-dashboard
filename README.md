@@ -3,19 +3,17 @@
 The Grafana dashboard docker image is available at
 [Docker Hub](https://hub.docker.com/r/streamnative/apache-pulsar-grafana-dashboard).
 
-You have to provide following environment variables when using this dashboard image.
+To use this dashboard image, provide the following environment variables: 
 
-- *PULSAR_PROMETHEUS_URL*: The HTTP url that points to your prometheus service. E.g. `http://<prometheus-host>:9090`.
-- *PULSAR_CLUSTER*: The pulsar cluster name. The cluster name should be aligned with your prometheus configuration.
+- *PULSAR_PROMETHEUS_URL*: The HTTP URL that points to your prometheus service. For example, `http://<prometheus-host>:9090`.
+- *PULSAR_CLUSTER*: The pulsar cluster name. The cluster name is aligned with your prometheus configuration.
   See [Prometheus](#prometheus) for more details.
 
 ## Prometheus
 
-In order to make sure this dashboard can display the metrics correctly, you have to
-configure your Prometheus server to collect metrics from Pulsar correctly.
+To display the metrics correctly with this dashboard, configure your Prometheus server to collect metrics from Pulsar correctly.
 
-1. Make sure your prometheus service attach an extra label - `cluster`. The cluster name
-   should be aligned with the `PULSAR_CLUSTER` you provided to the grafana dashboard
+1. Attach your prometheus service to an extra label - `cluster`. The cluster name is aligned with the `PULSAR_CLUSTER` name you have provided to the grafana dashboard.
    ```yaml
    global:
      ...
@@ -23,41 +21,32 @@ configure your Prometheus server to collect metrics from Pulsar correctly.
        cluster: <your-cluster-name>
    ```
 
-2. Make sure each component's job name meet the ones used in this dashboard.
+2. Make sure the job name of each component is the same with the ones in this dashboard.
    - job *proxy*: the machines that run pulsar proxies.
    - job *broker*: the machines that run pulsar brokers.
    - job *bookie*: the machines that run bookies.
    - job *zookeeper*: the machines that run zookeeper.
    - job *node_metrics*: all the machines of the pulsar cluster.
 
-You can checkout the [example prometheus config](prometheus/cluster.yml.template) for
-how to configure your prometheus server to collect the metrics of a Pulsar cluster.
+How to configure your prometheus server to collect the metrics of a Pulsar cluster, refer to [example prometheus config](prometheus/cluster.yml.template).
 
 ## Usage
 
-Use this Grafana Dashboard on ...
-
-### ... a Standalone Cluster
+Use this Grafana Dashboard on a standalone cluster.
 
 #### Start Pulsar Standalone
 
-Download the pulsar binary and follow pulsar's instruction to
-[start a standalone cluster](http://pulsar.apache.org/docs/en/standalone/)
-on your laptop.
+Download the pulsar binary and follow the instruction to
+[start a standalone cluster](http://pulsar.apache.org/docs/en/standalone/) on your computer.
 
 #### Start Prometheus
 
 1. Generate a Prometheus config file.
 
-You can create a prometheus config file by copying the template file
-[prometheus/standalone.yml.template](prometheus/standalone.yml.template)
-and edit to replace `{{ STANDALONE_HOST }}` with your ip address of the
-machine running pulsar standalone.
-
-Alternatively, you can install [j2cli](https://github.com/kolypto/j2cli).
-j2cli is a command-line tool for templating [Jinja2](http://jinja.pocoo.org/docs/)
-template files. You can use j2cli to generate a Prometheus config file
-from the standalone template.
+Two options are available to generate a prometheus config file.
+- Copy the template file [prometheus/standalone.yml.template](prometheus/standalone.yml.template), and replace `{{ STANDALONE_HOST }}` with your IP address of the machine running pulsar standalone.
+- Install [j2cli](https://github.com/kolypto/j2cli). j2cli is a command-line tool for templating [Jinja2](http://jinja.pocoo.org/docs/)
+template files. You can use j2cli to generate a Prometheus config file from the standalone template.
 
 ```bash
 
@@ -72,15 +61,13 @@ $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print 
 docker run -p 9090:9090 -v /tmp/standalone.prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 ```
 
-After successfully running the prometheus, you should be able to access http://localhost:9090/targets
-to see prometheus detecting all pulsar components. A successful screenshot is shown as below:
+After running the prometheus successfully, you have access to http://localhost:9090/targets, where you can see prometheus detecting all pulsar components, shown as follows.
 
 ![](images/prometheus-targets.png?raw=true)
 
 #### Start Grafana Dashbard
 
-Till now, you have a Pulsar standalone and a Prometheus server connecting to the Pulsar standalone.
-Now, let's start the Grafana Dashboard.
+When you have a Pulsar standalone and a Prometheus server connecting to the Pulsar standalone, you can start with the Grafana Dashboard.
 
 ```bash
 export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }'):9090
@@ -88,8 +75,8 @@ export PULSAR_CLUSTER=standalone
 docker run -it -p 3000:3000 -e PULSAR_PROMETHEUS_URL="${PULSAR_PROMETHEUS_URL}" -e PULSAR_CLUSTER="${PULSAR_CLUSTER}" streamnative/apache-pulsar-grafana-dashboard:latest 
 ```
 
-Now, you can access the Grafana Dashboard at http://localhost:3000.
-The default password for `admin` is set as `happypulsaring` in file [conf/grafana.ini](conf/grafana.ini)
+Access the Grafana Dashboard at http://localhost:3000.
+The default user name and password are `admin` and `happypulsaring`. It is set in the [conf/grafana.ini](conf/grafana.ini) file.
 
 ## Import dashboard to your Grafana installation
 
@@ -113,23 +100,23 @@ You can then import those files into your grafana installation.
 
 ## Details
 
-This Grafana Docker Image contains following built-in dashboards for different components in an Apache Pulsar cluster.
+The Grafana Docker Image contains the following built-in dashboards for different components in an Apache Pulsar cluster.
 These dashboards are:
 
 - *Overview*: This renders the overview health of a Pulsar cluster.
-- *Messaging Metrics*: This renders the metrics related to Pulsar messaging (e.g. producers, consumers, msg backlog and such).
-- *Proxy Metrics*: This renders the metrics related to Pulsar proxies if you have run proxies in your Pulsar clusters. _This doesn't apply to a Standalone cluster._
+- *Messaging Metrics*: This renders the metrics related to Pulsar messaging (e.g. producers, consumers, msg backlog and so on).
+- *Proxy Metrics*: This renders the metrics related to Pulsar proxies if you have run proxies in your Pulsar clusters. _This doesn't apply to a standalone cluster._
 - *Bookie Metrics*: This renders the metrics related to Bookies. _This doesn't apply to a Standalone cluster since a Pulsar standalone doesn't expose bookie metrics._
 - *ZooKeeper*: This renders the metrics related to ZooKeeper cluster.
-- *JVM Metrics*: This renders the jvm related metrics of all the components in a Pulsar cluster (e.g. proxies, brokers, bookies, and etc).
+- *JVM Metrics*: This renders the jvm related metrics of all the components in a Pulsar cluster (For example, proxies, brokers, bookies, and so on).
 
-System metrics are rendered in *Node Metrics* dashboard and some portions in *Overview* dashboard.
+System metrics are rendered in the *Node Metrics* dashboard and some portions in *Overview* dashboard.<!--what's the meaning?-->
 The system metrics used by these dashboards are collected by Prometheus [Node Exporter](https://github.com/prometheus/node_exporter).
-So you have to configure each pulsar machine to run node exporter and also configure your Prometheus to scrape the metrics from node exporters.
+So you have to configure each pulsar machine to run node exporter, and configure your Prometheus to scrape the metrics from node exporters.
 
 ## Build Your Own Image (Optional)
 
-If you'd like to customize and build your own dashboard image, you can do as following:
+To customize and build your own dashboard image, issue the following command:
 
 ```bash
 make
