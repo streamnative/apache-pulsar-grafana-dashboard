@@ -25,6 +25,10 @@ echo 'Starting Grafana...'
 mv /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml /tmp/datasources_pulsar.yml.bak
 j2 /tmp/datasources_pulsar.yml.bak > /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml
 
+# apply envirionment variables to grafana conf
+mv /etc/grafana/grafana.ini /tmp/grafana.ini.bak
+j2 /tmp/grafana.ini.bak > /etc/grafana/grafana.ini
+
 # apply environment variables to pulsar provisioned dashboards
 for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
   sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}

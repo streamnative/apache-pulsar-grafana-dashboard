@@ -57,5 +57,7 @@ EXPOSE 3000
 ENV PULSAR_PROMETHEUS_URL http://localhost:9090
 ENV PULSAR_CLUSTER pulsar-cluster
 ENV GF_PATHS_PROVISIONING /var/lib/grafana/pulsar_provisioning
+ENV GRAFANA_ADMIN_USER admin
+ENV GRAFANA_ADMIN_PASSWORD happypulsaring
 
 ENTRYPOINT ["/pulsar_grafana_entrypoint.sh"]
