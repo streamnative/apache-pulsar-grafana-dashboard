@@ -130,7 +130,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "znode count",
@@ -211,7 +211,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -291,7 +291,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -371,7 +371,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -451,7 +451,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_connections{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_connections{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -522,7 +522,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", instance=~\"$instance\", type=\"write\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\"}[30s])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{ kubernetes_pod_name }}",
@@ -607,7 +607,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", instance=~\"$instance\", type=\"read\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\"}[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -695,11 +695,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", instance=~\"$instance\", type=\"write\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -784,11 +784,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", instance=~\"$instance\", type=\"read\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -873,7 +873,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", instance=~\"$instance\"}[30s])) by (type)",
+          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (type)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -961,7 +961,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_znode_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_znode_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1049,7 +1049,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1137,7 +1137,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_connections{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_connections{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1225,7 +1225,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_watches_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_watches_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1313,7 +1313,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1401,11 +1401,11 @@
         "includeAll": true,
         "label": "zookeeper server",
         "multi": false,
-        "name": "instance",
+        "name": "kubernetes_pod_name",
         "options": [],
-        "query": "zookeeper_server_requests{job=~\"$job\", instance=~\".+\"}",
+        "query": "zookeeper_server_requests{job=~\"$job\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
