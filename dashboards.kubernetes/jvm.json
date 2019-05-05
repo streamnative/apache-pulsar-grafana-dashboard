@@ -60,8 +60,8 @@
       },
       "id": 41,
       "panels": [],
-      "repeat": "instance",
-      "title": "$job - $instance",
+      "repeat": "kubernetes_pod_name",
+      "title": "$job - $kubernetes_pod_name",
       "type": "row"
     },
     {
@@ -102,11 +102,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(process_cpu_seconds_total{instance=~\"$instance\"}[30s]) * 100\n\n",
+          "expr": "irate(process_cpu_seconds_total{kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]) * 100\n\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "metric": "process_cpu_seconds_total",
           "refId": "A",
           "step": 20
@@ -200,7 +200,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(jvm_memory_bytes_committed{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_committed{kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -211,7 +211,7 @@
           "step": 20
         },
         {
-          "expr": "sum(jvm_memory_bytes_used{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_used{kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -221,7 +221,7 @@
           "step": 20
         },
         {
-          "expr": "sum(jvm_memory_bytes_max{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_max{kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -308,7 +308,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_memory_direct_bytes_used{instance=~\"$instance\"}",
+          "expr": "jvm_memory_direct_bytes_used{kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -318,7 +318,7 @@
           "step": 20
         },
         {
-          "expr": "jvm_memory_direct_bytes_max{instance=~\"$instance\"}",
+          "expr": "jvm_memory_direct_bytes_max{kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -414,7 +414,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(jvm_gc_collection_seconds_sum{instance=~\"$instance\"}[30s]))",
+          "expr": "sum(increase(jvm_gc_collection_seconds_sum{kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -524,11 +524,11 @@
         "includeAll": true,
         "label": "Instance",
         "multi": true,
-        "name": "instance",
+        "name": "kubernetes_pod_name",
         "options": [],
-        "query": "jvm_memory_bytes_used{job=~\"$job\", instance=~\".+\"}",
+        "query": "jvm_memory_bytes_used{job=~\"$job\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",

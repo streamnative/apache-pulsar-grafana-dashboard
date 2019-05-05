@@ -88,11 +88,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}) by (instance)",
+          "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -175,11 +175,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_new_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_new_connections{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -262,11 +262,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_connections{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[30s])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_connections{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -348,11 +348,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A"
         }
       ],
@@ -433,11 +433,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A"
         }
       ],
@@ -518,10 +518,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(jetty_requests_total{cluster=~\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(jetty_requests_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "B"
         }
       ],
@@ -603,11 +603,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -690,11 +690,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -777,11 +777,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -864,11 +864,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -951,11 +951,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", instance=~\"$instance\"}[1m])) by (instance)",
+          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", job=~\"proxy\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -1038,11 +1038,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\", job=~\"proxy\", \n            instance=~\"$instance\"}[1m]\n    )\n  ) \nby (instance)",
+          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\", job=~\"proxy\", \n            kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m]\n    )\n  ) \nby (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{kubernetes_pod_name}}",
           "refId": "A",
           "step": 2
         }
@@ -1125,11 +1125,11 @@
         "includeAll": true,
         "label": "Proxy",
         "multi": true,
-        "name": "instance",
+        "name": "kubernetes_pod_name",
         "options": [],
-        "query": "pulsar_proxy_active_connections{instance=~\".+\", job=~\"proxy\"}",
+        "query": "pulsar_proxy_active_connections{kubernetes_pod_name=~\".+\", job=~\"proxy\"}",
         "refresh": 2,
-        "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",

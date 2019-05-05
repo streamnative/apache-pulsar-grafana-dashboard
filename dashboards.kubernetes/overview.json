@@ -299,7 +299,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"zookeeper\"}) by (instance))",
+          "expr": "count(count(up{job=\"zookeeper\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -380,7 +380,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"bookie\"}) by (instance))",
+          "expr": "count(count(up{job=\"bookie\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -461,7 +461,7 @@
       "tableColumn": "Value",
       "targets": [
         {
-          "expr": "count(count(up{job=\"broker\"}) by (instance))",
+          "expr": "count(count(up{job=\"broker\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -543,7 +543,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"proxy\"}) by (instance))",
+          "expr": "count(count(up{job=\"proxy\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1713,10 +1713,10 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (instance)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (instance)))",
+              "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (kubernetes_pod_name)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (kubernetes_pod_name)))",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ instance }}",
+              "legendFormat": "{{ kubernetes_pod_name }}",
               "refId": "B"
             }
           ],
@@ -1802,7 +1802,7 @@
               "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{ instance }}",
+              "legendFormat": "{{ kubernetes_pod_name }}",
               "refId": "A"
             }
           ],
