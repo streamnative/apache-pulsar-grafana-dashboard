@@ -27,6 +27,7 @@ j2 /tmp/datasources_pulsar.yml.bak > /var/lib/grafana/pulsar_provisioning/dataso
 
 # apply envirionment variables to grafana conf
 j2 /etc/grafana/grafana.ini > /var/lib/grafana/grafana.ini
+chmod 0400 /var/lib/grafana/grafana.ini
 
 # apply environment variables to pulsar provisioned dashboards
 for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
