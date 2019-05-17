@@ -6,15 +6,13 @@ To use Apache Pulsar Grafana Dashboard, you have to start Pulsar cluster and Pro
 
 ### Start Pulsar
 If you haven't installed Pulsar, you can start Pulsar standalone with one of the following methods:       
-
 - [start Pulsar locally](http://pulsar.apache.org/docs/en/standalone/)
 - [start Pulsar in Docker](http://pulsar.apache.org/docs/en/standalone-docker/)
 
 If you have deployed Pulsar cluster, you can get a list of machines for each component.
 
 ### Start Prometheus
-Before running Prometheus, you have to download a Prometheus image file and generate a config file.
-
+Before running Prometheus, you have to download a Prometheus image file and generate a config file.    
 1. Download a Prometheus image at [Docker Hub](https://hub.docker.com/r/prom/prometheus), and install it.
 2. Generate a Prometheus config file. You can generate the config file with the following two options:
 
