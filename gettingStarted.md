@@ -1,19 +1,23 @@
 # Apache Pulsar Grafana Dashboard
 Apache Pulsar Grafana dashboard is an open source visualization tool. It contains a unique Graphite target parser that enables easy metric and function editing. The Grafana dashboard is used to visualize time series data of different monitoring indexes.
 
-## Getting Started
+## Get Started
 To use Apache Pulsar Grafana Dashboard, you have to start Pulsar cluster and Prometheus first.
 
-### Start Pulsar Cluster
+### Start Pulsar
 If you haven't installed Pulsar, you can download the [pulsar binary](http://pulsar.apache.org/docs/en/standalone/), and follow the instruction to start a standalone cluster.
 
 If you have deployed Pulsar cluster, you can get a list of machines for each component.
 
 ### Start Prometheus
 Before running Prometheus, you have to download a Prometheus image file and generate a config file.
+> Note   
+> If you are using Pulsar standalone, follow the instruction here. If you are using Pulsar cluster, refer to [Configure Prometheus Server](#configure-prometheus-server).
+
 1. Download a Prometheus image at [Docker Hub](https://hub.docker.com/r/prom/prometheus), and install it.
 2. Generate a Prometheus config file. You can generate the config file with the following two options:
-- Copy the template file [prometheus/standalone.yml.template](prometheus/standalone.yml.template), and replace `{{ STANDALONE_HOST }}` with IP address of the machine running pulsar standalone.
+
+- Copy the [prometheus/standalone.yml.template](prometheus/standalone.yml.template) template file to the `tmp` directory, rename it as `standalone.prometheus.yml`, and replace `{{ STANDALONE_HOST }}` with IP address of the machine running pulsar standalone. 
 - Install [j2cli](https://github.com/kolypto/j2cli). j2cli is a command-line tool for templating [Jinja2](http://jinja.pocoo.org/docs/) template files. You can use j2cli to generate a Prometheus config file from the standalone template.
 
 ```bash
@@ -25,9 +29,12 @@ $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print 
 ```bash
 docker run -p 9090:9090 -v /tmp/standalone.prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 ```
-### Configure Prometheus Server
+### Configure Prometheus Server 
 
 To display the metrics correctly with the dashboard, configure your Prometheus server to collect metrics from Pulsar correctly.
+
+> Note   
+> If you are using Pulsar cluster, follow the instruction here. If you are using Pulsar standalone, refer to [Start Prometheus](#start-prometheus). 
 
 1. Configure Prometheus service, and make sure your Prometheus service attaches an extra label `cluster` to the metrics collected from Pulsar cluster. The cluster name is aligned with the `PULSAR_CLUSTER` name you have provided to the grafana dashboard.
    ```yaml
@@ -62,9 +69,9 @@ When you have a Pulsar cluster and a Prometheus server connecting to the Pulsar 
 2. Configure the following two environment variables in docker.
 - *PULSAR_PROMETHEUS_URL*: The HTTP URL that points to your prometheus service. For example, 
 `docker run -e PULSAR_PROMETHEUS_URL=http://<prometheus-host>:9090 <IMAGE ID>`.
-- *PULSAR_CLUSTER*: The pulsar cluster name. The cluster name is aligned with your prometheus configuration.
+- *PULSAR_CLUSTER*: The pulsar cluster name. The cluster name is aligned with your prometheus configuration. For example, `export PULSAR_CLUSTER=<your-cluster-name>`.
 
-Command Sample
+The following is a command sample.
 ```bash
 export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }'):9090
 export PULSAR_CLUSTER=standalone
