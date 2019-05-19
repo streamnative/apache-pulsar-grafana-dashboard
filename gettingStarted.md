@@ -15,8 +15,7 @@ If you have deployed Pulsar cluster, you can get a list of machines for each com
 Before running Prometheus, you have to download a Prometheus image file and generate a config file.    
 1. Download a Prometheus image at [Docker Hub](https://hub.docker.com/r/prom/prometheus), and install it.
 2. Generate a Prometheus config file. You can generate the config file with the following two options:
-
-- Copy the [prometheus/standalone.yml.template](prometheus/standalone.yml.template) template file to the `tmp` directory, rename it as `standalone.prometheus.yml`, and replace `{{ STANDALONE_HOST }}` with IP address of the machine running Pulsar standalone. 
+- Create a `standalone.prometheus.yml` file in the `/tmp` directory, copy the contents of the [standalone.prometheus.template.yml](prometheus/standalone.yml.template) file to the `standalone.prometheus.yml` file, and replace `{{ STANDALONE_HOST }}` with IP address of the machine running pulsar standalone.
 - Install [j2cli](https://github.com/kolypto/j2cli). j2cli is a command-line tool for templating [Jinja2](http://jinja.pocoo.org/docs/) template files. You can use j2cli to generate a Prometheus config file from the standalone template.
 
 ```bash
