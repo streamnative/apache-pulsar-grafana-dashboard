@@ -1,4 +1,6 @@
 # Apache Pulsar Grafana Dashboard
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstreamnative%2Fapache-pulsar-grafana-dashboard.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstreamnative%2Fapache-pulsar-grafana-dashboard?ref=badge_shield)
+
 
 The Grafana dashboard docker image is available at
 [Docker Hub](https://hub.docker.com/r/streamnative/apache-pulsar-grafana-dashboard).
@@ -123,3 +125,7 @@ make
 ```
 
 Checkout [Makefile](Makefile) for the details of the command used for building the docker image.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fstreamnative%2Fapache-pulsar-grafana-dashboard.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fstreamnative%2Fapache-pulsar-grafana-dashboard?ref=badge_large)
