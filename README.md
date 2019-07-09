@@ -56,7 +56,7 @@ $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print 
 
 ```
 
-In Ubuntu, it is
+In Ubuntu, set `STANDALONE_HOST` as below.
 ```bash
 
 $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2')" j2 prometheus/standalone.yml.template > /tmp/standalone.prometheus.yml
