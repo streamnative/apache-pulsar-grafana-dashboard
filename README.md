@@ -56,14 +56,14 @@ $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print 
 
 ```
 
-In Ubuntu, it should be
+In Ubuntu, it is
 ```bash
 
 $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2')" j2 prometheus/standalone.yml.template > /tmp/standalone.prometheus.yml
 
 ```
 
-If it still doesn't work properly, I suggest setting the IP manually.
+If it doesn't work properly, you can set the IP manually.
 
 
 2. Run Prometheus with the generated prometheus config file.
@@ -93,7 +93,7 @@ In Ubuntu, set `PULSAR_PROMETHEUS_URL` in this way.
 export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2'):9090
 ```
 
-If it still doesn't work properly, I suggest setting the IP manually.  
+If it doesn't work properly, you can the IP manually.  
 
 Access the Grafana Dashboard at http://localhost:3000.
 The default user name is `admin`, the default password is `happypulsaring`, and they are set in the [conf/grafana.ini](conf/grafana.ini) file.
