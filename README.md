@@ -56,6 +56,16 @@ $ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print 
 
 ```
 
+In Ubuntu, set `STANDALONE_HOST` as below.
+```bash
+
+$ STANDALONE_HOST="$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2')" j2 prometheus/standalone.yml.template > /tmp/standalone.prometheus.yml
+
+```
+
+If it doesn't work properly, you can set the IP manually.
+
+
 2. Run Prometheus with the generated prometheus config file.
 
 
@@ -77,8 +87,16 @@ export PULSAR_CLUSTER=standalone
 docker run -it -p 3000:3000 -e PULSAR_PROMETHEUS_URL="${PULSAR_PROMETHEUS_URL}" -e PULSAR_CLUSTER="${PULSAR_CLUSTER}" streamnative/apache-pulsar-grafana-dashboard:latest 
 ```
 
+In Ubuntu, set `PULSAR_PROMETHEUS_URL` in this way.
+
+```bash
+export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2'):9090
+```
+
+If it doesn't work properly, you can the IP manually.  
+
 Access the Grafana Dashboard at http://localhost:3000.
-The default user name and password are `admin` and `happypulsaring`. It is set in the [conf/grafana.ini](conf/grafana.ini) file.
+The default user name is `admin`, the default password is `happypulsaring`, and they are set in the [conf/grafana.ini](conf/grafana.ini) file.
 
 ## Import dashboard to your Grafana installation
 
