@@ -87,7 +87,7 @@ export PULSAR_CLUSTER=standalone
 docker run -it -p 3000:3000 -e PULSAR_PROMETHEUS_URL="${PULSAR_PROMETHEUS_URL}" -e PULSAR_CLUSTER="${PULSAR_CLUSTER}" streamnative/apache-pulsar-grafana-dashboard:latest 
 ```
 
-In Ubuntu, you should set `PULSAR_PROMETHEUS_URL` in this way.
+In Ubuntu, set `PULSAR_PROMETHEUS_URL` in this way.
 
 ```bash
 export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2'):9090
