@@ -96,7 +96,7 @@ export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.
 If it still doesn't work properly, I suggest setting the IP manually.  
 
 Access the Grafana Dashboard at http://localhost:3000.
-The default user name and password are `admin` and `happypulsaring`. It is set in the [conf/grafana.ini](conf/grafana.ini) file.
+The default user name is `admin`, the default password is `happypulsaring`, and they are set in the [conf/grafana.ini](conf/grafana.ini) file.
 
 ## Import dashboard to your Grafana installation
 
