@@ -93,7 +93,7 @@ In Ubuntu, set `PULSAR_PROMETHEUS_URL` in this way.
 export PULSAR_PROMETHEUS_URL=http://$(ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{ print $2 }' | awk -F ':' '{ print $2 }' | awk 'NR==2'):9090
 ```
 
-If it doesn't work properly, you can the IP manually.  
+If it doesn't work properly, you can set the IP manually.  
 
 Access the Grafana Dashboard at http://localhost:3000.
 The default user name is `admin`, the default password is `happypulsaring`, and they are set in the [conf/grafana.ini](conf/grafana.ini) file.
