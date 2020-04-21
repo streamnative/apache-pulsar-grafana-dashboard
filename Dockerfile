@@ -17,7 +17,7 @@
 # under the License.
 #
 
-FROM grafana/grafana:6.7.2
+FROM grafana/grafana:6.7.2-ubuntu
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -43,6 +43,7 @@ USER grafana
 
 RUN mkdir -p /var/lib/grafana/pulsar
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning
+RUN mkdir -p /var/lib/grafana/pulsar_provisioning/notifiers
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning/dashboards
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning/dashboard_templates
 RUN mkdir -p /var/lib/grafana/pulsar_provisioning/datasources
