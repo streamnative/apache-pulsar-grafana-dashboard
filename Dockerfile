@@ -17,7 +17,7 @@
 # under the License.
 #
 
-FROM grafana/grafana:5.3.2
+FROM grafana/grafana:6.7.2
 
 ARG BUILD_DATE
 ARG VCS_REF
