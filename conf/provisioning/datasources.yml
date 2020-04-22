@@ -62,3 +62,9 @@ datasources:
    version: 1
    # <bool> allow users to edit datasources from the UI.
    editable: true
+ - name: "sn-platform-loki"
+   type: loki
+   access: proxy
+   url: "{{ GF_LOKI_URL }}"
+   version: 1
+   editable: true
