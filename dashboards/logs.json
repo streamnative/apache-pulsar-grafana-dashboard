@@ -38,7 +38,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Loki",
+      "datasource": "{{ GF_LOKI_DATASOURCE_NAME }}",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -120,7 +120,7 @@
       }
     },
     {
-      "datasource": "Loki",
+      "datasource": "{{ GF_LOKI_DATASOURCE_NAME }}",
       "gridPos": {
         "h": 19,
         "w": 24,
@@ -154,7 +154,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "{{ GF_LOKI_DATASOURCE_NAME }}",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "label_values(jvm_classes_loaded, job)",
         "hide": 0,
         "includeAll": false,
@@ -177,7 +177,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "{{ GF_LOKI_DATASOURCE_NAME }}",
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "label_values(jvm_classes_loaded{job=\"$component\"}, cluster)",
         "hide": 0,
         "includeAll": false,
