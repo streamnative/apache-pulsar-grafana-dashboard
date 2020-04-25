@@ -57,6 +57,8 @@ EXPOSE 3000
 
 ENV PULSAR_PROMETHEUS_URL http://localhost:9090
 ENV PULSAR_CLUSTER pulsar-cluster
+ENV GF_LOKI_URL http://localhost:3100
+ENV GF_LOKI_DATASOURCE_NAME pulsar-loki
 ENV GF_PATHS_PROVISIONING /var/lib/grafana/pulsar_provisioning
 ENV GRAFANA_ADMIN_USER admin
 ENV GRAFANA_ADMIN_PASSWORD happypulsaring
