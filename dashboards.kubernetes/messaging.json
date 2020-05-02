@@ -38,6 +38,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:1658",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -52,12 +53,13 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1543830651050,
+  "id": 10,
+  "iteration": 1588401118446,
   "links": [],
   "panels": [
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -89,7 +91,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 6,
         "x": 0,
         "y": 1
       },
@@ -132,7 +134,9 @@
         {
           "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -169,8 +173,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 4,
+        "w": 6,
+        "x": 6,
         "y": 1
       },
       "id": 27,
@@ -251,8 +255,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 8,
+        "w": 7,
+        "x": 12,
         "y": 1
       },
       "id": 29,
@@ -333,8 +337,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 12,
+        "w": 5,
+        "x": 19,
         "y": 1
       },
       "id": 28,
@@ -415,91 +419,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 16,
-        "y": 1
-      },
-      "id": 31,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "title": "Msg Backlog",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 4,
-        "x": 20,
-        "y": 1
+        "w": 8,
+        "x": 0,
+        "y": 6
       },
       "id": 30,
       "interval": null,
@@ -560,582 +482,789 @@
       "valueName": "current"
     },
     {
-      "collapsed": true,
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 8,
+        "y": 6
+      },
+      "id": 31,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:1726",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:1727",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Msg Backlog (bytes)",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:1729",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 16,
+        "y": 6
+      },
+      "id": 32,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:1726",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:1727",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Msg Backlog (msgs)",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:1729",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 11
       },
       "id": 18,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 7
-          },
-          "id": 16,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "hideEmpty": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{cluster}} - {{namespace}}",
-              "metric": "pulsar_rate_in",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Local publish rate",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "msg/s",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 7
-          },
-          "id": 2,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{cluster}} - {{namespace}}",
-              "metric": "pulsar_rate_out",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Local delivery rate",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "msg / s",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 14
-          },
-          "id": 5,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{cluster}} - {{namespace}}",
-              "metric": "pulsar_throughput_in",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Local publish throughput (bytes/s)",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "Bps",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "description": "",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 14
-          },
-          "id": 8,
-          "legend": {
-            "alignAsTable": false,
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{cluster}} - {{namespace}}",
-              "metric": "pulsar_throughput_out",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Local delivery throughput (bytes/s)",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "Bps",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "decimals": 0,
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 21
-          },
-          "id": 7,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "topics",
-              "metric": "pulsar_topics_count",
-              "refId": "D",
-              "step": 10
-            },
-            {
-              "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "producers",
-              "metric": "pulsar_producers_count",
-              "refId": "A",
-              "step": 10
-            },
-            {
-              "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "subscriptions",
-              "metric": "pulsar_subscriptions_count",
-              "refId": "B",
-              "step": 10
-            },
-            {
-              "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "consumers",
-              "metric": "pulsar_consumers_count",
-              "refId": "C",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Topics - Producers - Subscriptions - Consumers",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": [
-              "current"
-            ]
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": "count",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 21
-          },
-          "id": 4,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "{{cluster}} - {{namespace}}",
-              "metric": "pulsar_msg_backlog",
-              "refId": "A",
-              "step": 10
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Local backlog",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "Messages",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Namespaces",
       "type": "row"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{cluster}} - {{namespace}}",
+          "metric": "pulsar_rate_in",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Local publish rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "msg/s",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{cluster}} - {{namespace}}",
+          "metric": "pulsar_rate_out",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Local delivery rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "msg / s",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{cluster}} - {{namespace}}",
+          "metric": "pulsar_throughput_in",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Local publish throughput (bytes/s)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{cluster}} - {{namespace}}",
+          "metric": "pulsar_throughput_out",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Local delivery throughput (bytes/s)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "topics",
+          "metric": "pulsar_topics_count",
+          "refId": "D",
+          "step": 10
+        },
+        {
+          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "producers",
+          "metric": "pulsar_producers_count",
+          "refId": "A",
+          "step": 10
+        },
+        {
+          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "subscriptions",
+          "metric": "pulsar_subscriptions_count",
+          "refId": "B",
+          "step": 10
+        },
+        {
+          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "consumers",
+          "metric": "pulsar_consumers_count",
+          "refId": "C",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Topics - Producers - Subscriptions - Consumers",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": [
+          "current"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "count",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 26
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{cluster}} - {{namespace}}",
+          "metric": "pulsar_msg_backlog",
+          "refId": "A",
+          "step": 10
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Local backlog",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Messages",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": true,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 33
       },
       "id": 20,
       "panels": [
@@ -1159,12 +1288,14 @@
           "dashes": false,
           "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 5,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 13
           },
+          "hiddenSeries": false,
           "id": 3,
           "legend": {
             "avg": false,
@@ -1179,6 +1310,9 @@
           "linewidth": 0,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -1295,6 +1429,7 @@
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Storage Write Latency",
           "tooltip": {
@@ -1340,12 +1475,14 @@
           "dashes": false,
           "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 8
+            "y": 13
           },
+          "hiddenSeries": false,
           "id": 9,
           "legend": {
             "avg": false,
@@ -1360,6 +1497,9 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -1382,6 +1522,7 @@
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Storage Size",
           "tooltip": {
@@ -1429,12 +1570,14 @@
           "datasource": "{{ PULSAR_CLUSTER }}",
           "description": "Rate of writes into storage (can be lower than publish rate, when batching is enabled)",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 15
+            "y": 20
           },
+          "hiddenSeries": false,
           "id": 13,
           "legend": {
             "avg": false,
@@ -1449,6 +1592,9 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -1471,6 +1617,7 @@
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Storage Write Rate",
           "tooltip": {
@@ -1517,12 +1664,14 @@
           "datasource": "{{ PULSAR_CLUSTER }}",
           "description": "Reads from bookies",
           "fill": 1,
+          "fillGradient": 0,
           "gridPos": {
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 15
+            "y": 20
           },
+          "hiddenSeries": false,
           "id": 14,
           "legend": {
             "avg": false,
@@ -1537,6 +1686,9 @@
           "linewidth": 1,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -1559,6 +1711,7 @@
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Storage read entry rate",
           "tooltip": {
@@ -1604,12 +1757,14 @@
           "dashes": false,
           "datasource": "{{ PULSAR_CLUSTER }}",
           "fill": 6,
+          "fillGradient": 0,
           "gridPos": {
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 22
+            "y": 27
           },
+          "hiddenSeries": false,
           "id": 12,
           "legend": {
             "avg": false,
@@ -1624,6 +1779,9 @@
           "linewidth": 0,
           "links": [],
           "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
           "percentage": false,
           "pointradius": 5,
           "points": false,
@@ -1731,6 +1889,7 @@
           ],
           "thresholds": [],
           "timeFrom": null,
+          "timeRegions": [],
           "timeShift": null,
           "title": "Storage entry size",
           "tooltip": {
@@ -1775,11 +1934,12 @@
     },
     {
       "collapsed": true,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 34
       },
       "id": 22,
       "panels": [
@@ -2048,20 +2208,23 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 16,
+  "schemaVersion": 22,
   "style": "dark",
-  "tags": [
-    "messaging",
-    "namespaces"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
+        "index": -1,
         "label": "Cluster",
         "multi": false,
         "name": "cluster",
@@ -2079,10 +2242,16 @@
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
+        "index": -1,
         "label": "Namespace",
         "multi": false,
         "name": "namespace",
@@ -2131,6 +2300,9 @@
   },
   "timezone": "browser",
   "title": "Messaging Metrics",
-  "uid": "sWPi0L-mk",
-  "version": 4
+  "uid": "_XatBc6Zz",
+  "variables": {
+    "list": []
+  },
+  "version": 3
 }
