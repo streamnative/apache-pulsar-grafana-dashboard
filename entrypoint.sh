@@ -18,21 +18,26 @@
 # under the License.
 #
 
-
 echo 'Starting Grafana...'
 
+GRAFANA_CFG_FILE=${GRAFANA_CFG_FILE:-"/etc/grafana/grafana.ini"}
+GRAFANA_DATASOURCES_FILE=${GRAFANA_DATASOURCES_FILE:-"/var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml"}
+GRAFANA_USE_BUILTIN_DASHBOARDS=${GRAFANA_USE_BUILTIN_DASHBOARDS:-"true"}
+
 # apply environment variables to pulsar datasource provisioning yaml file
-mv /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml /tmp/datasources_pulsar.yml.bak
-j2 /tmp/datasources_pulsar.yml.bak > /var/lib/grafana/pulsar_provisioning/datasources/pulsar.yml
+mv ${GRAFANA_DATASOURCES_FILE} /tmp/datasources_pulsar.yml.bak
+j2 /tmp/datasources_pulsar.yml.bak > ${GRAFANA_DATASOURCES_FILE}
 
 # apply envirionment variables to grafana conf
-j2 /etc/grafana/grafana.ini > /var/lib/grafana/grafana.ini
+j2 ${GRAFANA_CFG_FILE} > /var/lib/grafana/grafana.ini
 chmod 0400 /var/lib/grafana/grafana.ini
 
 # apply environment variables to pulsar provisioned dashboards
-for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
-  sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
-done
+if [ "x${GRAFANA_USE_BUILTIN_DASHBOARDS}" == "xtrue" ]; then
+    for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
+      sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
+    done
+fi
 
 echo "Initialized the pulsar data source."
 
