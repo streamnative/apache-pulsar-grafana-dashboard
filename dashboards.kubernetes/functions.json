@@ -28,7 +28,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "sn-platform-pulsar",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "format": "dateTimeAsIso",
       "gauge": {
         "maxValue": 100,
@@ -109,7 +109,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "sn-platform-pulsar",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -207,7 +207,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "sn-platform-pulsar",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -298,7 +298,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "sn-platform-pulsar",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -387,7 +387,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "sn-platform-pulsar",
+      "datasource": "{{ PULSAR_CLUSTER }}",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -479,11 +479,8 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "text": "sn-platform-pulsar",
-          "value": "sn-platform-pulsar"
-        },
-        "datasource": "sn-platform-pulsar",
+        "current": {},
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "{cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
@@ -505,11 +502,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "test-namespace",
-          "value": "test-namespace"
-        },
-        "datasource": "sn-platform-pulsar",
+        "current": {},
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "{namespace=~\".+\"}",
         "hide": 0,
         "includeAll": false,
@@ -531,11 +525,8 @@
       },
       {
         "allValue": null,
-        "current": {
-          "text": "test/test-namespace/example",
-          "value": "test/test-namespace/example"
-        },
-        "datasource": "sn-platform-pulsar",
+        "current": {},
+        "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "{fqfn=~\".+\"}",
         "hide": 0,
         "includeAll": false,
