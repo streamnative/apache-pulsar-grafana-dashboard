@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:29",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,24 +16,9 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1587651474601,
+  "iteration": 1588939992919,
   "links": [],
   "panels": [
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 6,
-      "panels": [],
-      "title": "Pulsar logs",
-      "type": "row"
-    },
     {
       "aliasColors": {},
       "bars": false,
@@ -42,19 +28,19 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 4,
+        "h": 6,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 0
       },
       "hiddenSeries": false,
-      "id": 4,
+      "id": 2,
       "legend": {
         "avg": false,
         "current": false,
         "max": false,
         "min": false,
-        "show": false,
+        "show": true,
         "total": false,
         "values": false
       },
@@ -82,7 +68,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "",
+      "title": "Logs Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -122,15 +108,15 @@
     {
       "datasource": "{{ GF_LOKI_DATASOURCE_NAME }}",
       "gridPos": {
-        "h": 19,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
-      "id": 2,
+      "id": 4,
       "options": {
         "showLabels": false,
-        "showTime": false,
+        "showTime": true,
         "sortOrder": "Descending",
         "wrapLogMessage": true
       },
@@ -142,7 +128,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
+      "title": "Logs",
       "type": "logs"
     }
   ],
@@ -155,7 +141,7 @@
         "allValue": null,
         "current": {},
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "label_values(jvm_classes_loaded, job)",
+        "definition": "jvm_memory_bytes_used{job=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "index": -1,
@@ -163,11 +149,11 @@
         "multi": false,
         "name": "component",
         "options": [],
-        "query": "label_values(jvm_classes_loaded, job)",
-        "refresh": 0,
-        "regex": "",
+        "query": "jvm_memory_bytes_used{job=~\".+\"}",
+        "refresh": 1,
+        "regex": "/.*[^_]job=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -178,19 +164,19 @@
         "allValue": null,
         "current": {},
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "label_values(jvm_classes_loaded{job=\"$component\"}, cluster)",
+        "definition": "jvm_memory_bytes_used{cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "index": -1,
-        "label": null,
+        "label": "Cluster",
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "label_values(jvm_classes_loaded{job=\"$component\"}, cluster)",
-        "refresh": 0,
-        "regex": "",
+        "query": "jvm_memory_bytes_used{cluster=~\".+\"}",
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -218,10 +204,10 @@
     ]
   },
   "timezone": "",
-  "title": "Pulsar logs",
+  "title": "Pulsar Logs",
   "uid": "AIPqpE3Zk",
   "variables": {
     "list": []
   },
-  "version": 8
+  "version": 2
 }
