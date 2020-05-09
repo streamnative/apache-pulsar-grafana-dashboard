@@ -35,8 +35,7 @@ chmod 0400 /var/lib/grafana/grafana.ini
 # apply environment variables to pulsar provisioned dashboards
 if [ "x${GRAFANA_USE_BUILTIN_DASHBOARDS}" == "xtrue" ]; then
     for item in `ls /var/lib/grafana/pulsar_provisioning/dashboard_templates`; do
-      sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
-      sed "s/{{ GF_LOKI_DATASOURCE_NAME }}/${GF_LOKI_DATASOURCE_NAME}/" /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
+      sed -e 's/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/' -e 's/{{ GF_LOKI_DATASOURCE_NAME }}/${GF_LOKI_DATASOURCE_NAME}/' /var/lib/grafana/pulsar_provisioning/dashboard_templates/${item} > /var/lib/grafana/pulsar_provisioning/dashboards/${item}
     done
 fi
 
