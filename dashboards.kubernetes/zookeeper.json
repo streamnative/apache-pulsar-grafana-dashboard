@@ -1382,7 +1382,7 @@
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "{job=~\".+\"}",
+        "query": "zookeeper_server_requests{job=~\".+\"}",
         "refresh": 1,
         "regex": "/.*[^_]job=\\\"(zookeeper)\\\".*/",
         "skipUrlSync": false,
