@@ -3988,7 +3988,7 @@
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "{job=~\".+\"}",
+        "query": "bookkeeper_server_ADD_ENTRY{job=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]job=\\\"(bookie)\\\".*/",
         "skipUrlSync": false,
