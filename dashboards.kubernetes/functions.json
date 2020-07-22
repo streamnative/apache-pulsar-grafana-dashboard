@@ -1,7 +1,44 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_TEST-CLUSTER",
+      "label": "{{ PULSAR_CLUSTER }}",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.3.2"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": "5.0.0"
+    }
+  ],
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:95",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,95 +52,10 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1588844930760,
+  "id": 18,
+  "iteration": 1595379235368,
   "links": [],
   "panels": [
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "dateTimeAsIso",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "id": 4,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "pulsar_function_last_invocation{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"}",
-          "interval": "",
-          "legendFormat": "{{ fqfn }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Function Last Invocation",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
     {
       "aliasColors": {},
       "bars": false,
@@ -113,30 +65,32 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 7,
-        "x": 4,
+        "h": 6,
+        "w": 12,
+        "x": 0,
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 10,
+      "id": 16,
       "legend": {
         "avg": false,
         "current": false,
+        "hideEmpty": false,
         "max": false,
         "min": false,
-        "show": true,
-        "total": true,
-        "values": true
+        "show": false,
+        "total": false,
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -145,31 +99,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pulsar_function_system_exceptions_total{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"}[5m])",
-          "hide": false,
+          "expr": "sum(rate(pulsar_function_received_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
-          "legendFormat": "system exceptions",
+          "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
-        },
-        {
-          "expr": "irate(pulsar_function_user_exceptions_total{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"}[5m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "user exceptions",
-          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Functions Exceptions Num",
+      "title": "Received messages",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -180,9 +125,8 @@
       },
       "yaxes": [
         {
-          "decimals": 0,
-          "format": "none",
-          "label": null,
+          "format": "short",
+          "label": "msg/s",
           "logBase": 1,
           "max": null,
           "min": "0",
@@ -194,7 +138,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -211,31 +155,32 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 12,
         "x": 12,
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 2,
+      "id": 21,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
-        "current": true,
+        "current": false,
+        "hideEmpty": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -244,10 +189,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_function_process_latency_ms{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"}",
-          "hide": false,
+          "expr": "sum(rate(pulsar_function_processed_successfully_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
-          "legendFormat": "{{ quantile }}",
+          "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
         }
       ],
@@ -255,13 +199,12 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Function process latency",
+      "title": "Successfully processed  messages",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -272,11 +215,11 @@
       },
       "yaxes": [
         {
-          "format": "ms",
-          "label": null,
-          "logBase": 2,
+          "format": "short",
+          "label": "msg/s",
+          "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -285,13 +228,668 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
+          "interval": "",
+          "legendFormat": "{{exported_namespace}}/{{name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Average Processing latency",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 8,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 20,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
+          "interval": "",
+          "legendFormat": "{{ exported_namespace }}/{{ name }}  - {{instance_id}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "99pct Processing latency",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "ms",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 16,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 28,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
+          "interval": "",
+          "legendFormat": "{{ exported_namespace }}/{{ name }} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Number of instances",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "interval": "",
+          "legendFormat": "{{ exported_namespace }}/{{ name }} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "User exceptions rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "msg/s",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "hiddenSeries": false,
+      "id": 19,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "interval": "",
+          "legendFormat": "{{ exported_namespace }}/{{ name }} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "System exceptions rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "msg/s",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 31,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:140",
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "$$hashKey": "object:141",
+          "alias": "name",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "fqfn",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:142",
+          "alias": "error",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "error",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:143",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "pulsar_function_user_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "format": "table",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "User Exceptions",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 32,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:247",
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "$$hashKey": "object:248",
+          "alias": "name",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "fqfn",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:249",
+          "alias": "error",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "error",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:250",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "pulsar_function_system_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "format": "table",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "System Exceptions",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 25,
+      "panels": [],
+      "title": "User Defined Metrics",
+      "type": "row"
     },
     {
       "aliasColors": {},
@@ -305,10 +903,10 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 25
       },
       "hiddenSeries": false,
-      "id": 8,
+      "id": 27,
       "legend": {
         "avg": false,
         "current": false,
@@ -320,12 +918,13 @@
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -334,9 +933,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pulsar_function_received_total{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"} [30s])",
+          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
-          "legendFormat": "receive message numbers",
+          "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
         }
       ],
@@ -344,13 +943,12 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Received Rate",
+      "title": "Average User Defined Metrics",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -361,11 +959,11 @@
       },
       "yaxes": [
         {
-          "format": "none",
-          "label": null,
+          "format": "short",
+          "label": "",
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -394,10 +992,10 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 25
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 29,
       "legend": {
         "avg": false,
         "current": false,
@@ -409,12 +1007,13 @@
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
+      "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -423,9 +1022,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(pulsar_function_processed_successfully_total{cluster=~\"$cluster\", namespace=~\"$namespace\", fqfn=~\"$fqfn\"} [30s])",
+          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
-          "legendFormat": "{{ cluster }}",
+          "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
         }
       ],
@@ -433,13 +1032,12 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Processed Successfully Rate",
+      "title": "User Defined Metrics Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -450,14 +1048,17 @@
       },
       "yaxes": [
         {
-          "format": "none",
-          "label": null,
+          "$$hashKey": "object:381",
+          "decimals": null,
+          "format": "short",
+          "label": "metrics/sec",
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:382",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -472,6 +1073,7 @@
       }
     }
   ],
+  "refresh": false,
   "schemaVersion": 22,
   "style": "dark",
   "tags": [],
@@ -479,19 +1081,23 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "{cluster=~\".+\"}",
+        "definition": "pulsar_function_received_total{cluster=~\".+\"}",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "index": -1,
         "label": "Cluster",
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "pulsar_storage_size{cluster=~\".+\"}",
-        "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "query": "pulsar_function_received_total{cluster=~\".+\"}",
+        "refresh": 2,
+        "regex": "/.*cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -502,19 +1108,23 @@
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "{namespace=~\".+\"}",
+        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "index": -1,
         "label": "Namespace",
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_storage_size{namespace=~\".+\"}",
-        "refresh": 1,
-        "regex": "/.*namespace=\\\"([^\\\"]+)\\\".*/",
+        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "refresh": 2,
+        "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -525,19 +1135,23 @@
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "{fqfn=~\".+\"}",
+        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "index": -1,
-        "label": "FQFN",
+        "label": "Function",
         "multi": false,
-        "name": "fqfn",
+        "name": "function",
         "options": [],
-        "query": "{fqfn=~\".+\"}",
-        "refresh": 1,
-        "regex": "/.*fqfn=\\\"([^\\\"]+)\\\".*/",
+        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
+        "refresh": 2,
+        "regex": "/\\,name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -549,7 +1163,7 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -564,13 +1178,24 @@
       "1h",
       "2h",
       "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
     ]
   },
-  "timezone": "",
-  "title": "Pulsar Functions",
-  "uid": "EyZIXQ6Wk",
+  "timezone": "browser",
+  "title": "Functions Metrics",
+  "uid": "b2w0sy-ik",
   "variables": {
     "list": []
   },
-  "version": 33
+  "version": 3
 }
