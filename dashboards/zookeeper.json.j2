@@ -1,3 +1,12 @@
+{%- if PULSAR_CUSTOM_PROMETHEUS not in [ '','no','No','NO','na','NA','false','False','0' ] %}
+{#-
+If custom change "instance" key to "pod"
+This will make graph ledgends display the pod name instead of IP and port information
+#}
+  {%- set CONTEXT = "pod" %}
+{%- else %}
+  {%- set CONTEXT = "instance" %}
+{%- endif -%}
 {
   "__inputs": [
     {
@@ -130,7 +139,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "znode count",
@@ -211,7 +220,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -291,7 +300,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -371,7 +380,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -451,7 +460,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_connections{job=~\"$job\", instance=~\"$instance\"})",
+          "expr": "sum(zookeeper_server_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -522,10 +531,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", instance=~\"$instance\", type=\"write\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"write\"}[30s])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "refId": "B"
         }
       ],
@@ -607,11 +616,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", instance=~\"$instance\", type=\"read\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"read\"}[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -695,11 +704,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", instance=~\"$instance\", type=\"write\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"write\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -784,11 +793,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", instance=~\"$instance\", type=\"read\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"read\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -873,11 +882,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", instance=~\"$instance\"}[30s])) by (type)",
+          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}[30s])) by (type)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{ '{{type}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 4
@@ -961,11 +970,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_znode_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1049,11 +1058,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1137,11 +1146,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_connections{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1225,11 +1234,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_watches_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_watches_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1313,11 +1322,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1382,9 +1391,9 @@
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "{job=~\".+\"}",
+        "query": "zookeeper_server_znode_count{job=~\".+\"}",
         "refresh": 1,
-        "regex": "/.*[^_]job=\\\"(zookeeper)\\\".*/",
+        "regex": "/.*[^_]job=\\\"(.*zookeeper)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -1403,9 +1412,9 @@
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "zookeeper_server_requests{job=~\"$job\", instance=~\".+\"}",
+        "query": "zookeeper_server_requests{job=~\"$job\", {{ CONTEXT }}=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]{{ CONTEXT }}=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
