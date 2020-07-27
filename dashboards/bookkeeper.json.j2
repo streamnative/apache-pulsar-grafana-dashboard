@@ -3058,7 +3058,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookie_ledger_writable_dirs{job=~\"$job\", {{ CONTEXT }}=~\"$${{ CONTEXT }}\"}) by ({{ CONTEXT }})",
+              "expr": "sum(bookie_ledger_writable_dirs{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}) by ({{ CONTEXT }})",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
