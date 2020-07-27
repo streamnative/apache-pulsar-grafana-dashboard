@@ -110,11 +110,14 @@ else
   for item in `ls ${DASHBOARD_HOME}/dashboards`; do
     # Strip the '.j2' template file exstesion from output file name
     OUTPUT_FILE=$(echo ${item} | sed 's/\.j2//')
+
+    # Only attempt to render via jinja2 if the file is a jinja2 template
     if [[ "${item}" == *".j2" ]]; then
       j2 ${DASHBOARD_HOME}/dashboards/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     else
       sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" ${DASHBOARD_HOME}/dashboards/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     fi
+  
   done
 
   echo "Your pulsar dashboards is generarted under ${DASHBOARDS_OUTPUT_DIR}"
