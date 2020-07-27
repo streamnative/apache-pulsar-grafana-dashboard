@@ -299,7 +299,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"zookeeper\"}) by (instance))",
+          "expr": "count(count(up{job=~\".*zookeeper\"}) by (instance))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -380,7 +380,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"bookie\"}) by (instance))",
+          "expr": "count(count(up{job=~\".*bookie\"}) by (instance))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -461,7 +461,7 @@
       "tableColumn": "Value",
       "targets": [
         {
-          "expr": "count(count(up{job=\"broker\"}) by (instance))",
+          "expr": "count(count(up{job=~\".*broker\"}) by (instance))",
           "format": "time_series",
           "instant": true,
           "intervalFactor": 1,
@@ -543,7 +543,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"proxy\"}) by (instance))",
+          "expr": "count(count(up{job=~\".*proxy\"}) by (instance))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -624,7 +624,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -705,7 +705,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -950,7 +950,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"zookeeper\"} == 1) / count(up{job=\"zookeeper\"})",
+          "expr": "100 * count(up{job=~\".*zookeeper\"} == 1) / count(up{job=~\".*zookeeper\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1031,7 +1031,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"bookie\"} == 1) / count(up{job=\"bookie\"})",
+          "expr": "100 * count(up{job=~\".*bookie\"} == 1) / count(up{job=~\".*bookie\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1112,7 +1112,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"broker\"} == 1) / count(up{job=\"broker\"})",
+          "expr": "100 * count(up{job=~\".*broker\"} == 1) / count(up{job=~\".*broker\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1193,7 +1193,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"proxy\"} == 1) / count(up{job=\"proxy\"})",
+          "expr": "100 * count(up{job=~\".*proxy\"} == 1) / count(up{job=~\".*proxy\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -1263,10 +1263,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ cluster }}",
+          "legendFormat": "{{ '{{ cluster }}' }}",
           "refId": "A"
         }
       ],
@@ -1348,17 +1348,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_in{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ cluster }} - In",
+          "legendFormat": "{{ '{{ cluster }}' }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_rate_out{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_out{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{ cluster }} - Out",
+          "legendFormat": "{{ '{{ cluster }}' }} - Out",
           "refId": "B"
         }
       ],
@@ -1476,11 +1476,11 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\"broker\"}) by (topic))",
+          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\".*broker\"}) by (topic))",
           "format": "table",
           "instant": true,
           "intervalFactor": 2,
-          "legendFormat": "{{ topic }}",
+          "legendFormat": "{{ '{{ topic }}' }}",
           "refId": "A"
         }
       ],
@@ -1525,10 +1525,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ cluster }}",
+          "legendFormat": "{{ '{{ cluster }}' }}",
           "refId": "A"
         }
       ],
@@ -1610,17 +1610,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ cluster }} - In",
+          "legendFormat": "{{ '{{ cluster }}' }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_throughput_out{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{job=~\".*broker\"}) by (cluster)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{ cluster }} - Out",
+          "legendFormat": "{{ '{{ cluster }}' }} - Out",
           "refId": "B"
         }
       ],
@@ -1716,7 +1716,7 @@
               "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (instance)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (instance)))",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{ instance }}",
+              "legendFormat": "{{ '{{ instance }}' }}",
               "refId": "B"
             }
           ],
@@ -1802,7 +1802,7 @@
               "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{ instance }}",
+              "legendFormat": "{{ '{{ instance }}' }}",
               "refId": "A"
             }
           ],
