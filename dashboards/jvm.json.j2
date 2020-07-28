@@ -1,3 +1,12 @@
+{%- if PULSAR_CUSTOM_PROMETHEUS not in [ '','no','No','NO','na','NA','false','False','0' ] %}
+{#-
+If custom change "instance" key to "pod"
+This will make graph ledgends display the pod name instead of IP and port information
+#}
+  {%- set CONTEXT = "pod" %}
+{%- else %}
+  {%- set CONTEXT = "instance" %}
+{%- endif -%}
 {
   "__inputs": [
     {
@@ -102,11 +111,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(process_cpu_seconds_total{instance=~\"$instance\"}[30s]) * 100\n\n",
+          "expr": "irate(process_cpu_seconds_total{{ '{' }}{{ CONTEXT }}=~\"$instance\"}[30s]) * 100\n\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "process_cpu_seconds_total",
           "refId": "A",
           "step": 20
@@ -200,7 +209,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(jvm_memory_bytes_committed{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_committed{{ '{' }}{{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -211,7 +220,7 @@
           "step": 20
         },
         {
-          "expr": "sum(jvm_memory_bytes_used{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_used{{ '{' }}{{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -221,7 +230,7 @@
           "step": 20
         },
         {
-          "expr": "sum(jvm_memory_bytes_max{instance=~\"$instance\"})",
+          "expr": "sum(jvm_memory_bytes_max{{ '{' }}{{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -308,7 +317,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_memory_direct_bytes_used{instance=~\"$instance\"}",
+          "expr": "jvm_memory_direct_bytes_used{{ '{' }}{{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -318,7 +327,7 @@
           "step": 20
         },
         {
-          "expr": "jvm_memory_direct_bytes_max{instance=~\"$instance\"}",
+          "expr": "jvm_memory_direct_bytes_max{{ '{' }}{{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -414,7 +423,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(jvm_gc_collection_seconds_sum{instance=~\"$instance\"}[30s]))",
+          "expr": "sum(increase(jvm_gc_collection_seconds_sum{{ '{' }}{{ CONTEXT }}=~\"$instance\"}[30s]))",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -526,7 +535,7 @@
         "multi": true,
         "name": "instance",
         "options": [],
-        "query": "jvm_memory_bytes_used{job=~\"$job\", instance=~\".+\"}",
+        "query": "jvm_memory_bytes_used{job=~\"$job\", {{ CONTEXT }}=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
