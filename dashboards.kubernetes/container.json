@@ -128,19 +128,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum(   rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
         },
         {
-          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "100 * sum(   rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -249,25 +249,25 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(container_memory_rss{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
         },
         {
-          "expr": "sum(container_memory_swap{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
         },
         {
-          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
         },
         {
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod_name=~\"$pod\", container_name!=\"\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -372,13 +372,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "In",
           "refId": "A"
         },
         {
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name)",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "Out",
           "refId": "B"
@@ -484,13 +484,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
         },
         {
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{pod_name=~\"$pod\", container_name!=\"\"}[5m])) by (pod_name,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
