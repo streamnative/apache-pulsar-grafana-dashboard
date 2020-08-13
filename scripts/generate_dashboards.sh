@@ -28,22 +28,22 @@ help() {
 
 generate_dashboards.sh
 
-Usage: 
+Usage:
 
   Scripted options:
 
     1. Pass arguments to script:
         generate_dashboards.sh <prometheus-url> <cluster> <custom> <loki-url> <loki-datasource>
-    
+
     2. Set environment variables for the following and just run generate_dashboards.sh:
         - PULSAR_PROMETHEUS_URL
         - PULSAR_CLUSTER
         - PULSAR_CUSTOM_PROMETHEUS
         - GF_LOKI_URL
         - GF_LOKI_DATASOURCE_NAME
-  
+
   Interactive option:
-      
+
     Missing any of the above inputs or environment variables will cause a prompt for input
 
 EOF
@@ -54,7 +54,7 @@ env_var_check() {
   # for interactive input when missing
   local VAR=${1}
   local INPUT=${2}
-  if [ ! -z "$(echo ${VAR})" ] && [ ! -n "${INPUT}" ]; then
+  if [ -z "$(echo ${VAR})" ] && [ -z "${INPUT}" ]; then
     echo "${VAR} is not set!"
     DEFAULT_INPUT=''
     read -p "Enter a value for ${VAR}: [''] " PROMPT_INPUT
@@ -65,7 +65,7 @@ env_var_check() {
     echo "Setting ${VAR} from script input."
     export $(echo ${VAR})=${INPUT}
     echo "${VAR} set to: $(printenv ${VAR})"
-  elif [ -z "$(echo ${VAR})" ]; then
+  elif [ -n "$(echo ${VAR})" ]; then
     echo "Using existing ${VAR} environment variable."
     echo "$(echo ${VAR}) set to: $(printenv ${VAR})"
   else
@@ -117,7 +117,7 @@ else
     else
       sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" ${DASHBOARD_HOME}/dashboards/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     fi
-  
+
   done
 
   echo "Your pulsar dashboards is generarted under ${DASHBOARDS_OUTPUT_DIR}"
