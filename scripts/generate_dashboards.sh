@@ -107,15 +107,15 @@ else
   echo "Your pulsar data source is generated as ${DATASOURCES_OUTPUT_DIR}/pulsar.yml"
 
   # apply environment variables to pulsar dashboards
-  for item in `ls ${DASHBOARD_HOME}/dashboards`; do
+  for item in `ls ${DASHBOARD_HOME}/dashboards.template`; do
     # Strip the '.j2' template file exstesion from output file name
     OUTPUT_FILE=$(echo ${item} | sed 's/\.j2//')
 
     # Only attempt to render via jinja2 if the file is a jinja2 template
     if [[ "${item}" == *".j2" ]]; then
-      j2 ${DASHBOARD_HOME}/dashboards/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
+      j2 ${DASHBOARD_HOME}/dashboards.template/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     else
-      sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" ${DASHBOARD_HOME}/dashboards/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
+      sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" ${DASHBOARD_HOME}/dashboards.template/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     fi
 
   done
