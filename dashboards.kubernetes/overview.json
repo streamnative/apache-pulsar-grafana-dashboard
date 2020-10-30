@@ -59,6 +59,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
+  "iteration": 1604026263080,
   "links": [],
   "panels": [
     {
@@ -136,9 +137,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(node_cpu_seconds_total{mode=\"system\"})",
+          "expr": "count(node_cpu_seconds_total{cluster=~\"$cluster\", mode=\"system\"})",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -218,9 +220,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(node_memory_MemTotal_bytes)",
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"})",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -488,9 +491,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total[1m]))\n  )\n)",
+          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",}[1m]))\n  )\n)",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -570,9 +574,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / sum(node_memory_MemTotal_bytes) * 100",
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cluster=~\"$cluster\"} - node_memory_Cached_bytes{cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"}) * 100",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -666,8 +671,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"zookeeper\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"zookeeper\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -747,8 +753,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"bookie\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"bookie\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -828,9 +835,10 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"broker\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"broker\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "instant": true,
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "A"
@@ -910,8 +918,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "count(count(up{job=\"proxy\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"proxy\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1076,8 +1085,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1159,7 +1169,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1244,7 +1254,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1327,8 +1337,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"zookeeper\"} == 1) / count(up{job=\"zookeeper\"})",
+          "expr": "100 * count(up{job=\"zookeeper\", cluster=~\"$cluster\"} == 1) / count(up{job=\"zookeeper\", cluster=~\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1408,8 +1419,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"bookie\"} == 1) / count(up{job=\"bookie\"})",
+          "expr": "100 * count(up{job=\"bookie\", cluster=~\"$cluster\"} == 1) / count(up{job=\"bookie\", cluster=~\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1489,8 +1501,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"broker\"} == 1) / count(up{job=\"broker\"})",
+          "expr": "100 * count(up{job=\"broker\", cluster=~\"$cluster\"} == 1) / count(up{job=\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1570,8 +1583,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"proxy\"} == 1) / count(up{job=\"proxy\"})",
+          "expr": "100 * count(up{job=\"proxy\", cluster=~\"$cluster\"} == 1) / count(up{job=\"proxy\", cluster=~\"$cluster\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
           "refId": "A"
@@ -1731,8 +1745,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }}",
           "refId": "A"
@@ -1822,7 +1837,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1916,7 +1931,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2010,15 +2025,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_rate_out{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ cluster }} - Out",
           "refId": "B"
@@ -2145,7 +2162,7 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\"broker\"}) by (namespace))",
+          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2237,7 +2254,7 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\"}) by (namespace))",
+          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2292,15 +2309,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ cluster }} - In",
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_throughput_out{job=~\"broker\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ cluster }} - Out",
           "refId": "B"
@@ -2408,7 +2427,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2418,7 +2437,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2428,7 +2447,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2438,7 +2457,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2448,7 +2467,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2458,7 +2477,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2468,7 +2487,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2479,7 +2498,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2489,7 +2508,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2499,7 +2518,7 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2629,7 +2648,7 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\"}) by (topic))",
+          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2721,7 +2740,7 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\"}) by (topic))",
+          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2735,7 +2754,7 @@
       "type": "table"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -2744,193 +2763,192 @@
         "y": 45
       },
       "id": 42,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 10,
-            "w": 12,
-            "x": 0,
-            "y": 27
-          },
-          "hiddenSeries": false,
-          "id": 1,
-          "legend": {
-            "alignAsTable": false,
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "dataLinks": []
-          },
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (kubernetes_pod_name)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (kubernetes_pod_name)))",
-              "format": "time_series",
-              "intervalFactor": 1,
-              "legendFormat": "{{ kubernetes_pod_name }}",
-              "refId": "B"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Node CPU usage",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "percent",
-              "label": "",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 10,
-            "w": 12,
-            "x": 12,
-            "y": 27
-          },
-          "hiddenSeries": false,
-          "id": 11,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "dataLinks": []
-          },
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "{{ kubernetes_pod_name }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Node Memory Usage",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "percent",
-              "label": null,
-              "logBase": 1,
-              "max": "100",
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Nodes",
       "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 1,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (kubernetes_pod_name)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (kubernetes_pod_name)))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{ kubernetes_pod_name }}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Node CPU usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "{{ PULSAR_CLUSTER }}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 11,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "{{ kubernetes_pod_name }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Node Memory Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": "100",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "1m",
@@ -2938,7 +2956,55 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": true,
+        "index": -1,
+        "label": "cluster",
+        "multi": true,
+        "name": "cluster",
+        "options": [
+          {
+            "$$hashKey": "object:359",
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "$$hashKey": "object:360",
+            "selected": false,
+            "text": "{{ PULSAR_CLUSTER }}",
+            "value": "{{ PULSAR_CLUSTER }}"
+          },
+          {
+            "$$hashKey": "object:361",
+            "selected": false,
+            "text": "cluster2-pulsar",
+            "value": "cluster2-pulsar"
+          }
+        ],
+        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
+        "refresh": 0,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
