@@ -38,6 +38,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:13",
         "builtIn": 1,
         "datasource": "{{ PULSAR_CLUSTER }}",
         "enable": true,
@@ -54,11 +55,11 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1543832201353,
+  "iteration": 1604027271746,
   "links": [],
   "panels": [
     {
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -130,8 +131,9 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
+          "expr": "sum(zookeeper_server_znode_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "znode count",
           "refId": "A"
@@ -211,9 +213,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
+          "expr": "sum(zookeeper_server_watches_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -291,9 +295,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
+          "expr": "sum(zookeeper_server_ephemerals_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -371,9 +377,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
+          "expr": "sum(zookeeper_server_data_size_bytes{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -451,9 +459,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_connections{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
+          "expr": "sum(zookeeper_server_connections{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -472,6 +482,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -492,12 +503,14 @@
       "decimals": 1,
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 1,
       "legend": {
         "avg": false,
@@ -512,6 +525,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -522,8 +538,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\"}[30s])",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "B"
@@ -531,6 +548,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Write Requests",
       "tooltip": {
@@ -577,12 +595,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "All read operations (getData / getChildren / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 12,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -597,6 +617,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -607,7 +630,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\"}[30s])",
+          "expr": "irate(zookeeper_server_requests_latency_ms_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\"}[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -619,6 +642,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Read Requests",
       "tooltip": {
@@ -665,12 +689,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "avg": false,
@@ -685,6 +711,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -695,7 +724,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"write\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -707,6 +736,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Write Latency - 99pct",
       "tooltip": {
@@ -754,12 +784,14 @@
       "decimals": 1,
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "avg": false,
@@ -774,6 +806,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -784,7 +819,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\", quantile=\"0.99\"}",
+          "expr": "zookeeper_server_requests_latency_ms{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", type=\"read\", quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -796,6 +831,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Read Latency - 99pct",
       "tooltip": {
@@ -843,12 +879,14 @@
       "decimals": 1,
       "description": "Request Throughput (break down by type)",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -863,6 +901,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -873,7 +914,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (type)",
+          "expr": "sum(irate(zookeeper_server_requests{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (type)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -885,6 +926,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Request Throughput",
       "tooltip": {
@@ -931,12 +973,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -951,6 +995,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -961,7 +1008,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_znode_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "zookeeper_server_znode_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -973,6 +1020,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Z-Nodes count",
       "tooltip": {
@@ -1019,12 +1067,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Size of the data stored in a ZK server",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "avg": false,
@@ -1039,6 +1089,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1049,7 +1102,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "zookeeper_server_data_size_bytes{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1061,6 +1114,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Data set size",
       "tooltip": {
@@ -1107,12 +1161,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Number of opened connections",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 9,
       "legend": {
         "avg": false,
@@ -1127,6 +1183,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1137,7 +1196,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_connections{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "zookeeper_server_connections{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1149,6 +1208,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Connections",
       "tooltip": {
@@ -1195,12 +1255,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "avg": false,
@@ -1215,6 +1277,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1225,7 +1290,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_watches_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "zookeeper_server_watches_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1237,6 +1302,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Number of watches",
       "tooltip": {
@@ -1283,12 +1349,14 @@
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 11,
       "legend": {
         "avg": false,
@@ -1303,6 +1371,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1313,7 +1384,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "zookeeper_server_ephemerals_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1325,6 +1396,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Number of ephemerals",
       "tooltip": {
@@ -1364,7 +1436,7 @@
       }
     }
   ],
-  "schemaVersion": 16,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "zookeeper",
@@ -1374,17 +1446,24 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "zookeeper_server_requests{cluster=~\".+\"}",
         "hide": 0,
         "includeAll": true,
-        "label": "job",
-        "multi": false,
-        "name": "job",
+        "index": -1,
+        "label": "cluster",
+        "multi": true,
+        "name": "cluster",
         "options": [],
-        "query": "zookeeper_server_requests{job=~\".+\"}",
+        "query": "zookeeper_server_requests{cluster=~\".+\"}",
         "refresh": 1,
-        "regex": "/.*[^_]job=\\\"(zookeeper)\\\".*/",
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -1395,15 +1474,21 @@
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "zookeeper_server_requests{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
+        "index": -1,
         "label": "zookeeper server",
         "multi": false,
         "name": "kubernetes_pod_name",
         "options": [],
-        "query": "zookeeper_server_requests{job=~\"$job\", kubernetes_pod_name=~\".+\"}",
+        "query": "zookeeper_server_requests{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -1448,5 +1533,8 @@
   "timezone": "browser",
   "title": "ZooKeeper",
   "uid": "e1TM1TLik",
-  "version": 10
+  "variables": {
+    "list": []
+  },
+  "version": 11
 }
