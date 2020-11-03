@@ -1485,7 +1485,7 @@
         "includeAll": true,
         "index": -1,
         "label": "zookeeper server",
-        "multi": false,
+        "multi": true,
         "name": "kubernetes_pod_name",
         "options": [],
         "query": "zookeeper_server_requests{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
