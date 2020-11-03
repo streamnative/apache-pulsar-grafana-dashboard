@@ -53,8 +53,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
-  "iteration": 1588401118446,
+  "iteration": 1604363374216,
   "links": [],
   "panels": [
     {
@@ -2216,9 +2215,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "",
@@ -2226,7 +2226,7 @@
         "includeAll": true,
         "index": -1,
         "label": "Cluster",
-        "multi": false,
+        "multi": true,
         "name": "cluster",
         "options": [],
         "query": "pulsar_rate_in{cluster=~\".+\"}",
@@ -2243,9 +2243,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "",
@@ -2253,7 +2254,7 @@
         "includeAll": true,
         "index": -1,
         "label": "Namespace",
-        "multi": false,
+        "multi": true,
         "name": "namespace",
         "options": [],
         "query": "pulsar_rate_in{namespace=~\".+\", cluster=~\"$cluster\"}",

@@ -46,8 +46,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 17,
-  "iteration": 1595367011419,
+  "iteration": 1604363458370,
   "links": [],
   "panels": [
     {
@@ -1913,16 +1912,19 @@
       {
         "allValue": null,
         "current": {
-          "text": "{{ PULSAR_CLUSTER }}",
-          "value": "{{ PULSAR_CLUSTER }}"
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "index": -1,
         "label": "Cluster",
-        "multi": false,
+        "multi": true,
         "name": "cluster",
         "options": [],
         "query": "pulsar_storage_size{cluster=~\".+\"}",
@@ -1939,9 +1941,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "",
@@ -1949,7 +1952,7 @@
         "includeAll": true,
         "index": -1,
         "label": "Namespace",
-        "multi": false,
+        "multi": true,
         "name": "namespace",
         "options": [],
         "query": "pulsar_storage_size{namespace=~\".+\"}",
@@ -1966,9 +1969,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
         "definition": "",
@@ -1976,7 +1980,7 @@
         "includeAll": true,
         "index": -1,
         "label": "Topic",
-        "multi": false,
+        "multi": true,
         "name": "topic",
         "options": [],
         "query": "pulsar_storage_size{topic=~\".+\"}",

@@ -1103,7 +1103,7 @@
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
-        "multi": false,
+        "multi": true,
         "name": "cluster",
         "options": [],
         "query": "pulsar_proxy_active_connections{cluster=~\".+\", job=~\"proxy\"}",
