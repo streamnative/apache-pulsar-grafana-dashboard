@@ -185,7 +185,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
+          "expr": "irate(replication_worker_NUM_BYTES_READ_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -211,11 +211,11 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -361,7 +361,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
+          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -387,11 +387,11 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
