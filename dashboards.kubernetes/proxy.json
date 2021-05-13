@@ -1127,7 +1127,7 @@
         "multi": true,
         "name": "kubernetes_pod_name",
         "options": [],
-        "query": "pulsar_proxy_active_connections{kubernetes_pod_name=~\".+\", job=~\"proxy\"}",
+        "query": "pulsar_proxy_active_connections{kubernetes_pod_name=~\".+\", job=~\"proxy\",cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

@@ -8276,7 +8276,7 @@
           ]
         },
         "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}",
         "hide": 1,
         "includeAll": true,
         "index": -1,
@@ -8284,7 +8284,7 @@
         "multi": true,
         "name": "cache",
         "options": [],
-        "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}",
         "refresh": 2,
         "regex": "/.*[^_]cache=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
