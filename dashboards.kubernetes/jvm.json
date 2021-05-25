@@ -526,7 +526,7 @@
         "multi": true,
         "name": "kubernetes_pod_name",
         "options": [],
-        "query": "jvm_memory_bytes_used{job=~\"$job\", kubernetes_pod_name=~\".+\"}",
+        "query": "jvm_memory_bytes_used{cluster=~\"$cluster\",job=~\"$job\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
