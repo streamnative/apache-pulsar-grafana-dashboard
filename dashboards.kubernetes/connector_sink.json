@@ -331,9 +331,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[1m]) )by (cluster, exported_namespace, connector)",
+            "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
             "interval": "",
-            "legendFormat": "{{exported_namespace}}/{{connector}}",
+            "legendFormat": "{{cluster}}-{{fqfn}}",
             "refId": "A"
           }
         ],
@@ -419,9 +419,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[1m]) )by (cluster, exported_namespace, connector)",
+            "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
             "interval": "",
-            "legendFormat": "{{exported_namespace}}/{{connector}}",
+            "legendFormat": "{{cluster}}-{{fqfn}}",
             "refId": "A"
           }
         ],
@@ -507,9 +507,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(pulsar_sink_sink_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[1m]) )by (cluster, exported_namespace, connector)",
+            "expr": "sum(rate(pulsar_sink_sink_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
             "interval": "",
-            "legendFormat": "{{exported_namespace}}/{{connector}}",
+            "legendFormat": "{{cluster}}-{{fqfn}}",
             "refId": "A"
           }
         ],
@@ -595,9 +595,9 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(pulsar_sink_system_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[1m]) )by (cluster, exported_namespace, connector)",
+            "expr": "sum(rate(pulsar_sink_system_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
             "interval": "",
-            "legendFormat": "{{exported_namespace}}/{{connector}}",
+            "legendFormat": "{{cluster}}-{{fqfn}}",
             "refId": "A"
           }
         ],
