@@ -419,7 +419,7 @@
         "steppedLine": false,
         "targets": [
           {
-            "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+            "expr": "sum(rate(pulsar_sink_written_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
             "interval": "",
             "legendFormat": "{{cluster}}-{{fqfn}}",
             "refId": "A"
