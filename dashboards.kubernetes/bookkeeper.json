@@ -3643,7 +3643,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_write_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_write_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3829,7 +3829,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3924,7 +3924,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4016,7 +4016,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4107,7 +4107,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4198,7 +4198,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4206,7 +4206,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4299,7 +4299,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4307,7 +4307,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
