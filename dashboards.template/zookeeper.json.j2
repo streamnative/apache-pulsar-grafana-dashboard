@@ -146,7 +146,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "expr": "sum(znode_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -222,7 +222,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(watch_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "expr": "sum(watch_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -298,7 +298,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "expr": "sum(ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -374,7 +374,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "expr": "sum(approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -450,7 +450,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "expr": "sum(num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -521,11 +521,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "outstanding_requests{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "outstanding_requests{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "refId": "B"
         }
       ],
@@ -617,11 +617,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "connection_request_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "connection_request_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -715,11 +715,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "updatelatency{job=~\"$job\",{{ CONTEXT }}=~\"$instance\",quantile=\"0.99\"}",
+          "expr": "updatelatency{job=~\"$job\",{{ CONTEXT }}=~\"${{ CONTEXT }}\",quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -812,11 +812,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "readlatency{job=~\"$job\",{{ CONTEXT }}=~\"$instance\",quantile=\"0.99\"}",
+          "expr": "readlatency{job=~\"$job\",{{ CONTEXT }}=~\"${{ CONTEXT }}\",quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -909,11 +909,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "packets_received{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "packets_received{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 4
@@ -1005,11 +1005,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "znode_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1101,11 +1101,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1197,11 +1197,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1295,11 +1295,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "watch_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "watch_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1391,11 +1391,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "targets": [
         {
           "exemplar": true,
-          "expr": "ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "expr": "ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"${{ CONTEXT }}\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ instance }}",
+          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
