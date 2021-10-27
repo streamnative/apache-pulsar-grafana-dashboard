@@ -61,13 +61,16 @@ This will make graph ledgends display the pod name instead of IP and port inform
   },
   "description": "Metrics about ZooKeeper Service",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1543832201353,
+  "id": 8,
+  "iteration": 1635304386184,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -80,21 +83,39 @@ This will make graph ledgends display the pod name instead of IP and port inform
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -105,77 +126,72 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "id": 17,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "exemplar": true,
+          "expr": "sum(znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
           "legendFormat": "znode count",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "znode",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -186,76 +202,72 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "id": 19,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_watches_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "exemplar": true,
+          "expr": "sum(watch_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "watches",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -266,76 +278,72 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "id": 20,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "exemplar": true,
+          "expr": "sum(ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "ephemerals",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -346,76 +354,72 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "id": 21,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_data_size_bytes{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "exemplar": true,
+          "expr": "sum(approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "data size",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -426,61 +430,40 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "id": 22,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "expr": "sum(zookeeper_server_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
+          "exemplar": true,
+          "expr": "sum(num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"})",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "connections",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -499,14 +482,16 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "dashes": false,
       "datasource": "{{ PULSAR_CLUSTER }}",
       "decimals": 1,
-      "description": "All write operations (create / setData / ...)",
-      "fill": 0,
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 0,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 1,
       "legend": {
         "avg": false,
@@ -521,7 +506,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -531,17 +520,20 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"write\"}[30s])",
+          "exemplar": true,
+          "expr": "outstanding_requests{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Write Requests",
+      "title": "Outstanding_requests",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -557,14 +549,16 @@ This will make graph ledgends display the pod name instead of IP and port inform
       },
       "yaxes": [
         {
+          "$$hashKey": "object:197",
           "format": "short",
-          "label": "writes / s",
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:198",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -584,14 +578,16 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "dashLength": 10,
       "dashes": false,
       "datasource": "{{ PULSAR_CLUSTER }}",
-      "description": "All read operations (getData / getChildren / ...)",
+      "description": "",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 12,
         "x": 12,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -606,7 +602,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -616,11 +616,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(zookeeper_server_requests_latency_ms_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"read\"}[30s])",
+          "exemplar": true,
+          "expr": "connection_request_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -628,8 +629,9 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Read Requests",
+      "title": "Connection_request_count",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -645,6 +647,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       },
       "yaxes": [
         {
+          "$$hashKey": "object:341",
           "format": "short",
           "label": "reads / s",
           "logBase": 1,
@@ -653,6 +656,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "show": true
         },
         {
+          "$$hashKey": "object:342",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -674,12 +678,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "avg": false,
@@ -694,7 +700,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -704,11 +714,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"write\", quantile=\"0.99\"}",
+          "exemplar": true,
+          "expr": "updatelatency{job=~\"$job\",{{ CONTEXT }}=~\"$instance\",quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -716,8 +727,9 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Write Latency - 99pct",
+      "title": "Update Latency - 99pct",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -763,12 +775,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "decimals": 1,
       "description": "All write operations (create / setData / ...)",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 14
       },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "avg": false,
@@ -783,7 +797,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -793,11 +811,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_requests_latency_ms{job=~\"$job\", {{ CONTEXT }}=~\"$instance\", type=\"read\", quantile=\"0.99\"}",
+          "exemplar": true,
+          "expr": "readlatency{job=~\"$job\",{{ CONTEXT }}=~\"$instance\",quantile=\"0.99\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -805,6 +824,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Read Latency - 99pct",
       "tooltip": {
@@ -850,14 +870,16 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "dashes": false,
       "datasource": "{{ PULSAR_CLUSTER }}",
       "decimals": 1,
-      "description": "Request Throughput (break down by type)",
+      "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 21
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -872,7 +894,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -882,11 +908,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(zookeeper_server_requests{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}[30s])) by (type)",
+          "exemplar": true,
+          "expr": "packets_received{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{type}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 4
@@ -894,8 +921,9 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
-      "title": "Request Throughput",
+      "title": "Packets Received",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -940,12 +968,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -960,7 +990,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -970,11 +1004,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "exemplar": true,
+          "expr": "znode_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -982,6 +1017,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Z-Nodes count",
       "tooltip": {
@@ -1028,12 +1064,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Size of the data stored in a ZK server",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "avg": false,
@@ -1048,7 +1086,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1058,11 +1100,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_data_size_bytes{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "exemplar": true,
+          "expr": "approximate_data_size{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1070,6 +1113,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Data set size",
       "tooltip": {
@@ -1116,12 +1160,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "Number of opened connections",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 9,
       "legend": {
         "avg": false,
@@ -1136,7 +1182,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1146,11 +1196,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "exemplar": true,
+          "expr": "num_alive_connections{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1158,6 +1209,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Connections",
       "tooltip": {
@@ -1175,6 +1227,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       },
       "yaxes": [
         {
+          "$$hashKey": "object:145",
           "format": "short",
           "label": "",
           "logBase": 1,
@@ -1183,6 +1236,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "show": true
         },
         {
+          "$$hashKey": "object:146",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1204,12 +1258,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 10,
       "legend": {
         "avg": false,
@@ -1224,7 +1280,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1234,11 +1294,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_watches_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "exemplar": true,
+          "expr": "watch_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1246,6 +1307,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Number of watches",
       "tooltip": {
@@ -1292,12 +1354,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "datasource": "{{ PULSAR_CLUSTER }}",
       "description": "",
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 11,
       "legend": {
         "avg": false,
@@ -1312,7 +1376,11 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "8.2.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1322,11 +1390,12 @@ This will make graph ledgends display the pod name instead of IP and port inform
       "steppedLine": false,
       "targets": [
         {
-          "expr": "zookeeper_server_ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
+          "exemplar": true,
+          "expr": "ephemerals_count{job=~\"$job\", {{ CONTEXT }}=~\"$instance\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ '{{' }} {{ CONTEXT }} {{ '}}' }}",
+          "legendFormat": "{{ instance }}",
           "metric": "zookeeper_server_requests_latency_ms_count",
           "refId": "A",
           "step": 10
@@ -1334,6 +1403,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Number of ephemerals",
       "tooltip": {
@@ -1373,7 +1443,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
       }
     }
   ],
-  "schemaVersion": 16,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [
     "zookeeper",
@@ -1383,42 +1453,60 @@ This will make graph ledgends display the pod name instead of IP and port inform
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "znode_count{job=~\".+\"}",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "job",
         "multi": false,
         "name": "job",
         "options": [],
-        "query": "zookeeper_server_znode_count{job=~\".+\"}",
+        "query": {
+          "query": "znode_count{job=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "/.*[^_]job=\\\"(.*zookeeper)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": "{{ PULSAR_CLUSTER }}",
+        "definition": "znode_count{job=~\"$job\", instance=~\".+\"}",
+        "description": null,
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "zookeeper server",
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "zookeeper_server_requests{job=~\"$job\", {{ CONTEXT }}=~\".+\"}",
+        "query": {
+          "query": "znode_count{job=~\"$job\", instance=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 2,
-        "regex": "/.*[^_]{{ CONTEXT }}=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]instance=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
