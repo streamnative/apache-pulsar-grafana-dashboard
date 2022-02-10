@@ -1,34 +1,34 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.1.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    }
-  ],
+    "__inputs": [
+     {
+       "name": "DS_TEST-CLUSTER",
+       "label": "{{ PULSAR_CLUSTER }}",
+       "description": "",
+       "type": "datasource",
+       "pluginId": "prometheus",
+       "pluginName": "Prometheus"
+     }
+   ],
+   "__requires": [
+     {
+       "type": "grafana",
+       "id": "grafana",
+       "name": "Grafana",
+       "version": "5.1.0"
+     },
+     {
+       "type": "panel",
+       "id": "graph",
+       "name": "Graph",
+       "version": "5.0.0"
+     },
+     {
+       "type": "datasource",
+       "id": "prometheus",
+       "name": "Prometheus",
+       "version": "5.0.0"
+     }
+   ],
   "annotations": {
     "list": [
       {
@@ -49,14 +49,14 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
-  "iteration": 1629125684213,
+  "id": 31,
+  "iteration": 1644478958752,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -103,11 +103,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -118,7 +122,6 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -164,11 +167,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_active_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_active_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -179,7 +186,6 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -226,11 +232,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -241,7 +251,6 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -288,11 +297,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -303,7 +316,6 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -333,7 +345,6 @@
         "y": 0
       },
       "id": 18,
-      "interval": null,
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -350,11 +361,15 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.1",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -365,7 +380,6 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -437,8 +451,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ '{{cluster}} - {{namespace}}' }}",
@@ -450,7 +468,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -522,8 +539,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ '{{cluster}} - {{namespace}}' }}",
@@ -535,7 +556,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -607,8 +627,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "legendFormat": "{{ '{{cluster}} - {{namespace}}' }}",
           "queryType": "randomWalk",
@@ -619,7 +643,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -691,8 +714,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ '{{cluster}} - {{namespace}}' }}",
@@ -704,7 +731,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -776,8 +802,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_append_log_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_append_log_count{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{ '{{cluster}} - {{namespace}}' }}",
@@ -789,7 +819,6 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -847,7 +876,6 @@
         "y": 21
       },
       "id": 12,
-      "maxDataPoints": null,
       "options": {
         "legend": {
           "calcs": [],
@@ -860,8 +888,12 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_10{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_10{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "0 - 10 ms",
@@ -869,8 +901,12 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_20{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_20{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -878,8 +914,12 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_50{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_50{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -887,8 +927,12 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_100{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_100{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -896,8 +940,12 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_500{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_500{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -905,8 +953,12 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -914,8 +966,12 @@
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_5000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_5000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -923,8 +979,12 @@
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_15000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_15000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -932,8 +992,12 @@
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_30000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_30000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -941,8 +1005,12 @@
           "refId": "I"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_60000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_60000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -950,8 +1018,12 @@
           "refId": "J"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_300000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_300000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -959,8 +1031,12 @@
           "refId": "K"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -968,8 +1044,12 @@
           "refId": "L"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -977,8 +1057,12 @@
           "refId": "M"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "UOPngcJnk"
+          },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_overflow{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_overflow{cluster=~\"$cluster\", job=~\"$job\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -991,22 +1075,22 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 30,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "UOPngcJnk"
+        },
         "definition": "pulsar_txn_active_count{cluster=~\".+\"}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
@@ -1024,16 +1108,16 @@
         "type": "query"
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "UOPngcJnk"
+        },
         "definition": "pulsar_txn_committed_count{cluster=~\"$cluster\", coordinator_id=~\".+\", }",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "CoordinatorId",
@@ -1049,16 +1133,40 @@
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Pulsar",
+          "value": "Pulsar"
+        },
+        "definition": "pulsar_txn_active_count{cluster=~\"$cluster\",job=~\".+\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": {
+          "query": "pulsar_txn_active_count{cluster=~\"$cluster\",job=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]job=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Pulsar - Transaction",
   "uid": "wUI6Ck7nz",
-  "version": 31
+  "version": 9,
+  "weekStart": ""
 }
