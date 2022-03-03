@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "5.3.2"
+      "version": "8.3.6"
     },
     {
       "type": "panel",
@@ -67,7 +67,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1645690890250,
+  "iteration": 1646291925320,
   "links": [],
   "liveNow": true,
   "panels": [
@@ -85,6 +85,10 @@
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -160,6 +164,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -235,6 +243,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -294,6 +306,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -353,6 +369,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -429,6 +449,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -518,6 +542,10 @@
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -582,7 +610,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -602,6 +631,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -666,7 +699,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -686,6 +720,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -750,7 +788,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -770,6 +809,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -834,7 +877,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -854,6 +898,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -918,7 +966,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -938,6 +987,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1002,7 +1055,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1022,6 +1076,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1086,7 +1144,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -1106,6 +1165,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "{{ PULSAR_CLUSTER }}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1170,7 +1233,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
@@ -2450,7 +2514,7 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 34,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "KoP"
@@ -2459,6 +2523,10 @@
     "list": [
       {
         "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "{{ PULSAR_CLUSTER }}"
+        },
         "definition": "{job=~\".+\"}",
         "hide": 0,
         "includeAll": true,
@@ -2474,8 +2542,7 @@
         "regex": "/.*[^_]job=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query",
-        "datasource": "{{ PULSAR_CLUSTER }}"
+        "type": "query"
       },
       {
         "current": {},
@@ -2578,6 +2645,6 @@
   "timezone": "",
   "title": "Kafka on Pulsar (KoP)",
   "uid": "_QjmaxB7k1",
-  "version": 10,
+  "version": 1,
   "weekStart": ""
 }
