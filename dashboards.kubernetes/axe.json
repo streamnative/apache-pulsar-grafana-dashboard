@@ -1,0 +1,2006 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "$$hashKey": "object:125",
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 15,
+    "links": [],
+    "panels": [
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "hiddenSeries": false,
+            "id": 8,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(all_tcp_connections_total{service=\"endpoint\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Endpoint - all_tcp_connections",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "hiddenSeries": false,
+            "id": 6,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(current_tcp_connections{service=\"endpoint\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Endpoint - current_tcp_connections",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:792",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:793",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 8
+            },
+            "hiddenSeries": false,
+            "id": 12,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"1.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"5.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"10.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"20.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"100.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(socket_to_hc_producer_latency_bucket{service=\"endpoint\", le=\"+Inf\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Endpoint - socket_to_hc_producer_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 8
+            },
+            "hiddenSeries": false,
+            "id": 10,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"1.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"5.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"10.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"20.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"100.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "sum(socket_to_manager_producer_latency_bucket{service=\"endpoint\", le=\"+Inf\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Endpoint - socket_to_manager_producer_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:913",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:914",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 5,
+                "y": 16
+            },
+            "hiddenSeries": false,
+            "id": 14,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(pulsar_to_socket_latency_bucket{service=\"endpoint\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Endpoint - pulsar_to_socket_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 24
+            },
+            "hiddenSeries": false,
+            "id": 4,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(available_job_loop_total{service=\"healthchecker\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Health Checker - available_job_loop",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:701",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:702",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 24
+            },
+            "hiddenSeries": false,
+            "id": 2,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "hideEmpty": false,
+                "hideZero": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\", le=\"1.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\",le=\"5.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\",le=\"10.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\",le=\"20.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\",le=\"100.0\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "sum(job_finish_latency_bucket{service=\"healthchecker\",le=\"+Inf\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "H"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Health Checker - job_finish_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:181",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:182",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 33
+            },
+            "hiddenSeries": false,
+            "id": 16,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(init_sent_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "sent",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(init_received_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "received",
+                    "refId": "B"
+                },
+                {
+                    "expr": "sum(init_success_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "success",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum(init_fail_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "fail",
+                    "refId": "D"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Manager - grpc init",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 33
+            },
+            "hiddenSeries": false,
+            "id": 18,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(inference_sent_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "sent",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(inference_received_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "received",
+                    "refId": "B"
+                },
+                {
+                    "expr": "sum(inference_success_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "success",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum(inference_fail_count_total{service=\"manager\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "fail",
+                    "refId": "D"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Manager - grpc inference",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:1253",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:1254",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 41
+            },
+            "hiddenSeries": false,
+            "id": 20,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(inference_init_latency_bucket{service=\"manager\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Manager - inference_init_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 41
+            },
+            "hiddenSeries": false,
+            "id": 24,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(inference_finish_latency_bucket{service=\"manager\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Manager - inference_finish_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 6,
+                "y": 49
+            },
+            "hiddenSeries": false,
+            "id": 22,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(inference_inference_latency_bucket{service=\"manager\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Manager - inference_inference_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 57
+            },
+            "hiddenSeries": false,
+            "id": 26,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(pyinferencer_create_total{service=\"inference\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - pyinferencer_create",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 57
+            },
+            "hiddenSeries": false,
+            "id": 32,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(pyinferencer_create_latency_bucket{service=\"inference\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - pyinferencer_create_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:312",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:313",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 65
+            },
+            "hiddenSeries": false,
+            "id": 28,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(grpc_init_received_total{service=\"inference\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "received",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(grpc_init_response_total{service=\"inference\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "response",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - grpc_init",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:78",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:79",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 65
+            },
+            "hiddenSeries": false,
+            "id": 30,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sum(grpc_inference_received_total{service=\"inference\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "received",
+                    "refId": "A"
+                },
+                {
+                    "expr": "sum(grpc_inference_response_total{service=\"inference\"}) by (kubernetes_pod_name)  ",
+                    "interval": "",
+                    "legendFormat": "response",
+                    "refId": "B"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - grpc_inference",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 73
+            },
+            "hiddenSeries": false,
+            "id": 34,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(grpc_init_latency_bucket{service=\"inference\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - grpc_init_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "axe-pulsar",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 73
+            },
+            "hiddenSeries": false,
+            "id": 36,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"1.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 1ms",
+                    "refId": "A"
+                },
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"5.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 5ms",
+                    "refId": "B"
+                },
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"10.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 10ms",
+                    "refId": "C"
+                },
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"20.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 20ms",
+                    "refId": "D"
+                },
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"100.0\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< 100ms",
+                    "refId": "E"
+                },
+                {
+                    "expr": "  sum(grpc_inference_latency_bucket{service=\"inference\", le=\"+Inf\"}) by (kubernetes_pod_name)",
+                    "interval": "",
+                    "legendFormat": "< +Inf",
+                    "refId": "F"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Inference - grpc_inference_latency",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:807",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:808",
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        }
+    ],
+    "refresh": false,
+    "schemaVersion": 22,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ]
+    },
+    "timezone": "",
+    "title": "AXE Metrics",
+    "uid": "8ReLLfynk",
+    "variables": {
+        "list": []
+    },
+    "version": 7
+}
