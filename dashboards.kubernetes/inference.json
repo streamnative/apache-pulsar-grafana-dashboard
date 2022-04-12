@@ -1,0 +1,513 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 19,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P842975B0124E759E"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 70,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 11,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(inference_actor_to_data_store_inf_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(data_store_loop_to_pulsar_broker_get_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(pulsar_loop_to_inf_loop_end_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(inf_loop_to_bridge_inference_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(bridge_to_inf_loop_inf_result_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(data_store_to_grpc_inference_latency_bucket{service=\"inference\", le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "G"
+        }
+      ],
+      "title": "Inf latency distribution",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P842975B0124E759E"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepBefore",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 11,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\",le=\"1.0\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\",le=\"5.0\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\",le=\"10.0\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\",le=\"100.0\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(grpc_inference_latency_bucket{service=\"inference\",le=\"+Inf\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        }
+      ],
+      "title": "Inf Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P842975B0124E759E"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 33,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 11,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(grpc_inference_latency_sum[1m]) /rate(grpc_inference_latency_count[1m])) / count(grpc_inference_latency_count)",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(inference_actor_to_data_store_inf_latency_sum[1m]) /rate(inference_actor_to_data_store_inf_latency_count[1m])) / count(inference_actor_to_data_store_inf_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(data_store_loop_to_pulsar_broker_get_latency_sum[1m]) /rate(data_store_loop_to_pulsar_broker_get_latency_count[1m])) / count(data_store_loop_to_pulsar_broker_get_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(pulsar_loop_to_inf_loop_end_latency_sum[1m]) /rate(pulsar_loop_to_inf_loop_end_latency_count[1m])) / count(pulsar_loop_to_inf_loop_end_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(inf_loop_to_bridge_inference_latency_sum[1m]) /rate(inf_loop_to_bridge_inference_latency_count[1m])) / count(inf_loop_to_bridge_inference_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(bridge_to_inf_loop_inf_result_latency_sum[1m]) /rate(bridge_to_inf_loop_inf_result_latency_count[1m])) / count(bridge_to_inf_loop_inf_result_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P842975B0124E759E"
+          },
+          "exemplar": true,
+          "expr": "sum(rate(data_store_to_grpc_inference_latency_sum[1m]) /rate(data_store_to_grpc_inference_latency_count[1m])) / count(data_store_to_grpc_inference_latency_count)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "G"
+        }
+      ],
+      "title": "Average",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 35,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Inference",
+  "uid": "aR9HLAU7k",
+  "version": 2,
+  "weekStart": ""
+}
