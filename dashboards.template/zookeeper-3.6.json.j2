@@ -137,7 +137,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} znode_count",
+          "legendFormat": "{{'{{instance}}'}} znode_count",
           "refId": "A"
         },
         {
@@ -146,7 +146,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ephemerals",
+          "legendFormat": "{{'{{instance}}'}} ephemerals",
           "refId": "B"
         }
       ],
@@ -238,7 +238,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} znode_count_rate",
+          "legendFormat": "{{'{{instance}}'}} znode_count_rate",
           "refId": "A"
         },
         {
@@ -247,7 +247,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ephemerals_rate",
+          "legendFormat": "{{'{{instance}}'}} ephemerals_rate",
           "refId": "B"
         }
       ],
@@ -340,7 +340,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "instant": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{'{{instance}}'}}",
           "refId": "A"
         }
       ],
@@ -395,7 +395,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "local_sessions{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{'{{instance}}'}}",
           "refId": "A"
         }
       ],
@@ -445,7 +445,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "write_per_namespace_sum{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_per_namespace:{{key}}",
+          "legendFormat": "{{'{{instance}}'}} write_per_namespace:{{'{{key}}'}}",
           "refId": "C"
         }
       ],
@@ -532,7 +532,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} read_per_namespace:{{key}}",
+          "legendFormat": "{{'{{instance}}'}} read_per_namespace:{{'{{key}}'}}",
           "refId": "C"
         }
       ],
@@ -618,7 +618,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "approximate_data_size{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}} approximate_data_size",
+          "legendFormat": "{{'{{instance}}'}} approximate_data_size",
           "refId": "A"
         }
       ],
@@ -704,7 +704,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "packets_received{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} packets_received",
+          "legendFormat": "{{'{{instance}}'}} packets_received",
           "refId": "A"
         }
       ],
@@ -790,7 +790,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "packets_sent{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} packets_sent",
+          "legendFormat": "{{'{{instance}}'}} packets_sent",
           "refId": "A"
         }
       ],
@@ -876,28 +876,28 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "response_packet_cache_misses{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} response_packet_cache_misses",
+          "legendFormat": "{{'{{instance}}'}} response_packet_cache_misses",
           "refId": "A"
         },
         {
           "expr": "response_packet_cache_hits{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} response_packet_cache_hits",
+          "legendFormat": "{{'{{instance}}'}} response_packet_cache_hits",
           "refId": "B"
         },
         {
           "expr": "response_packet_get_children_cache_misses{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} response_packet_get_children_cache_misses",
+          "legendFormat": "{{'{{instance}}'}} response_packet_get_children_cache_misses",
           "refId": "C"
         },
         {
           "expr": "response_packet_get_children_cache_hits{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} response_packet_get_children_cache_hits",
+          "legendFormat": "{{'{{instance}}'}} response_packet_get_children_cache_hits",
           "refId": "D"
         }
       ],
@@ -983,7 +983,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "unrecoverable_error_count{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} unrecoverable_error_count",
+          "legendFormat": "{{'{{instance}}'}} unrecoverable_error_count",
           "refId": "A"
         }
       ],
@@ -1070,7 +1070,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "digest_mismatches_count{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} digest_mismatches_count",
+          "legendFormat": "{{'{{instance}}'}} digest_mismatches_count",
           "refId": "C"
         }
       ],
@@ -1157,7 +1157,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_snap_load_time-{{quantile}}",
+          "legendFormat": "{{'{{instance}}'}} startup_snap_load_time-{{'{{quantile}}'}}",
           "refId": "A"
         },
         {
@@ -1165,14 +1165,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_snap_load_time_count",
+          "legendFormat": "{{'{{instance}}'}} startup_snap_load_time_count",
           "refId": "B"
         },
         {
           "expr": "startup_snap_load_time_sum{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_snap_load_time",
+          "legendFormat": "{{'{{instance}}'}} startup_snap_load_time",
           "refId": "C"
         }
       ],
@@ -1259,7 +1259,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_txns_loaded-{{quantile}}",
+          "legendFormat": "{{'{{instance}}'}} startup_txns_loaded-{{'{{quantile}}'}}",
           "refId": "A"
         },
         {
@@ -1267,14 +1267,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_txns_loaded_count",
+          "legendFormat": "{{'{{instance}}'}} startup_txns_loaded_count",
           "refId": "B"
         },
         {
           "expr": "startup_txns_loaded_sum{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} startup_txns_loaded",
+          "legendFormat": "{{'{{instance}}'}} startup_txns_loaded",
           "refId": "C"
         }
       ],
@@ -1361,7 +1361,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} dbinittime-{{quantile}}",
+          "legendFormat": "{{'{{instance}}'}} dbinittime-{{'{{quantile}}'}}",
           "refId": "A"
         },
         {
@@ -1369,14 +1369,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} dbinittime_count",
+          "legendFormat": "{{'{{instance}}'}} dbinittime_count",
           "refId": "B"
         },
         {
           "expr": "dbinittime_sum{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} db_init_time",
+          "legendFormat": "{{'{{instance}}'}} db_init_time",
           "refId": "C"
         }
       ],
@@ -1584,7 +1584,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "leader_uptime{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}}",
+              "legendFormat": "{{'{{instance}}'}}",
               "refId": "A"
             }
           ],
@@ -1669,7 +1669,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "leader_uptime{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} leader_uptime",
+              "legendFormat": "{{'{{instance}}'}} leader_uptime",
               "refId": "A"
             }
           ],
@@ -1800,7 +1800,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "format": "time_series",
               "hide": true,
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} election_time",
+              "legendFormat": "{{'{{instance}}'}} election_time",
               "refId": "A"
             },
             {
@@ -1808,7 +1808,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} election_time_count",
+              "legendFormat": "{{'{{instance}}'}} election_time_count",
               "refId": "B"
             },
             {
@@ -1816,7 +1816,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} election_time_sum(ms)",
+              "legendFormat": "{{'{{instance}}'}} election_time_sum(ms)",
               "refId": "C"
             },
             {
@@ -1824,7 +1824,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} election_avg_time(ms)",
+              "legendFormat": "{{'{{instance}}'}} election_avg_time(ms)",
               "refId": "D"
             }
           ],
@@ -1910,7 +1910,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "uptime{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} uptime",
+              "legendFormat": "{{'{{instance}}'}} uptime",
               "refId": "B"
             }
           ],
@@ -1996,7 +1996,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "learner_commit_received_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} learner_commit_received_count",
+              "legendFormat": "{{'{{instance}}'}} learner_commit_received_count",
               "refId": "A"
             }
           ],
@@ -2082,7 +2082,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "commit_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} commit_count",
+              "legendFormat": "{{'{{instance}}'}} commit_count",
               "refId": "A"
             }
           ],
@@ -2168,7 +2168,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "snap_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} snap_count",
+              "legendFormat": "{{'{{instance}}'}} snap_count",
               "refId": "A"
             }
           ],
@@ -2254,7 +2254,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "diff_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} diff_count",
+              "legendFormat": "{{'{{instance}}'}} diff_count",
               "refId": "A"
             }
           ],
@@ -2340,7 +2340,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "looking_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} looking_count",
+              "legendFormat": "{{'{{instance}}'}} looking_count",
               "refId": "A"
             }
           ],
@@ -2426,7 +2426,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "proposal_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} proposal_count",
+              "legendFormat": "{{'{{instance}}'}} proposal_count",
               "refId": "A"
             }
           ],
@@ -2512,21 +2512,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "last_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} last_proposal_size",
+              "legendFormat": "{{'{{instance}}'}} last_proposal_size",
               "refId": "A"
             },
             {
               "expr": "max_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} max_proposal_size",
+              "legendFormat": "{{'{{instance}}'}} max_proposal_size",
               "refId": "B"
             },
             {
               "expr": "min_proposal_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} min_proposal_size",
+              "legendFormat": "{{'{{instance}}'}} min_proposal_size",
               "refId": "C"
             }
           ],
@@ -2612,7 +2612,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "rate(follower_sync_time_sum{instance=~\"$instance\",job=~\"$job\"}[1m])",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} follower_sync_time",
+              "legendFormat": "{{'{{instance}}'}} follower_sync_time",
               "refId": "C"
             }
           ],
@@ -2698,7 +2698,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "learner_handler_qp_size_sum{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} learner_handler_qp_size_sum sid:{{key}}",
+              "legendFormat": "{{'{{instance}}'}} learner_handler_qp_size_sum sid:{{'{{key}}'}}",
               "refId": "C"
             }
           ],
@@ -2784,7 +2784,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "quit_leading_due_to_disloyal_voter{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} quit_leading_due_to_disloyal_voter",
+              "legendFormat": "{{'{{instance}}'}} quit_leading_due_to_disloyal_voter",
               "refId": "A"
             }
           ],
@@ -2870,14 +2870,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "rate(om_commit_process_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} om_commit_process_time",
+              "legendFormat": "{{'{{instance}}'}} om_commit_process_time",
               "refId": "C"
             },
             {
               "expr": "rate(om_proposal_process_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} om_proposal_process_time",
+              "legendFormat": "{{'{{instance}}'}} om_proposal_process_time",
               "refId": "A"
             }
           ],
@@ -2977,7 +2977,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "watch_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} watch_count",
+              "legendFormat": "{{'{{instance}}'}} watch_count",
               "refId": "A"
             }
           ],
@@ -3063,7 +3063,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "node_changed_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} node_changed_watch_count",
+              "legendFormat": "{{'{{instance}}'}} node_changed_watch_count",
               "refId": "C"
             }
           ],
@@ -3149,7 +3149,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "node_children_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} node_children_watch_count",
+              "legendFormat": "{{'{{instance}}'}} node_children_watch_count",
               "refId": "C"
             }
           ],
@@ -3235,7 +3235,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "node_deleted_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} node_deleted_watch_count",
+              "legendFormat": "{{'{{instance}}'}} node_deleted_watch_count",
               "refId": "C"
             }
           ],
@@ -3321,7 +3321,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "node_created_watch_count_sum{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} node_created_watch_count",
+              "legendFormat": "{{'{{instance}}'}} node_created_watch_count",
               "refId": "A"
             }
           ],
@@ -3407,7 +3407,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "revalidate_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} revalidate_count",
+              "legendFormat": "{{'{{instance}}'}} revalidate_count",
               "refId": "A"
             }
           ],
@@ -3493,7 +3493,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "stale_sessions_expired{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} stale_sessions_expired",
+              "legendFormat": "{{'{{instance}}'}} stale_sessions_expired",
               "refId": "A"
             }
           ],
@@ -3579,21 +3579,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "dead_watchers_cleared{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} dead_watchers_cleared",
+              "legendFormat": "{{'{{instance}}'}} dead_watchers_cleared",
               "refId": "A"
             },
             {
               "expr": "dead_watchers_queued{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} dead_watchers_queued",
+              "legendFormat": "{{'{{instance}}'}} dead_watchers_queued",
               "refId": "B"
             },
             {
               "expr": "rate(dead_watchers_cleaner_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} dead_watchers_cleaner_latency",
+              "legendFormat": "{{'{{instance}}'}} dead_watchers_cleaner_latency",
               "refId": "C"
             }
           ],
@@ -3679,7 +3679,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "add_dead_watcher_stall_time{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} add_dead_watcher_stall_time",
+              "legendFormat": "{{'{{instance}}'}} add_dead_watcher_stall_time",
               "refId": "A"
             }
           ],
@@ -3779,7 +3779,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "outstanding_requests{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} outstanding_requests",
+              "legendFormat": "{{'{{instance}}'}} outstanding_requests",
               "refId": "A"
             }
           ],
@@ -3865,21 +3865,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "last_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} last_client_response_size",
+              "legendFormat": "{{'{{instance}}'}} last_client_response_size",
               "refId": "A"
             },
             {
               "expr": "min_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} min_client_response_size",
+              "legendFormat": "{{'{{instance}}'}} min_client_response_size",
               "refId": "B"
             },
             {
               "expr": "max_client_response_size{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} max_client_response_size",
+              "legendFormat": "{{'{{instance}}'}} max_client_response_size",
               "refId": "C"
             }
           ],
@@ -3965,7 +3965,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "bytes_received_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} bytes_received_count",
+              "legendFormat": "{{'{{instance}}'}} bytes_received_count",
               "refId": "A"
             }
           ],
@@ -4051,7 +4051,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "connection_request_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} connection_request_count",
+              "legendFormat": "{{'{{instance}}'}} connection_request_count",
               "refId": "A"
             }
           ],
@@ -4137,7 +4137,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "num_alive_connections{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 1,
-              "legendFormat": "{{instance}} num_alive_connections",
+              "legendFormat": "{{'{{instance}}'}} num_alive_connections",
               "refId": "A"
             }
           ],
@@ -4223,7 +4223,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "connection_rejected{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} connection_rejected",
+              "legendFormat": "{{'{{instance}}'}} connection_rejected",
               "refId": "A"
             }
           ],
@@ -4309,7 +4309,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "connection_drop_count{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} connection_drop_count",
+              "legendFormat": "{{'{{instance}}'}} connection_drop_count",
               "refId": "A"
             }
           ],
@@ -4395,7 +4395,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "connection_drop_probability{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} connection_drop_probability",
+              "legendFormat": "{{'{{instance}}'}} connection_drop_probability",
               "refId": "A"
             }
           ],
@@ -4481,7 +4481,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "sessionless_connections_expired{instance=~\"$instance\",job=~\"$job\"}",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} sessionless_connections_expired",
+              "legendFormat": "{{'{{instance}}'}} sessionless_connections_expired",
               "refId": "A"
             }
           ],
@@ -4567,7 +4567,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
               "expr": "rate(connection_token_deficit_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}} connection_token_deficit",
+              "legendFormat": "{{'{{instance}}'}} connection_token_deficit",
               "refId": "C"
             }
           ],
@@ -4675,7 +4675,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "open_file_descriptor_count{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{'{{instance}}'}}",
           "refId": "A"
         }
       ],
@@ -4729,7 +4729,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} fsynctime",
+          "legendFormat": "{{'{{instance}}'}} fsynctime",
           "refId": "A"
         },
         {
@@ -4738,7 +4738,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "hide": true,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} fsynctime_count",
+          "legendFormat": "{{'{{instance}}'}} fsynctime_count",
           "refId": "B"
         },
         {
@@ -4746,7 +4746,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} fsynctime_sum(ms)",
+          "legendFormat": "{{'{{instance}}'}} fsynctime_sum(ms)",
           "refId": "C"
         },
         {
@@ -4754,7 +4754,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} fsynctime_avg(μs)",
+          "legendFormat": "{{'{{instance}}'}} fsynctime_avg(μs)",
           "refId": "D"
         },
         {
@@ -4762,7 +4762,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} fsynctime_rate",
+          "legendFormat": "{{'{{instance}}'}} fsynctime_rate",
           "refId": "E"
         }
       ],
@@ -4853,7 +4853,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} snapshot_time_rate",
+          "legendFormat": "{{'{{instance}}'}} snapshot_time_rate",
           "refId": "C"
         },
         {
@@ -4861,7 +4861,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} snapshottime_count",
+          "legendFormat": "{{'{{instance}}'}} snapshottime_count",
           "refId": "A"
         },
         {
@@ -4869,7 +4869,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": true,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} snapshottime_avg(ms)",
+          "legendFormat": "{{'{{instance}}'}} snapshottime_avg(ms)",
           "refId": "B"
         }
       ],
@@ -4968,7 +4968,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(prep_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}} prep_process_time",
+          "legendFormat": "{{'{{instance}}'}} prep_process_time",
           "refId": "A"
         }
       ],
@@ -5054,7 +5054,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(prep_processor_queue_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}} prep_processor_queue_time_ms",
+          "legendFormat": "{{'{{instance}}'}} prep_processor_queue_time_ms",
           "refId": "C"
         }
       ],
@@ -5140,7 +5140,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(prep_processor_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} prep_processor_queue_size",
+          "legendFormat": "{{'{{instance}}'}} prep_processor_queue_size",
           "refId": "C"
         }
       ],
@@ -5226,7 +5226,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "prep_processor_request_queued{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} prep_processor_request_queued",
+          "legendFormat": "{{'{{instance}}'}} prep_processor_request_queued",
           "refId": "A"
         }
       ],
@@ -5312,14 +5312,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "outstanding_changes_queued{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} outstanding_changes_queued",
+          "legendFormat": "{{'{{instance}}'}} outstanding_changes_queued",
           "refId": "A"
         },
         {
           "expr": "outstanding_changes_removed{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} outstanding_changes_removed",
+          "legendFormat": "{{'{{instance}}'}} outstanding_changes_removed",
           "refId": "B"
         }
       ],
@@ -5405,7 +5405,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(close_session_prep_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} close_session_prep_time",
+          "legendFormat": "{{'{{instance}}'}} close_session_prep_time",
           "refId": "A"
         }
       ],
@@ -5505,7 +5505,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(sync_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} sync_process_time",
+          "legendFormat": "{{'{{instance}}'}} sync_process_time",
           "refId": "C"
         }
       ],
@@ -5591,7 +5591,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(sync_processor_queue_flush_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} sync_processor_queue_flush_time",
+          "legendFormat": "{{'{{instance}}'}} sync_processor_queue_flush_time",
           "refId": "A"
         }
       ],
@@ -5677,7 +5677,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(sync_processor_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} sync_processor_queue_size",
+          "legendFormat": "{{'{{instance}}'}} sync_processor_queue_size",
           "refId": "C"
         }
       ],
@@ -5763,7 +5763,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "sync_processor_request_queued{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} sync_processor_request_queued",
+          "legendFormat": "{{'{{instance}}'}} sync_processor_request_queued",
           "refId": "A"
         }
       ],
@@ -5849,7 +5849,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(sync_processor_batch_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} sync_processor_batch_size",
+          "legendFormat": "{{'{{instance}}'}} sync_processor_batch_size",
           "refId": "C"
         }
       ],
@@ -5948,21 +5948,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(commit_process_time_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} commit_process_time",
+          "legendFormat": "{{'{{instance}}'}} commit_process_time",
           "refId": "C"
         },
         {
           "expr": "rate(read_commitproc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} read_commitproc_time",
+          "legendFormat": "{{'{{instance}}'}} read_commitproc_time",
           "refId": "A"
         },
         {
           "expr": "rate(write_commitproc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_commitproc_time",
+          "legendFormat": "{{'{{instance}}'}} write_commitproc_time",
           "refId": "B"
         }
       ],
@@ -6048,21 +6048,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(write_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_commit_proc_req_queued",
+          "legendFormat": "{{'{{instance}}'}} write_commit_proc_req_queued",
           "refId": "C"
         },
         {
           "expr": "rate(read_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} read_commit_proc_req_queued",
+          "legendFormat": "{{'{{instance}}'}} read_commit_proc_req_queued",
           "refId": "A"
         },
         {
           "expr": "rate(commit_commit_proc_req_queued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} commit_commit_proc_req_queued",
+          "legendFormat": "{{'{{instance}}'}} commit_commit_proc_req_queued",
           "refId": "B"
         }
       ],
@@ -6148,7 +6148,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(requests_in_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} requests_in_session_queue",
+          "legendFormat": "{{'{{instance}}'}} requests_in_session_queue",
           "refId": "C"
         }
       ],
@@ -6234,14 +6234,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(read_commit_proc_issued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} read_commit_proc_issued",
+          "legendFormat": "{{'{{instance}}'}} read_commit_proc_issued",
           "refId": "C"
         },
         {
           "expr": "rate(write_commit_proc_issued_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_commit_proc_issued",
+          "legendFormat": "{{'{{instance}}'}} write_commit_proc_issued",
           "refId": "A"
         }
       ],
@@ -6327,7 +6327,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(concurrent_request_processing_in_commit_processor_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} concurrent_request_processing_in_commit_processor",
+          "legendFormat": "{{'{{instance}}'}} concurrent_request_processing_in_commit_processor",
           "refId": "C"
         }
       ],
@@ -6414,7 +6414,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} time_waiting_empty_pool_in_commit_processor_read",
+          "legendFormat": "{{'{{instance}}'}} time_waiting_empty_pool_in_commit_processor_read",
           "refId": "C"
         }
       ],
@@ -6500,7 +6500,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(pending_session_queue_size_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} pending_session_queue_size",
+          "legendFormat": "{{'{{instance}}'}} pending_session_queue_size",
           "refId": "B"
         }
       ],
@@ -6586,7 +6586,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(local_write_committed_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} local_write_committed_time_ms",
+          "legendFormat": "{{'{{instance}}'}} local_write_committed_time_ms",
           "refId": "C"
         }
       ],
@@ -6672,7 +6672,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(server_write_committed_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} server_write_committed_time",
+          "legendFormat": "{{'{{instance}}'}} server_write_committed_time",
           "refId": "A"
         }
       ],
@@ -6759,7 +6759,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_batch_time_in_commit_processor",
+          "legendFormat": "{{'{{instance}}'}} write_batch_time_in_commit_processor",
           "refId": "A"
         }
       ],
@@ -6845,7 +6845,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(reads_after_write_in_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}} reads_after_write_in_session_queue",
+          "legendFormat": "{{'{{instance}}'}} reads_after_write_in_session_queue",
           "refId": "B"
         }
       ],
@@ -6931,7 +6931,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(session_queues_drained_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} session_queues_drained",
+          "legendFormat": "{{'{{instance}}'}} session_queues_drained",
           "refId": "C"
         }
       ],
@@ -7017,7 +7017,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(reads_issued_from_session_queue_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} reads_issued_from_session_queue",
+          "legendFormat": "{{'{{instance}}'}} reads_issued_from_session_queue",
           "refId": "C"
         }
       ],
@@ -7103,7 +7103,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "request_commit_queued{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}} request_commit_queued",
+          "legendFormat": "{{'{{instance}}'}} request_commit_queued",
           "refId": "A"
         }
       ],
@@ -7202,7 +7202,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(write_final_proc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} write_final_proc_time_ms",
+          "legendFormat": "{{'{{instance}}'}} write_final_proc_time_ms",
           "refId": "C"
         }
       ],
@@ -7288,7 +7288,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(read_final_proc_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} read_final_proc_time_ms",
+          "legendFormat": "{{'{{instance}}'}} read_final_proc_time_ms",
           "refId": "C"
         }
       ],
@@ -7387,7 +7387,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(readlatency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} readlatency",
+          "legendFormat": "{{'{{instance}}'}} readlatency",
           "refId": "C"
         }
       ],
@@ -7475,7 +7475,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(updatelatency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} updatelatency",
+          "legendFormat": "{{'{{instance}}'}} updatelatency",
           "refId": "C"
         }
       ],
@@ -7563,7 +7563,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "max_latency{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} max_latency",
+          "legendFormat": "{{'{{instance}}'}} max_latency",
           "refId": "A"
         },
         {
@@ -7571,14 +7571,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} min_latency",
+          "legendFormat": "{{'{{instance}}'}} min_latency",
           "refId": "B"
         },
         {
           "expr": "avg_latency{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} avg_latency",
+          "legendFormat": "{{'{{instance}}'}} avg_latency",
           "refId": "C"
         }
       ],
@@ -7664,7 +7664,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(proposal_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} proposal_latency",
+          "legendFormat": "{{'{{instance}}'}} proposal_latency",
           "refId": "C"
         }
       ],
@@ -7750,7 +7750,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(quorum_ack_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} quorum_ack_latency",
+          "legendFormat": "{{'{{instance}}'}} quorum_ack_latency",
           "refId": "C"
         }
       ],
@@ -7836,7 +7836,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(ack_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ack_latency_sum",
+          "legendFormat": "{{'{{instance}}'}} ack_latency_sum",
           "refId": "C"
         }
       ],
@@ -7922,7 +7922,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(propagation_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} propagation_latency",
+          "legendFormat": "{{'{{instance}}'}} propagation_latency",
           "refId": "C"
         }
       ],
@@ -8008,7 +8008,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(commit_propagation_latency_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} commit_propagation_latency",
+          "legendFormat": "{{'{{instance}}'}} commit_propagation_latency",
           "refId": "C"
         }
       ],
@@ -8094,7 +8094,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "proposal_ack_creation_latency{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} proposal_ack_creation_latency-{{quantile}}",
+          "legendFormat": "{{'{{instance}}'}} proposal_ack_creation_latency-{{'{{quantile}}'}}",
           "refId": "A"
         }
       ],
@@ -8193,14 +8193,14 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "tls_handshake_exceeded{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} tls_handshake_exceeded",
+          "legendFormat": "{{'{{instance}}'}} tls_handshake_exceeded",
           "refId": "C"
         },
         {
           "expr": "outstanding_tls_handshake{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} outstanding_tls_handshake",
+          "legendFormat": "{{'{{instance}}'}} outstanding_tls_handshake",
           "refId": "A"
         }
       ],
@@ -8286,21 +8286,21 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "ensemble_auth_fail{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ensemble_auth_fail",
+          "legendFormat": "{{'{{instance}}'}} ensemble_auth_fail",
           "refId": "A"
         },
         {
           "expr": "ensemble_auth_success{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ensemble_auth_success",
+          "legendFormat": "{{'{{instance}}'}} ensemble_auth_success",
           "refId": "B"
         },
         {
           "expr": "ensemble_auth_skip{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ensemble_auth_skip",
+          "legendFormat": "{{'{{instance}}'}} ensemble_auth_skip",
           "refId": "C"
         }
       ],
@@ -8651,7 +8651,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(jvm_pause_time_ms_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} jvm_pause_time_ms",
+          "legendFormat": "{{'{{instance}}'}} jvm_pause_time_ms",
           "refId": "C"
         }
       ],
@@ -8737,7 +8737,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "rate(jvm_gc_collection_seconds_sum{instance=~\"$instance\",job=~\"$job\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} gc:{{gc}}",
+          "legendFormat": "{{'{{instance}}'}} gc:{{'{{gc}}'}}",
           "refId": "C"
         }
       ],
@@ -8823,7 +8823,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "jvm_threads_state{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} state:{{state}}",
+          "legendFormat": "{{'{{instance}}'}} state:{{'{{state}}'}}",
           "refId": "C"
         }
       ],
@@ -8909,7 +8909,7 @@ This will make graph ledgends display the pod name instead of IP and port inform
           "expr": "jvm_memory_pool_bytes_used{instance=~\"$instance\",job=~\"$job\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} pool:{{pool}}",
+          "legendFormat": "{{'{{instance}}'}} pool:{{'{{pool}}'}}",
           "refId": "C"
         }
       ],
