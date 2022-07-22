@@ -428,7 +428,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "GC Pauses",
+      "title": "GC Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
