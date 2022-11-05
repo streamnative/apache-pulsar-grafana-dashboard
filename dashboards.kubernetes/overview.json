@@ -2985,12 +2985,6 @@
             "selected": false,
             "text": "{{ PULSAR_CLUSTER }}",
             "value": "{{ PULSAR_CLUSTER }}"
-          },
-          {
-            "$$hashKey": "object:361",
-            "selected": false,
-            "text": "cluster2-pulsar",
-            "value": "cluster2-pulsar"
           }
         ],
         "query": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
