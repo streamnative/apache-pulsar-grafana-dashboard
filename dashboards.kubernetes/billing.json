@@ -232,14 +232,14 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P01B5AB4D4222CE17"
+            "uid": "${DataSource}"
           },
           "editorMode": "code",
           "exemplar": true,
           "expr": "((max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"cpu\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:]) * 1000) / 2000) > (max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"memory\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:]) / 8589934592) or (max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"memory\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:]) / 8589934592)",
           "hide": false,
           "interval": "1h",
-          "legendFormat": "{{namespace}}",
+          "legendFormat": "{{label_cloud_streamnative_io_cluster}}",
           "range": true,
           "refId": "B"
         }
@@ -345,7 +345,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P01B5AB4D4222CE17"
+        "uid": "${DataSource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -423,14 +423,14 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P01B5AB4D4222CE17"
+            "uid": "${DataSource}"
           },
           "editorMode": "code",
           "exemplar": true,
           "expr": "((sum_over_time(max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"cpu\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:])[23h:1h]) * 1000) / 2000) > (sum_over_time(max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"memory\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:])[23h:1h]) / 8589934592) or (sum_over_time(max_over_time(sum(kube_pod_container_resource_requests{namespace=~\"$ns\", resource=\"memory\",job=\"kube-state-metrics\"} * on (pod) group_left(namespace) kube_pod_labels{namespace=~\"$ns\",label_cloud_streamnative_io_component =~\"(bookie|zookeeper)\",job=\"kube-state-metrics\"}) by (namespace) [1h:])[23h:1h]) / 8589934592)",
           "hide": false,
           "interval": "24h",
-          "legendFormat": "{{namespace}}",
+          "legendFormat": "{{label_cloud_streamnative_io_cluster}}",
           "range": true,
           "refId": "B"
         }
