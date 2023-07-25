@@ -154,7 +154,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P01B5AB4D4222CE17"
+        "uid": "${DataSource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -447,9 +447,10 @@
     "list": [
       {
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "hide": 0,
         "includeAll": false,
@@ -466,9 +467,10 @@
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -524,8 +526,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "Private Cloud Billing Metrics",
-  "uid": "rjPDr9P4t",
-  "version": 14,
+  "title": "Private Cloud Billing Dashboard",
+  "uid": "rjPDr9P4k",
+  "version": 16,
   "weekStart": ""
 }
