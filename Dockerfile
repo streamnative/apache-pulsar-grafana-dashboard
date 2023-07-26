@@ -17,7 +17,7 @@
 # under the License.
 #
 
-FROM grafana/grafana:8.4.3-ubuntu
+FROM grafana/grafana:9.5.6-ubuntu
 
 ARG BUILD_DATE
 ARG VCS_REF
