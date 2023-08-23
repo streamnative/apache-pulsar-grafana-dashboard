@@ -194,7 +194,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Dispatch rate (msg / s)",
+      "title": "Dispatch rate (msg/s)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -210,7 +210,7 @@
       },
       "yaxes": [
         {
-          "format": "Bps",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
