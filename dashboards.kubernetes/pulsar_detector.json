@@ -374,5 +374,6 @@
   "timezone": "",
   "title": "pulsar_detector",
   "uid": "CKmGks6Wk",
-  "version": 37
+  "version": 37,
+  "weekStart": ""
 }
