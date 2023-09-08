@@ -3,7 +3,9 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,13 +23,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 23,
-  "iteration": 1680116477189,
+  "id": 46,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -36,6 +41,15 @@
       },
       "id": 22,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "LoadBalance",
       "type": "row"
     },
@@ -44,7 +58,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -71,7 +87,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -81,7 +97,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -123,7 +142,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -150,7 +171,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -160,7 +181,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_bandwidth_in_usage{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_bandwidth_in_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -202,7 +226,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -229,7 +255,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -239,7 +265,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_memory_usage{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_memory_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -281,7 +310,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -308,7 +339,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -318,7 +349,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_directMemory_usage{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_directMemory_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -360,7 +394,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -387,7 +423,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -397,7 +433,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_cpu_usage{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_cpu_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -439,7 +478,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -466,7 +507,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -476,7 +517,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_bundles_split_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_bundles_split_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -518,7 +562,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -545,7 +591,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -555,7 +601,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_unload_bundle_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_unload_bundle_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -597,7 +646,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -624,7 +675,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -634,7 +685,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "pulsar_lb_unload_broker_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_lb_unload_broker_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -676,7 +730,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -703,7 +759,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -713,9 +769,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_topics_count{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_topics_count{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -757,7 +815,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -784,7 +844,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -794,9 +854,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(caffeine_cache_estimated_size{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",cache=~\"owned-bundles\"}) by (kubernetes_pod_name)",
+          "expr": "sum(caffeine_cache_estimated_size{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",cache=~\"owned-bundles\"}) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -835,6 +897,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -843,6 +909,15 @@
       },
       "id": 29,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "LoadBalance Extension -- Breakdown",
       "type": "row"
     },
@@ -851,7 +926,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -878,7 +955,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -888,9 +965,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "100 *  pulsar_lb_resource_usage{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\"}",
+          "expr": "100 *  pulsar_lb_resource_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -932,7 +1011,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -959,7 +1040,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -969,9 +1050,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "100 * pulsar_lb_resource_usage_stats{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"avg\"}",
+          "expr": "100 * pulsar_lb_resource_usage_stats{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"avg\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -1013,7 +1096,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1040,7 +1125,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1050,9 +1135,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "pulsar_lb_resource_usage_stats{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"std\"}",
+          "expr": "pulsar_lb_resource_usage_stats{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"std\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -1094,7 +1181,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1121,7 +1210,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1131,9 +1220,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -1175,7 +1266,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1202,7 +1295,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1212,9 +1305,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -1256,7 +1351,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1283,7 +1380,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1293,9 +1390,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -1337,7 +1436,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1364,7 +1465,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1374,9 +1475,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1418,7 +1521,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1445,7 +1550,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1455,9 +1560,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
           "instant": false,
           "interval": "",
           "legendFormat": "{{ reason }}",
@@ -1500,7 +1607,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1527,7 +1636,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.4.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1537,9 +1646,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1581,7 +1692,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1618,9 +1731,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
           "instant": false,
           "interval": "",
           "legendFormat": "{{ reason }}",
@@ -1663,7 +1778,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1700,9 +1817,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1744,7 +1863,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1781,9 +1902,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1821,7 +1944,9 @@
       }
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1860,8 +1985,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1883,7 +2007,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -1892,9 +2017,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -1904,7 +2031,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1943,8 +2072,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1966,7 +2094,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -1975,9 +2104,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -1987,7 +2118,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2026,8 +2159,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2049,7 +2181,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2058,9 +2191,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -2071,6 +2206,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2079,6 +2218,15 @@
       },
       "id": 71,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "LoadBalance Extension -- ServiceUnitStateChannel",
       "type": "row"
     },
@@ -2087,7 +2235,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2124,9 +2274,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -2164,7 +2316,9 @@
       }
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2203,8 +2357,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2226,7 +2379,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2235,9 +2389,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -2247,7 +2403,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2286,8 +2444,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2309,7 +2466,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2318,9 +2476,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (state)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (state)",
           "interval": "",
           "legendFormat": "{{ state }}",
           "refId": "A"
@@ -2330,7 +2490,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2369,8 +2531,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2392,7 +2553,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2401,9 +2563,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (state)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (state)",
           "interval": "",
           "legendFormat": "{{ state }}",
           "refId": "A"
@@ -2417,7 +2581,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2454,9 +2620,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m])) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -2498,7 +2666,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2535,9 +2705,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -2575,7 +2747,9 @@
       }
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2614,8 +2788,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2637,7 +2810,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2646,9 +2820,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -2658,7 +2834,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2697,8 +2875,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2745,7 +2922,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2754,9 +2932,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} [1m])) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} [1m])) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -2770,7 +2950,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2807,9 +2989,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -2851,7 +3035,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2888,9 +3074,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -2928,7 +3116,9 @@
       }
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2967,8 +3157,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2990,7 +3179,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -2999,9 +3189,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m] )) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m] )) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -3011,7 +3203,9 @@
       "type": "graph"
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3050,8 +3244,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3098,7 +3291,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -3107,9 +3301,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -3123,7 +3319,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3160,9 +3358,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_sunit_state_chn_inactive_broker_cleanup_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (result)",
+          "expr": "sum(pulsar_sunit_state_chn_inactive_broker_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (result)",
           "interval": "",
           "legendFormat": "{{ result }}",
           "queryType": "randomWalk",
@@ -3204,7 +3404,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3241,7 +3443,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_sunit_state_chn_su_tombstone_cleanup_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_sunit_state_chn_su_tombstone_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -3283,7 +3488,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3320,7 +3527,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_sunit_state_chn_orphan_su_cleanup_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_sunit_state_chn_orphan_su_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -3362,7 +3572,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3399,7 +3611,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_sunit_state_chn_cleanup_ops_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} ) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_sunit_state_chn_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} ) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -3437,7 +3652,9 @@
       }
     },
     {
-      "datasource": "{{PULSAR_CLUSTER}}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3476,8 +3693,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3499,7 +3715,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -3508,9 +3725,11 @@
       },
       "targets": [
         {
-          "datasource": "{{PULSAR_CLUSTER}}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": false,
-          "expr": "sum(pulsar_sunit_state_chn_owned_su_total{cluster=\"$cluster\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_sunit_state_chn_owned_su_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "refId": "A"
@@ -3521,41 +3740,34 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 35,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
-        "datasource": "{{PULSAR_CLUSTER}}",
-        "definition": "{cluster=~\".+\"}",
         "hide": 0,
-        "includeAll": true,
-        "label": "Cluster",
+        "includeAll": false,
+        "label": "DataSource",
         "multi": false,
-        "name": "cluster",
+        "name": "DataSource",
         "options": [],
-        "query": {
-          "query": "{cluster=~\".+\"}",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 2,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
         "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "datasource"
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "All"
           ],
@@ -3563,8 +3775,10 @@
             "$__all"
           ]
         },
-        "datasource": "{{PULSAR_CLUSTER}}",
-        "definition": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_lb_memory_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "label": "kubernetes_pod_name",
@@ -3572,7 +3786,7 @@
         "name": "kubernetes_pod_name",
         "options": [],
         "query": {
-          "query": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+          "query": "pulsar_lb_memory_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -3594,16 +3808,18 @@
             "$__all"
           ]
         },
-        "datasource": "{{PULSAR_CLUSTER}}",
-        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
-        "hide": 1,
+        "datasource": {
+          "uid": "${DataSource}"
+        },
+        "definition": "caffeine_cache_hit_total{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+        "hide": 0,
         "includeAll": true,
         "label": "Cache Name",
         "multi": true,
         "name": "cache",
         "options": [],
         "query": {
-          "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "query": "caffeine_cache_hit_total{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -3623,8 +3839,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Broker Load Balance2",
+  "title": "Broker Load Balancer",
   "uid": "9ip32-B4k1",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
