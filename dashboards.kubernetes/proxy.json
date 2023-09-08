@@ -1139,10 +1139,7 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
+          "text": "All",
           "value": [
             "$__all"
           ]
@@ -1151,22 +1148,22 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "",
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
         "hide": 0,
-        "includeAll": true,
-        "label": "Cluster",
-        "multi": true,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "pulsar_proxy_active_connections{cluster=~\".+\", job=~\"proxy\"}",
-        "refresh": 2,
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
         "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "sort": 0,
+        "type": "query"
       },
       {
         "current": {

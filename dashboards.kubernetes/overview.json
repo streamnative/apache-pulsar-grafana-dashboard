@@ -3040,9 +3040,10 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "snp-sn-platform-slim",
-          "value": "snp-sn-platform-slim"
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
