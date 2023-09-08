@@ -1995,7 +1995,6 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-
         "definition": "pulsar_rate_in{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
@@ -2027,7 +2026,6 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-
         "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$broker\"}",
         "hide": 0,
         "includeAll": true,
