@@ -1,52 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.3.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "$$hashKey": "object:2352",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -57,14 +17,18 @@
   },
   "description": "Overview of Pulsar Cluster",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1604026263080,
+  "id": 23,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -73,26 +37,55 @@
       },
       "id": 49,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Kubernetes Overview",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -101,43 +94,30 @@
         "y": 1
       },
       "id": 27,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " Cores",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(node_cpu_seconds_total{cluster=~\"$cluster\", mode=\"system\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "count(node_cpu_seconds_total{cluster=~\"$DataSource\", mode=\"system\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -146,36 +126,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "CPU",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "max"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "bytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -184,43 +174,30 @@
         "y": 1
       },
       "id": 25,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -229,25 +206,24 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Memory",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "max"
+      "type": "stat"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -272,9 +248,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -284,6 +261,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "100 * (1 - (kubelet_volume_stats_available_bytes / on (persistentvolumeclaim) kubelet_volume_stats_capacity_bytes))",
           "format": "time_series",
           "interval": "",
@@ -293,9 +274,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "PersistentVolume Usage",
       "tooltip": {
         "shared": true,
@@ -304,36 +283,28 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:948",
-          "decimals": null,
           "format": "percent",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:949",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -341,7 +312,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -366,9 +346,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -378,6 +359,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "100 * (node_filesystem_size_bytes - node_filesystem_avail_bytes)  / node_filesystem_size_bytes",
           "format": "time_series",
           "interval": "",
@@ -387,9 +372,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Node Disk Usage",
       "tooltip": {
         "shared": true,
@@ -398,55 +381,69 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:948",
-          "decimals": null,
           "format": "percent",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:949",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -455,43 +452,28 @@
         "y": 3
       },
       "id": 26,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",}[1m]))\n  )\n)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$DataSource\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$DataSource\",}[1m]))\n  )\n)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -500,36 +482,48 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "CPU Usage",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -538,43 +532,28 @@
         "y": 3
       },
       "id": 24,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cluster=~\"$cluster\"} - node_memory_Cached_bytes{cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"}) * 100",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"} - node_memory_MemFree_bytes{cluster=~\"$DataSource\"} - node_memory_Buffers_bytes{cluster=~\"$DataSource\"} - node_memory_Cached_bytes{cluster=~\"$DataSource\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"}) * 100",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -583,22 +562,15 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Memory Usage",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -607,26 +579,55 @@
       },
       "id": 40,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Pulsar Overview",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#7eb26d",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": null,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -635,43 +636,30 @@
         "y": 8
       },
       "id": 28,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(count(up{job=\"zookeeper\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "count(count(up{job=\"zookeeper\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -679,36 +667,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Zookeeper",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#7eb26d",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": null,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -717,43 +715,30 @@
         "y": 8
       },
       "id": 15,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(count(up{job=\"bookie\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "count(count(up{job=\"bookie\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -761,36 +746,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Bookies",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -799,43 +794,30 @@
         "y": 8
       },
       "id": 32,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(count(up{job=\"broker\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "count(count(up{job=\"broker\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -844,36 +826,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Brokers",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#7eb26d",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": null,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -882,43 +874,30 @@
         "y": 8
       },
       "id": 29,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(count(up{job=\"proxy\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "count(count(up{job=\"proxy\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -926,36 +905,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Proxies",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#7eb26d",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": null,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -964,44 +953,29 @@
         "y": 8
       },
       "id": 58,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:357",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:358",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "count(count(up{job=\"function\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
@@ -1010,37 +984,50 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Functions",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:360",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -1049,43 +1036,30 @@
         "y": 8
       },
       "id": 45,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1093,36 +1067,50 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Storage",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -1131,45 +1119,30 @@
         "y": 8
       },
       "id": 51,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:2471",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:2472",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1177,37 +1150,50 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Backlog (bytes)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:2474",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -1216,45 +1202,30 @@
         "y": 8
       },
       "id": 46,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:2471",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:2472",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1262,37 +1233,52 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Backlog (msgs)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:2474",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -1301,43 +1287,28 @@
         "y": 10
       },
       "id": 38,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"zookeeper\", cluster=~\"$cluster\"} == 1) / count(up{job=\"zookeeper\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * count(up{job=\"zookeeper\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"zookeeper\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1345,36 +1316,52 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Zookeeper Up",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -1383,43 +1370,28 @@
         "y": 10
       },
       "id": 35,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"bookie\", cluster=~\"$cluster\"} == 1) / count(up{job=\"bookie\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * count(up{job=\"bookie\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"bookie\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1427,36 +1399,52 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Bookies Up",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -1465,43 +1453,28 @@
         "y": 10
       },
       "id": 31,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"broker\", cluster=~\"$cluster\"} == 1) / count(up{job=\"broker\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * count(up{job=\"broker\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"broker\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1509,36 +1482,52 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Brokers Up",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -1547,43 +1536,28 @@
         "y": 10
       },
       "id": 36,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 * count(up{job=\"proxy\", cluster=~\"$cluster\"} == 1) / count(up{job=\"proxy\", cluster=~\"$cluster\"})",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * count(up{job=\"proxy\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"proxy\", cluster=~\"$DataSource\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1591,36 +1565,52 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Proxies Up",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#7eb26d"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#7eb26d",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -1629,44 +1619,27 @@
         "y": 10
       },
       "id": 59,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:408",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:409",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "100 * count(up{job=\"function\"} == 1) / count(up{job=\"function\"})",
           "format": "time_series",
           "interval": "",
@@ -1675,23 +1648,15 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "Functions Up",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:411",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1700,6 +1665,15 @@
       },
       "id": 44,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Messaging",
       "type": "row"
     },
@@ -1708,7 +1682,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1733,9 +1716,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1745,7 +1729,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1754,9 +1742,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Messaging Storage",
       "tooltip": {
         "shared": true,
@@ -1765,34 +1751,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "decbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1800,7 +1778,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1825,9 +1812,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1837,7 +1825,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1846,9 +1838,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Message Backlog (size)",
       "tooltip": {
         "shared": true,
@@ -1857,36 +1847,28 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:1894",
-          "decimals": null,
           "format": "decbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1895",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1894,7 +1876,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1919,9 +1910,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1931,7 +1923,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1940,9 +1936,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Message Backlog (msgs)",
       "tooltip": {
         "shared": true,
@@ -1951,36 +1945,28 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:1974",
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1975",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1988,7 +1974,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2013,9 +2008,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2025,7 +2021,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_rate_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_rate_in{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2033,7 +2033,11 @@
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_rate_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_rate_out{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2042,9 +2046,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Message Rate (msg/s)",
       "tooltip": {
         "shared": true,
@@ -2053,39 +2055,34 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 12,
@@ -2096,7 +2093,6 @@
       "hideTimeOverride": false,
       "id": 4,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -2108,7 +2104,6 @@
           "$$hashKey": "object:1271",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2126,7 +2121,6 @@
           "$$hashKey": "object:1272",
           "alias": "Topic name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "#890f02",
             "rgba(237, 129, 40, 0.89)",
@@ -2144,7 +2138,6 @@
           "$$hashKey": "object:1273",
           "alias": "Messages",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2162,7 +2155,11 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2171,13 +2168,16 @@
           "refId": "A"
         }
       ],
-      "title": "Top 10  namespace backlog (msgs)",
+      "title": "Top 10 namespace storage size (bytes)",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 12,
@@ -2188,7 +2188,6 @@
       "hideTimeOverride": false,
       "id": 55,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -2200,7 +2199,6 @@
           "$$hashKey": "object:1271",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2218,7 +2216,6 @@
           "$$hashKey": "object:1272",
           "alias": "Topic name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "#890f02",
             "rgba(237, 129, 40, 0.89)",
@@ -2236,7 +2233,6 @@
           "$$hashKey": "object:1273",
           "alias": "Bytes",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2254,7 +2250,11 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2263,16 +2263,25 @@
           "refId": "A"
         }
       ],
-      "title": "Top 10  topics backlog (bytes)",
+      "title": "Top 10 namespace backlog (bytes)",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2297,9 +2306,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2309,7 +2319,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_throughput_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_throughput_in{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2317,7 +2331,11 @@
           "refId": "A"
         },
         {
-          "expr": "sum(pulsar_throughput_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_throughput_out{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2326,9 +2344,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Throughput (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -2337,34 +2353,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2385,7 +2393,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
@@ -2410,9 +2427,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2427,7 +2445,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2437,7 +2459,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2447,7 +2473,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2457,7 +2487,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2467,7 +2501,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2477,7 +2515,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2487,7 +2529,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2498,7 +2544,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2508,7 +2558,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2518,7 +2572,11 @@
           "step": 10
         },
         {
-          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2529,9 +2587,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Storage Write Latency",
       "tooltip": {
         "shared": true,
@@ -2540,9 +2596,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2551,27 +2605,24 @@
           "format": "short",
           "label": "msg / s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 12,
@@ -2582,7 +2633,6 @@
       "hideTimeOverride": false,
       "id": 53,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -2594,7 +2644,6 @@
           "$$hashKey": "object:1271",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2612,7 +2661,6 @@
           "$$hashKey": "object:1272",
           "alias": "Topic name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "#890f02",
             "rgba(237, 129, 40, 0.89)",
@@ -2630,7 +2678,6 @@
           "$$hashKey": "object:1273",
           "alias": "Bytes",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2648,7 +2695,11 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": " topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2657,13 +2708,16 @@
           "refId": "A"
         }
       ],
-      "title": "Top 10  topics backlog (bytes)",
+      "title": "Top 10 topics storage size (bytes)",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 12,
@@ -2674,7 +2728,6 @@
       "hideTimeOverride": false,
       "id": 54,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -2686,7 +2739,6 @@
           "$$hashKey": "object:1271",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2704,7 +2756,6 @@
           "$$hashKey": "object:1272",
           "alias": "Topic name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "#890f02",
             "rgba(237, 129, 40, 0.89)",
@@ -2722,7 +2773,6 @@
           "$$hashKey": "object:1273",
           "alias": "Bytes",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -2740,7 +2790,11 @@
       ],
       "targets": [
         {
-          "expr": " topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2749,13 +2803,16 @@
           "refId": "A"
         }
       ],
-      "title": "Top 10  topics backlog (bytes)",
+      "title": "Top 10 topics backlog (bytes)",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2764,6 +2821,15 @@
       },
       "id": 42,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Nodes",
       "type": "row"
     },
@@ -2772,7 +2838,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2810,6 +2879,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (kubernetes_pod_name)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (kubernetes_pod_name)))",
           "format": "time_series",
           "intervalFactor": 1,
@@ -2818,9 +2891,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Node CPU usage",
       "tooltip": {
         "shared": true,
@@ -2829,34 +2900,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "percent",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2864,7 +2927,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2901,6 +2967,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
@@ -2909,9 +2979,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Node Memory Usage",
       "tooltip": {
         "shared": true,
@@ -2920,17 +2988,13 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "percent",
-          "label": null,
           "logBase": 1,
           "max": "100",
           "min": "0",
@@ -2938,71 +3002,40 @@
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 22,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "text": "All",
           "value": [
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
         "hide": 0,
-        "includeAll": true,
-        "index": -1,
-        "label": "cluster",
-        "multi": true,
-        "name": "cluster",
-        "options": [
-          {
-            "$$hashKey": "object:359",
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "$$hashKey": "object:360",
-            "selected": false,
-            "text": "{{ PULSAR_CLUSTER }}",
-            "value": "{{ PULSAR_CLUSTER }}"
-          },
-          {
-            "$$hashKey": "object:361",
-            "selected": false,
-            "text": "cluster2-pulsar",
-            "value": "cluster2-pulsar"
-          }
-        ],
-        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
-        "refresh": 0,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
         "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "datasource"
       }
     ]
   },
