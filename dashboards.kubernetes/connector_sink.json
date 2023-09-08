@@ -4,6 +4,7 @@
       {
         "builtIn": 1,
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
         "enable": true,
@@ -331,7 +332,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$DataSource\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_sink_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -420,7 +421,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_sink_written_total{cluster=~\"$DataSource\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_sink_written_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -509,7 +510,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_sink_sink_exceptions_total{cluster=~\"$DataSource\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_sink_sink_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -599,7 +600,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_sink_system_exceptions_total{cluster=~\"$DataSource\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_sink_system_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -665,21 +666,50 @@
       },
       {
         "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_sink_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
+        "definition": "pulsar_sink_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_sink_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
+        "query": "pulsar_sink_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -696,16 +726,17 @@
           "value": "$__all"
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_sink_received_total{exported_namespace=~\"$namespace\", cluster=~\"$DataSource\"}",
+        "definition": "pulsar_sink_received_total{exported_namespace=~\"$namespace\", cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Connector",
         "multi": false,
         "name": "connector",
         "options": [],
-        "query": "pulsar_sink_received_total{exported_namespace=~\"$namespace\", cluster=~\"$DataSource\"}",
+        "query": "pulsar_sink_received_total{exported_namespace=~\"$namespace\", cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/\\,exported_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
