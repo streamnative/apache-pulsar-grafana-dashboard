@@ -5,6 +5,7 @@
         "$$hashKey": "object:2352",
         "builtIn": 1,
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
         "enable": true,
@@ -117,7 +118,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(node_cpu_seconds_total{cluster=~\"$DataSource\", mode=\"system\"})",
+          "expr": "count(node_cpu_seconds_total{cluster=~\"$cluster\", mode=\"system\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -197,7 +198,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"})",
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -473,7 +474,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$DataSource\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$DataSource\",}[1m]))\n  )\n)",
+          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",}[1m]))\n  )\n)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -553,7 +554,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"} - node_memory_MemFree_bytes{cluster=~\"$DataSource\"} - node_memory_Buffers_bytes{cluster=~\"$DataSource\"} - node_memory_Cached_bytes{cluster=~\"$DataSource\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$DataSource\"}) * 100",
+          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cluster=~\"$cluster\"} - node_memory_Cached_bytes{cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"}) * 100",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -659,7 +660,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{job=\"zookeeper\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"zookeeper\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -738,7 +739,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{job=\"bookie\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"bookie\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -817,7 +818,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{job=\"broker\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"broker\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -897,7 +898,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{job=\"proxy\", cluster=~\"$DataSource\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{job=\"proxy\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1059,7 +1060,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"})",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1142,7 +1143,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"})",
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1225,7 +1226,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$DataSource\"})",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1308,7 +1309,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{job=\"zookeeper\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"zookeeper\", cluster=~\"$DataSource\"})",
+          "expr": "100 * count(up{job=\"zookeeper\", cluster=~\"$cluster\"} == 1) / count(up{job=\"zookeeper\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1391,7 +1392,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{job=\"bookie\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"bookie\", cluster=~\"$DataSource\"})",
+          "expr": "100 * count(up{job=\"bookie\", cluster=~\"$cluster\"} == 1) / count(up{job=\"bookie\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1474,7 +1475,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{job=\"broker\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"broker\", cluster=~\"$DataSource\"})",
+          "expr": "100 * count(up{job=\"broker\", cluster=~\"$cluster\"} == 1) / count(up{job=\"broker\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1557,7 +1558,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{job=\"proxy\", cluster=~\"$DataSource\"} == 1) / count(up{job=\"proxy\", cluster=~\"$DataSource\"})",
+          "expr": "100 * count(up{job=\"proxy\", cluster=~\"$cluster\"} == 1) / count(up{job=\"proxy\", cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1733,7 +1734,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1829,7 +1830,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1927,7 +1928,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2025,7 +2026,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_rate_in{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2037,7 +2038,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_rate_out{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2159,7 +2160,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (namespace))",
+          "expr": "topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2254,7 +2255,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (namespace))",
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2323,7 +2324,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_throughput_in{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2335,7 +2336,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_throughput_out{job=~\"broker\", cluster=~\"$DataSource\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{job=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2449,7 +2450,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2463,7 +2464,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2477,7 +2478,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2491,7 +2492,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2505,7 +2506,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2519,7 +2520,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2533,7 +2534,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2548,7 +2549,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2562,7 +2563,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2576,7 +2577,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\", cluster=~\"$DataSource\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{job=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2699,7 +2700,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": " topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (topic))",
+          "expr": " topk(10, sum(pulsar_storage_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2794,7 +2795,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$DataSource\"}) by (topic))",
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{job=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -3036,6 +3037,34 @@
         "regex": "snp.*",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
