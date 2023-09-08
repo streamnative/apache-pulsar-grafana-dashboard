@@ -1,46 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.3.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "$$hashKey": "object:2836",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -51,15 +17,18 @@
   },
   "description": "Metrics of bookkeeper cluster",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 13,
-  "iteration": 1604024376171,
+  "id": 26,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -68,26 +37,54 @@
       },
       "id": 25,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Healthy",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -96,43 +93,29 @@
         "y": 1
       },
       "id": 27,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$cluster\"} == 1)\n   ",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$DataSource\"} == 1)\n   ",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -140,36 +123,45 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Writable Bookies",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -178,43 +170,29 @@
         "y": 1
       },
       "id": 31,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 0)\n",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 0)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -222,27 +200,25 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "ReadOnly Bookies",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
       "description": "success rate for different types of requests",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -267,9 +243,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -279,7 +256,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -288,7 +268,10 @@
           "step": 2
         },
         {
-          "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -297,9 +280,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Success Rate",
       "tooltip": {
         "shared": true,
@@ -308,33 +289,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -342,8 +315,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -368,9 +349,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -380,7 +362,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -389,7 +374,10 @@
           "step": 2
         },
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -397,7 +385,10 @@
           "refId": "B"
         },
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -405,7 +396,10 @@
           "refId": "C"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -413,7 +407,10 @@
           "refId": "D"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -421,7 +418,10 @@
           "refId": "E"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -430,9 +430,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Latency",
       "tooltip": {
         "shared": true,
@@ -441,52 +439,69 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#299c46"
-      ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#d44a3a",
+                "value": null
+              },
+              {
+                "color": "rgba(237, 129, 40, 0.89)",
+                "value": 80
+              },
+              {
+                "color": "#299c46",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -495,43 +510,27 @@
         "y": 8
       },
       "id": 33,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
-          "expr": "100 \n* \ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 1)\n/\ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})\n   ",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "100 \n* \ncount(bookie_SERVER_STATUS{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 1)\n/\ncount(bookie_SERVER_STATUS{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})\n   ",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -539,26 +538,24 @@
           "refId": "A"
         }
       ],
-      "thresholds": "80,90",
       "title": "writable bookies (percentage)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -583,9 +580,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -595,7 +593,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(bookie_WRITE_BYTES{cluster=~\"$cluster\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(bookie_WRITE_BYTES{cluster=~\"$DataSource\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -604,7 +605,10 @@
           "step": 2
         },
         {
-          "expr": "sum(rate(bookie_READ_BYTES{cluster=~\"$cluster\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(bookie_READ_BYTES{cluster=~\"$DataSource\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -613,9 +617,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Throughput (MB / s)",
       "tooltip": {
         "shared": true,
@@ -624,33 +626,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -658,8 +652,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -684,9 +686,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -696,7 +699,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -705,7 +711,10 @@
           "step": 2
         },
         {
-          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -714,9 +723,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Entry Rate",
       "tooltip": {
         "shared": true,
@@ -725,33 +732,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -759,8 +758,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -785,9 +792,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -797,6 +805,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*bookie-ledgers.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*bookie-ledgers.*\"}))",
           "format": "time_series",
           "interval": "",
@@ -807,9 +818,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Ledgers Disk Usage (Persistent Volume Metrics)",
       "tooltip": {
         "shared": true,
@@ -818,9 +827,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -828,25 +835,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -854,8 +855,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -880,9 +889,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -892,6 +902,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*bookie-journal.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*bookie-journal.*\"}))",
           "format": "time_series",
           "interval": "",
@@ -902,9 +915,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Disk Usage (Persistent Volume Metrics)",
       "tooltip": {
         "shared": true,
@@ -913,9 +924,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -923,25 +932,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -949,8 +952,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -975,9 +986,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -987,7 +999,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_ledger_dir__pulsar_data_bookkeeper_ledgers_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_ledger_dir__pulsar_data_bookkeeper_ledgers_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -997,9 +1012,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Ledgers Disk Usage (Bookie Metric)",
       "tooltip": {
         "shared": true,
@@ -1008,9 +1021,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1018,30 +1029,27 @@
         {
           "$$hashKey": "object:3323",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1050,6 +1058,15 @@
       },
       "id": 23,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Server",
       "type": "row"
     },
@@ -1058,8 +1075,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1084,9 +1109,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1096,7 +1122,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_WRITE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_WRITE_BYTES{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1106,9 +1135,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Write Bytes",
       "tooltip": {
         "shared": true,
@@ -1117,33 +1144,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1151,8 +1170,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1177,9 +1204,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1189,7 +1217,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_READ_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_READ_BYTES{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1199,9 +1230,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read Bytes (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -1210,33 +1239,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1244,8 +1265,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1270,9 +1299,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1282,7 +1312,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1292,9 +1325,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Add Entry Rate",
       "tooltip": {
         "shared": true,
@@ -1303,33 +1334,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1337,8 +1360,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1363,9 +1394,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1375,7 +1407,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1385,9 +1420,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read Entry Rate",
       "tooltip": {
         "shared": true,
@@ -1396,33 +1429,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1430,8 +1455,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1456,9 +1489,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1468,7 +1502,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_IN_PROGRESS{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1478,9 +1515,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "ADD_ENTRY (Inprogress)",
       "tooltip": {
         "shared": true,
@@ -1489,9 +1524,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1499,25 +1532,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1525,8 +1552,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1551,9 +1586,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1563,7 +1599,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_READ_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_READ_ENTRY_IN_PROGRESS{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1573,9 +1612,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "READ_ENTRY (Inprogress)",
       "tooltip": {
         "shared": true,
@@ -1584,9 +1621,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1594,25 +1629,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1620,8 +1649,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1646,9 +1683,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1658,7 +1696,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_BLOCKED{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_BLOCKED{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1668,9 +1709,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "ADD_ENTRY (Blocked)",
       "tooltip": {
         "shared": true,
@@ -1679,9 +1718,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1689,25 +1726,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1715,8 +1746,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1741,9 +1780,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1753,7 +1793,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_READ_ENTRY_BLOCKED{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_READ_ENTRY_BLOCKED{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1763,9 +1806,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "READ_ENTRY (Blocked)",
       "tooltip": {
         "shared": true,
@@ -1774,9 +1815,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1784,25 +1823,19 @@
         {
           "$$hashKey": "object:3323",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:3324",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1810,8 +1843,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1836,9 +1877,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1848,7 +1890,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1858,9 +1903,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Add entry latency (p50)",
       "tooltip": {
         "shared": true,
@@ -1869,33 +1912,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1903,8 +1938,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -1929,9 +1972,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1941,7 +1985,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1951,9 +1998,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Add entry latency (99pct)",
       "tooltip": {
         "shared": true,
@@ -1962,33 +2007,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1996,8 +2033,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2022,9 +2067,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2034,7 +2080,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2044,9 +2093,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Add entry latency (p999)",
       "tooltip": {
         "shared": true,
@@ -2055,33 +2102,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2089,8 +2128,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2115,9 +2162,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2127,7 +2175,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2137,9 +2188,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read entry latency (p50)",
       "tooltip": {
         "shared": true,
@@ -2148,33 +2197,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2182,8 +2223,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2208,9 +2257,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2220,7 +2270,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2230,9 +2283,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read entry latency (p99)",
       "tooltip": {
         "shared": true,
@@ -2241,33 +2292,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2275,8 +2318,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2301,9 +2352,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2313,7 +2365,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2323,9 +2378,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read entry latency (p999)",
       "tooltip": {
         "shared": true,
@@ -2334,38 +2387,33 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2374,6 +2422,15 @@
       },
       "id": 35,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Journal",
       "type": "row"
     },
@@ -2382,8 +2439,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2408,9 +2473,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2420,7 +2486,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2430,9 +2499,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Sync Rate",
       "tooltip": {
         "shared": true,
@@ -2441,33 +2508,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2475,8 +2534,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2501,9 +2568,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2513,7 +2581,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2523,9 +2594,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Add Rate",
       "tooltip": {
         "shared": true,
@@ -2534,33 +2603,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2568,8 +2629,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2594,9 +2663,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2606,7 +2676,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_QUEUE_SIZE{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2616,9 +2689,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Queue length",
       "tooltip": {
         "shared": true,
@@ -2627,33 +2698,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2661,8 +2723,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2687,9 +2757,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2699,7 +2770,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_FORCE_WRITE_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_FORCE_WRITE_QUEUE_SIZE{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2709,9 +2783,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Force Write Queue length",
       "tooltip": {
         "shared": true,
@@ -2720,33 +2792,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2754,8 +2817,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2780,9 +2851,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2792,7 +2864,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_journal_JOURNAL_CB_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} [30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_journal_JOURNAL_CB_QUEUE_SIZE{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} [30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2802,9 +2877,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Callback Queue length",
       "tooltip": {
         "shared": true,
@@ -2813,33 +2886,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2847,8 +2911,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2873,9 +2945,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2885,7 +2958,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2895,9 +2971,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Add latency (p50)",
       "tooltip": {
         "shared": true,
@@ -2906,33 +2980,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2940,8 +3006,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -2966,9 +3040,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2978,7 +3053,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2988,9 +3066,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Add latency (p99)",
       "tooltip": {
         "shared": true,
@@ -2999,33 +3075,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3033,8 +3101,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3059,9 +3135,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3071,7 +3148,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3081,9 +3161,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Add latency (Max)",
       "tooltip": {
         "shared": true,
@@ -3092,33 +3170,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3126,8 +3196,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3152,9 +3230,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3164,7 +3243,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3174,9 +3256,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Sync Latency (p50)",
       "tooltip": {
         "shared": true,
@@ -3185,33 +3265,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3219,8 +3291,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3245,9 +3325,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3257,7 +3338,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3267,9 +3351,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Sync Latency (p99)",
       "tooltip": {
         "shared": true,
@@ -3278,33 +3360,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3312,8 +3386,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3338,9 +3420,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3350,7 +3433,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3360,9 +3446,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Journal Sync Latency (Max)",
       "tooltip": {
         "shared": true,
@@ -3371,38 +3455,33 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3411,6 +3490,15 @@
       },
       "id": 43,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Storage",
       "type": "row"
     },
@@ -3419,8 +3507,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3445,9 +3541,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3457,7 +3554,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_ledgers_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_ledgers_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3467,9 +3567,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Ledgers count",
       "tooltip": {
         "shared": true,
@@ -3478,33 +3576,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3512,8 +3602,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3538,9 +3636,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3550,7 +3649,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_entries_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_entries_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3560,9 +3662,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Entries count",
       "tooltip": {
         "shared": true,
@@ -3571,33 +3671,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3605,8 +3697,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3631,9 +3731,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3643,7 +3744,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_write_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_write_cache_size{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3653,9 +3757,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Write Cache Size",
       "tooltip": {
         "shared": true,
@@ -3664,33 +3766,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3698,8 +3792,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3724,9 +3826,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3736,7 +3839,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_read_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_read_cache_size{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3746,9 +3852,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read Cache Size",
       "tooltip": {
         "shared": true,
@@ -3757,33 +3861,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3791,8 +3887,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3817,9 +3921,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3829,7 +3934,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3839,9 +3947,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read entry rate from read cache",
       "tooltip": {
         "shared": true,
@@ -3850,9 +3956,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3860,25 +3964,19 @@
         {
           "$$hashKey": "object:1471",
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1472",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3886,8 +3984,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -3912,9 +4018,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3924,7 +4031,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -3934,9 +4044,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Read entry rate cache misses",
       "tooltip": {
         "shared": true,
@@ -3945,33 +4053,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3979,7 +4079,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4004,9 +4112,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4016,7 +4125,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4025,9 +4137,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Deleted Ledger Count",
       "tooltip": {
         "shared": true,
@@ -4036,33 +4146,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4070,7 +4171,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -4095,9 +4204,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4107,7 +4217,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4116,9 +4229,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Writable Ledger Directory Count",
       "tooltip": {
         "shared": true,
@@ -4127,33 +4238,24 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4161,7 +4263,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4186,9 +4296,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4198,7 +4309,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4206,7 +4320,10 @@
           "refId": "A"
         },
         {
-          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4215,9 +4332,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Compaction",
       "tooltip": {
         "shared": true,
@@ -4226,9 +4341,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4236,25 +4349,18 @@
         {
           "$$hashKey": "object:3218",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:3219",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4262,7 +4368,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4287,9 +4401,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -4299,7 +4414,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4307,7 +4425,10 @@
           "refId": "A"
         },
         {
-          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4316,9 +4437,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "GC Reclaim Disk (bytes)",
       "tooltip": {
         "shared": true,
@@ -4327,9 +4446,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4337,85 +4454,73 @@
         {
           "$$hashKey": "object:3218",
           "format": "decbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:3219",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 22,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
-        "hide": 0,
-        "includeAll": true,
-        "index": -1,
-        "label": "Cluster",
-        "multi": true,
-        "name": "cluster",
-        "options": [],
-        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\".+\"}",
-        "refresh": 2,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
         "current": {
           "text": "All",
           "value": [
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "uid": "${DataSource}"
+        },
+        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Bookie",
         "multi": true,
         "name": "kubernetes_pod_name",
         "options": [],
-        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -4454,8 +4559,6 @@
   "timezone": "browser",
   "title": "Bookie Metrics",
   "uid": "mPOjWrnGz",
-  "variables": {
-    "list": []
-  },
-  "version": 1
+  "version": 2,
+  "weekStart": ""
 }
