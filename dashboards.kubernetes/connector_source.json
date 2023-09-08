@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 35,
+  "id": 70,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -51,9 +51,9 @@
     {
       "columns": [],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -171,9 +171,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -287,9 +287,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -377,9 +377,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -467,9 +467,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -558,9 +558,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -652,11 +652,11 @@
     "list": [
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -669,13 +669,14 @@
         "regex": "snp.*",
         "skipUrlSync": false,
         "type": "datasource"
-      },{
+      },
+      {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
@@ -774,8 +775,6 @@
   "timezone": "",
   "title": "Connector Source Metrics",
   "uid": "kbBoELjGk",
-  "variables": {
-    "list": []
-  },
-  "version": 4
+  "version": 2,
+  "weekStart": ""
 }

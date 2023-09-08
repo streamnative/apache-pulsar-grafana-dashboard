@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 61,
+  "id": 80,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -489,13 +489,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "hide": 0,
         "includeAll": false,
@@ -512,14 +508,11 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
+
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
@@ -595,8 +588,6 @@
   "timezone": "",
   "title": "Auto Recovery Metrics",
   "uid": "Z_S6797Mz",
-  "variables": {
-    "list": []
-  },
-  "version": 2
+  "version": 2,
+  "weekStart": ""
 }

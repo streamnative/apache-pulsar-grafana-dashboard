@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 39,
+  "id": 71,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -56,9 +56,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -177,9 +177,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -299,9 +299,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -411,9 +411,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -526,11 +526,11 @@
     "list": [
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -546,11 +546,11 @@
       },
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
@@ -637,8 +637,6 @@
   "timezone": "browser",
   "title": "Containers Metrics",
   "uid": "n8PAzdPaz",
-  "variables": {
-    "list": []
-  },
-  "version": 3
+  "version": 2,
+  "weekStart": ""
 }

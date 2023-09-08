@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 41,
+  "id": 72,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -28,9 +28,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -122,9 +122,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -216,9 +216,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -310,9 +310,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -404,9 +404,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -498,9 +498,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -592,9 +592,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -683,9 +683,9 @@
     {
       "columns": [],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -779,9 +779,9 @@
     {
       "columns": [],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -904,9 +904,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -997,9 +997,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1095,11 +1095,11 @@
     "list": [
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -1112,13 +1112,14 @@
         "regex": "snp.*",
         "skipUrlSync": false,
         "type": "datasource"
-      },{
+      },
+      {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
@@ -1234,8 +1235,6 @@
   "timezone": "browser",
   "title": "Functions Metrics",
   "uid": "b2w0sy-ik",
-  "variables": {
-    "list": []
-  },
-  "version": 4
+  "version": 2,
+  "weekStart": ""
 }

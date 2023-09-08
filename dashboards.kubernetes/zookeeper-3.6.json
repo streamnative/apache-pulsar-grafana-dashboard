@@ -20,7 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10465,
   "graphTooltip": 0,
-  "id": 64,
+  "id": 83,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1510,8 +1510,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#73BF69",
-                    "value": null
+                    "color": "#73BF69"
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -1592,8 +1591,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1670,8 +1668,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -4653,8 +4650,7 @@
             "steps": [
               {
                 "color": "green",
-                "index": 0,
-                "value": null
+                "index": 0
               },
               {
                 "color": "red",
@@ -8359,8 +8355,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -8437,8 +8432,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -8515,8 +8509,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -8903,14 +8896,11 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
+
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -9020,5 +9010,6 @@
   "timezone": "browser",
   "title": "ZooKeeper 3.6 Dashboard",
   "uid": "SDE76m7Zzz",
-  "version": 343
+  "version": 2,
+  "weekStart": ""
 }

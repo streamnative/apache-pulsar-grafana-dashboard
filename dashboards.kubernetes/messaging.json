@@ -1,5 +1,4 @@
 {
-
   "annotations": {
     "list": [
       {
@@ -19,14 +18,18 @@
   },
   "description": "Messaging Related Metrics Per Namespace",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1604363374216,
+  "id": 75,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -35,29 +38,55 @@
       },
       "id": 24,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Overview",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -66,42 +95,29 @@
         "y": 1
       },
       "id": 26,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -110,39 +126,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Topics",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
         "type": "prometheus",
         "uid": "${DataSource}"
       },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -151,42 +174,29 @@
         "y": 1
       },
       "id": 27,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\",  namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -195,39 +205,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Producers",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -236,42 +253,29 @@
         "y": 1
       },
       "id": 29,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -280,39 +284,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Subscriptions",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
         },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -321,42 +332,29 @@
         "y": 1
       },
       "id": 28,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -365,39 +363,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Consumers",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
         },
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -406,42 +411,29 @@
         "y": 6
       },
       "id": 30,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -450,39 +442,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Storage Size",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
         },
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -491,44 +490,29 @@
         "y": 6
       },
       "id": 31,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:1726",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:1727",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -537,40 +521,46 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Msg Backlog (bytes)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:1729",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -579,44 +569,29 @@
         "y": 6
       },
       "id": 32,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:1726",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:1727",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "tableColumn": "",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -625,23 +600,15 @@
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "title": "Msg Backlog (msgs)",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:1729",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "stat"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -650,6 +617,15 @@
       },
       "id": 18,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Namespaces",
       "type": "row"
     },
@@ -659,9 +635,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
         },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -687,9 +669,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -699,6 +682,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
           "format": "time_series",
           "interval": "",
@@ -710,9 +697,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local publish rate",
       "tooltip": {
         "shared": true,
@@ -721,9 +706,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -732,22 +715,17 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -756,9 +734,15 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
         },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -783,9 +767,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -795,6 +780,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
           "format": "time_series",
           "intervalFactor": 2,
@@ -805,9 +794,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local delivery rate",
       "tooltip": {
         "shared": true,
@@ -816,9 +803,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -827,22 +812,17 @@
           "format": "short",
           "label": "msg / s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -851,9 +831,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -890,6 +870,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
           "format": "time_series",
           "interval": "",
@@ -901,9 +885,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local publish throughput (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -912,9 +894,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -923,22 +903,17 @@
           "format": "Bps",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -947,9 +922,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -988,6 +963,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_throughput_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
           "format": "time_series",
           "interval": "",
@@ -999,9 +978,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local delivery throughput (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -1010,9 +987,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1021,22 +996,17 @@
           "format": "Bps",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1045,9 +1015,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
@@ -1085,6 +1055,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -1095,6 +1069,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "interval": "",
@@ -1105,6 +1083,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "intervalFactor": 2,
@@ -1114,6 +1096,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
           "format": "time_series",
           "intervalFactor": 2,
@@ -1124,9 +1110,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Topics - Producers - Subscriptions - Consumers",
       "tooltip": {
         "shared": true,
@@ -1135,9 +1119,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -1145,26 +1127,20 @@
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "count",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1173,9 +1149,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1212,6 +1188,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_msg_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, namespace)",
           "format": "time_series",
           "interval": "",
@@ -1223,9 +1203,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local backlog",
       "tooltip": {
         "shared": true,
@@ -1234,9 +1212,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1245,27 +1221,25 @@
           "format": "short",
           "label": "Messages",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1293,9 +1267,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 5,
           "fillGradient": 0,
           "gridPos": {
@@ -1337,6 +1311,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1347,6 +1325,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1357,6 +1339,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1367,6 +1353,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1377,6 +1367,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1387,6 +1381,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1397,6 +1395,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "hide": false,
@@ -1408,6 +1410,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1417,6 +1423,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "intervalFactor": 2,
@@ -1426,6 +1436,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1437,9 +1451,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Storage Write Latency",
           "tooltip": {
             "shared": true,
@@ -1448,9 +1460,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -1459,22 +1469,16 @@
               "format": "short",
               "label": "msg / s",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1483,9 +1487,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
@@ -1522,6 +1526,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_size{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
               "format": "time_series",
               "interval": "",
@@ -1533,9 +1541,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Storage Size",
           "tooltip": {
             "shared": true,
@@ -1544,34 +1550,26 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
-              "decimals": null,
               "format": "decbytes",
               "label": "",
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1580,9 +1578,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "description": "Rate of writes into storage (can be lower than publish rate, when batching is enabled)",
           "fill": 1,
           "fillGradient": 0,
@@ -1620,6 +1618,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_write_latency_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
               "format": "time_series",
               "interval": "",
@@ -1631,9 +1633,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Storage Write Rate",
           "tooltip": {
             "shared": true,
@@ -1642,9 +1642,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -1653,22 +1651,16 @@
               "format": "short",
               "label": "entry / s",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1677,9 +1669,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "description": "Reads from bookies",
           "fill": 1,
           "fillGradient": 0,
@@ -1717,6 +1709,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_storage_read_latency_count{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
               "format": "time_series",
               "interval": "",
@@ -1728,9 +1724,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Storage read entry rate",
           "tooltip": {
             "shared": true,
@@ -1739,9 +1733,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -1750,22 +1742,17 @@
               "format": "short",
               "label": "entries / s",
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1774,9 +1761,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 6,
           "fillGradient": 0,
           "gridPos": {
@@ -1818,6 +1805,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1828,6 +1819,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1838,6 +1833,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1848,6 +1847,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1858,6 +1861,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1868,6 +1875,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1878,6 +1889,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1888,6 +1903,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1898,6 +1917,10 @@
               "step": 10
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) / 60.0",
               "format": "time_series",
               "interval": "",
@@ -1909,9 +1932,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Storage entry size",
           "tooltip": {
             "shared": true,
@@ -1920,9 +1941,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -1931,23 +1950,26 @@
               "format": "short",
               "label": "msg / s",
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
         }
       ],
       "title": "Storage",
@@ -1955,7 +1977,10 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1970,9 +1995,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2004,6 +2029,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\", remote_cluster!=\"local\"}) by (cluster, remote_cluster)",
               "format": "time_series",
               "interval": "",
@@ -2015,8 +2044,6 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
           "title": "Incoming replication rate | any → $cluster",
           "tooltip": {
             "shared": true,
@@ -2025,9 +2052,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -2036,22 +2061,17 @@
               "format": "short",
               "label": "msg / s",
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -2060,9 +2080,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2094,6 +2114,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 2,
@@ -2104,8 +2128,6 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
           "title": "Outgoing replication rate | $cluster → any",
           "tooltip": {
             "shared": true,
@@ -2114,9 +2136,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -2125,22 +2145,17 @@
               "format": "short",
               "label": "msg / s",
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -2149,9 +2164,9 @@
           "dashLength": 10,
           "dashes": false,
           "datasource": {
-          "type": "prometheus",
-          "uid": "${DataSource}"
-        },
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2183,6 +2198,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DataSource}"
+              },
               "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", job=~\"broker\", namespace=~\"$namespace\"}) by (cluster, remote_cluster)",
               "format": "time_series",
               "intervalFactor": 2,
@@ -2193,8 +2212,6 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
           "title": "Replication backlog | $cluster → any",
           "tooltip": {
             "shared": true,
@@ -2203,9 +2220,7 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
@@ -2214,23 +2229,27 @@
               "format": "short",
               "label": "messages",
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
         }
       ],
       "title": "Geo Replication",
@@ -2238,18 +2257,18 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 22,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -2265,11 +2284,11 @@
       },
       {
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
+
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
@@ -2292,9 +2311,11 @@
         "type": "query"
       },
       {
-        "allValue": null,
         "current": {
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -2306,7 +2327,6 @@
         "definition": "",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
@@ -2317,7 +2337,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2356,8 +2375,6 @@
   "timezone": "browser",
   "title": "Messaging Metrics",
   "uid": "_XatBc6Zz",
-  "variables": {
-    "list": []
-  },
-  "version": 3
+  "version": 2,
+  "weekStart": ""
 }
