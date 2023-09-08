@@ -1,46 +1,13 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.3.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "$$hashKey": "object:95",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -50,17 +17,26 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1604363924747,
+  "id": 41,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -86,9 +62,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -98,16 +75,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_function_received_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(pulsar_function_received_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Received messages",
       "tooltip": {
         "shared": true,
@@ -116,9 +94,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -127,22 +103,17 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -150,7 +121,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -176,9 +155,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -188,16 +168,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_function_processed_successfully_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(pulsar_function_processed_successfully_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Successfully processed  messages",
       "tooltip": {
         "shared": true,
@@ -206,9 +187,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -217,22 +196,17 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -240,7 +214,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -266,9 +248,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -278,16 +261,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Average Processing latency",
       "tooltip": {
         "shared": true,
@@ -296,34 +280,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "ms",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -331,7 +307,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -357,9 +341,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -369,16 +354,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }}  - {{instance_id}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "99pct Processing latency",
       "tooltip": {
         "shared": true,
@@ -387,34 +373,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "ms",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -422,7 +400,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -448,9 +434,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -460,16 +447,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Number of instances",
       "tooltip": {
         "shared": true,
@@ -478,34 +466,26 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -513,7 +493,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -539,9 +527,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -551,16 +540,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "User exceptions rate",
       "tooltip": {
         "shared": true,
@@ -569,9 +559,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -580,22 +568,17 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -603,7 +586,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -629,9 +620,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -641,16 +633,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "System exceptions rate",
       "tooltip": {
         "shared": true,
@@ -659,9 +652,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -670,27 +661,24 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -700,7 +688,6 @@
       },
       "id": 31,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -720,7 +707,6 @@
           "$$hashKey": "object:141",
           "alias": "name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -738,7 +724,6 @@
           "$$hashKey": "object:142",
           "alias": "error",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -756,7 +741,6 @@
           "$$hashKey": "object:143",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -771,7 +755,10 @@
       ],
       "targets": [
         {
-          "expr": "pulsar_function_user_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_function_user_exception{cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -780,11 +767,13 @@
       ],
       "title": "User Exceptions",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "columns": [],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -794,7 +783,6 @@
       },
       "id": 32,
       "links": [],
-      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -814,7 +802,6 @@
           "$$hashKey": "object:248",
           "alias": "name",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -832,7 +819,6 @@
           "$$hashKey": "object:249",
           "alias": "error",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -850,7 +836,6 @@
           "$$hashKey": "object:250",
           "alias": "",
           "align": "auto",
-          "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
@@ -865,7 +850,10 @@
       ],
       "targets": [
         {
-          "expr": "pulsar_function_system_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "pulsar_function_system_exception{cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -874,11 +862,14 @@
       ],
       "title": "System Exceptions",
       "transform": "table",
-      "type": "table"
+      "type": "table-old"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -887,6 +878,15 @@
       },
       "id": 25,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "User Defined Metrics",
       "type": "row"
     },
@@ -895,7 +895,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -920,9 +928,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -932,16 +941,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Average User Defined Metrics",
       "tooltip": {
         "shared": true,
@@ -950,9 +960,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -961,22 +969,17 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -984,7 +987,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1009,9 +1020,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1021,16 +1033,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "User Defined Metrics Rate",
       "tooltip": {
         "shared": true,
@@ -1039,122 +1052,113 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:381",
-          "decimals": null,
           "format": "short",
           "label": "metrics/sec",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:382",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
-  "refresh": false,
-  "schemaVersion": 22,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "selected": false,
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "pulsar_function_received_total{cluster=~\".+\"}",
         "hide": 0,
-        "includeAll": true,
-        "index": -1,
-        "label": "Cluster",
-        "multi": true,
-        "name": "cluster",
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
         "options": [],
-        "query": "pulsar_function_received_total{cluster=~\".+\"}",
-        "refresh": 2,
-        "regex": "/.*cluster=\\\"([^\\\"]+)\\\".*/",
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
         "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "datasource"
       },
       {
-        "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
         "refresh": 2,
         "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
+        "datasource": {
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$DataSource\", exported_namespace=~\"$namespace\"}",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Function",
         "multi": true,
         "name": "function",
         "options": [],
-        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
+        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$DataSource\", exported_namespace=~\"$namespace\"}",
         "refresh": 2,
         "regex": "/\\,name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1196,5 +1200,5 @@
   "variables": {
     "list": []
   },
-  "version": 3
+  "version": 4
 }
