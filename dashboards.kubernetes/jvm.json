@@ -42,8 +42,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fill": 1,
       "gridPos": {
@@ -140,8 +141,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -253,8 +255,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -352,8 +355,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -475,11 +479,40 @@
         "type": "datasource"
       },
       {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
         "allValue": null,
         "current": {},
         "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "hide": 0,
         "includeAll": true,
         "label": "Job",
@@ -501,15 +534,16 @@
         "allValue": null,
         "current": {},
         "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "hide": 0,
         "includeAll": true,
         "label": "Instance",
         "multi": true,
         "name": "kubernetes_pod_name",
         "options": [],
-        "query": "jvm_memory_bytes_used{cluster=~\"$DataSource\",job=~\"$job\", kubernetes_pod_name=~\".+\"}",
+        "query": "jvm_memory_bytes_used{cluster=~\"$cluster\",job=~\"$job\", kubernetes_pod_name=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

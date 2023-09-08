@@ -28,8 +28,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -77,7 +78,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_received_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_received_total{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
@@ -121,8 +122,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -170,7 +172,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_processed_successfully_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_processed_successfully_total{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -214,8 +216,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -263,7 +266,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
+          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
@@ -307,8 +310,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -356,7 +360,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
+          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }}  - {{instance_id}}",
           "refId": "A"
@@ -400,8 +404,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -449,7 +454,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
+          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -493,8 +498,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -542,7 +548,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -586,8 +592,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -635,7 +642,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -676,8 +683,9 @@
     {
       "columns": [],
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -757,7 +765,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_function_user_exception{cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "expr": "pulsar_function_user_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -771,8 +779,9 @@
     {
       "columns": [],
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fontSize": "100%",
       "gridPos": {
         "h": 6,
@@ -852,7 +861,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_function_system_exception{cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "expr": "pulsar_function_system_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -895,8 +904,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -943,7 +953,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
@@ -987,8 +997,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1035,7 +1046,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$DataSource\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
@@ -1101,6 +1112,33 @@
         "regex": "snp.*",
         "skipUrlSync": false,
         "type": "datasource"
+      },{
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       },
       {
         "current": {
@@ -1115,14 +1153,14 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
+        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$DataSource\"}",
+        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -1145,14 +1183,14 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$DataSource\", exported_namespace=~\"$namespace\"}",
+        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Function",
         "multi": true,
         "name": "function",
         "options": [],
-        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$DataSource\", exported_namespace=~\"$namespace\"}",
+        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
         "refresh": 2,
         "regex": "/\\,name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

@@ -52,8 +52,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -129,8 +130,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -210,8 +212,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "description": "success rate for different types of requests",
       "fieldConfig": {
@@ -317,8 +320,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -463,8 +467,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -548,8 +553,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -654,8 +660,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -760,8 +767,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -857,8 +865,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -954,8 +963,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1077,8 +1087,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1172,8 +1183,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1267,8 +1279,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1362,8 +1375,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1457,8 +1471,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1554,8 +1569,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1651,8 +1667,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1748,8 +1765,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1845,8 +1863,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1940,8 +1959,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2035,8 +2055,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2130,8 +2151,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2225,8 +2247,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2320,8 +2343,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2441,8 +2465,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2536,8 +2561,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2631,8 +2657,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2725,8 +2752,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2819,8 +2847,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2913,8 +2942,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3008,8 +3038,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3103,8 +3134,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3198,8 +3230,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3293,8 +3326,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3388,8 +3422,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3509,8 +3544,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3604,8 +3640,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3699,8 +3736,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3794,8 +3832,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3889,8 +3928,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -3986,8 +4026,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -4081,8 +4122,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4173,8 +4215,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4265,8 +4308,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -4370,8 +4414,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []

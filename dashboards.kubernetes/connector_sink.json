@@ -51,8 +51,9 @@
     {
       "columns": [],
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -170,8 +171,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -285,8 +287,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -374,8 +377,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -463,8 +467,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -553,8 +558,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []

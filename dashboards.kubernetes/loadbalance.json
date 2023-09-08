@@ -59,8 +59,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -100,7 +101,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "interval": "",
           "legendFormat": "{{ kubernetes_pod_name }}",
           "queryType": "randomWalk",
@@ -143,8 +144,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -227,8 +229,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -311,8 +314,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -395,8 +399,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -479,8 +484,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -563,8 +569,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -647,8 +654,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -731,8 +739,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -816,8 +825,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -927,8 +937,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1012,8 +1023,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1097,8 +1109,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1182,8 +1195,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1267,8 +1281,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1352,8 +1367,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1437,8 +1453,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1522,8 +1539,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1608,8 +1626,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1693,8 +1712,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1779,8 +1799,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1864,8 +1885,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1945,8 +1967,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2032,8 +2055,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2119,8 +2143,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2236,8 +2261,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2317,8 +2343,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2404,8 +2431,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2491,8 +2519,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2582,8 +2611,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2667,8 +2697,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2748,8 +2779,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2835,8 +2867,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2951,8 +2984,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3036,8 +3070,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3117,8 +3152,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3204,8 +3240,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3320,8 +3357,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3405,8 +3443,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3489,8 +3528,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3573,8 +3613,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3653,8 +3694,9 @@
     },
     {
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -3767,6 +3809,34 @@
       },
       {
         "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
           "selected": true,
           "text": [
             "All"
@@ -3778,7 +3848,7 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_lb_memory_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
+        "definition": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "label": "kubernetes_pod_name",
@@ -3786,7 +3856,7 @@
         "name": "kubernetes_pod_name",
         "options": [],
         "query": {
-          "query": "pulsar_lb_memory_usage{cluster=~\"$DataSource\", kubernetes_pod_name=~\".+\"}",
+          "query": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -3811,7 +3881,7 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "caffeine_cache_hit_total{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Cache Name",
@@ -3819,7 +3889,7 @@
         "name": "cache",
         "options": [],
         "query": {
-          "query": "caffeine_cache_hit_total{cluster=~\"$DataSource\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,

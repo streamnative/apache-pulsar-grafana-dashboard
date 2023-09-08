@@ -5,6 +5,7 @@
         "$$hashKey": "object:4632",
         "builtIn": 1,
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
         "enable": true,
@@ -55,8 +56,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -175,8 +177,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -296,8 +299,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -407,8 +411,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DataSource}"
-      },
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -541,6 +546,34 @@
       },
       {
         "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
           "selected": true,
           "text": [
             "All"
@@ -550,16 +583,17 @@
           ]
         },
         "datasource": {
+          "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "label_values(up{app=~\"$DataSource\"}, kubernetes_pod_name)",
+        "definition": "label_values(up{app=~\"$cluster\"}, kubernetes_pod_name)",
         "hide": 0,
         "includeAll": true,
         "label": "Pod",
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "label_values(up{app=~\"$DataSource\"}, kubernetes_pod_name)",
+        "query": "label_values(up{app=~\"$cluster\"}, kubernetes_pod_name)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
