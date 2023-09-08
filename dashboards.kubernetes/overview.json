@@ -20,7 +20,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 23,
+  "id": 49,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -3040,10 +3040,9 @@
       },
       {
         "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "snp-sn-platform-slim",
+          "value": "snp-sn-platform-slim"
         },
         "datasource": {
           "type": "prometheus",
