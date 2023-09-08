@@ -1,39 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.1.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -56,7 +29,10 @@
   "links": [],
   "panels": [
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -118,7 +94,10 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -179,7 +158,10 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -241,7 +223,10 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -303,7 +288,10 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -365,7 +353,10 @@
       "type": "stat"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -450,7 +441,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -535,7 +529,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -619,7 +616,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -704,7 +704,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -789,7 +792,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -997,30 +1003,49 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "pulsar_txn_active_count{cluster=~\".+\"}",
-        "description": null,
-        "error": null,
         "hide": 0,
-        "includeAll": true,
-        "label": "Cluster",
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
         "multi": false,
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_txn_active_count{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 2,
+        "refresh": 1,
         "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
-        "sort": 1,
+        "sort": 0,
         "type": "query"
       },
       {
@@ -1030,7 +1055,10 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "definition": "pulsar_txn_committed_count{cluster=~\"$cluster\", coordinator_id=~\".+\", }",
         "description": null,
         "error": null,
