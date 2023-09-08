@@ -1,45 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_TEST-CLUSTER",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.3.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -92,7 +59,10 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 1,
       "editable": true,
       "error": false,
@@ -179,7 +149,10 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "editable": true,
       "error": false,
       "format": "none",
@@ -264,7 +237,10 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -352,7 +328,10 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 0,
       "editable": true,
       "error": false,
@@ -435,7 +414,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -534,7 +516,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -676,7 +661,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -814,7 +802,10 @@
           "bars": true,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -919,7 +910,10 @@
           "bars": true,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1042,7 +1036,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1142,7 +1139,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1261,7 +1261,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1405,7 +1408,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1563,7 +1569,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1686,7 +1695,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -1800,7 +1812,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -1891,7 +1906,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2011,7 +2029,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2112,7 +2133,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2213,7 +2237,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2314,7 +2341,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2430,7 +2460,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2516,7 +2549,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "fill": 1,
           "gridPos": {
             "h": 7,
@@ -2617,7 +2653,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2731,7 +2770,10 @@
           "bars": true,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "decimals": 2,
           "editable": true,
           "error": false,
@@ -2849,7 +2891,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "{{ PULSAR_CLUSTER }}",
+          "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
           "description": "Number of TCP sockets in state inuse.",
           "fill": 1,
           "gridPos": {
@@ -2945,6 +2990,26 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "allFormat": "glob",
         "auto": true,
         "auto_count": 200,
@@ -2953,7 +3018,10 @@
           "text": "5s",
           "value": "5s"
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "Interval",
@@ -3011,7 +3079,10 @@
         "allFormat": "glob",
         "allValue": null,
         "current": {},
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "Instance",
