@@ -1,40 +1,13 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_default",
-      "label": "{{ PULSAR_CLUSTER }}",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.1.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "$$hashKey": "object:5744",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -44,17 +17,27 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1604363458370,
+  "id": 62,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -80,9 +63,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -92,6 +76,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "hide": false,
@@ -104,9 +92,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local publish rate",
       "tooltip": {
         "shared": true,
@@ -115,9 +101,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -126,22 +110,16 @@
           "format": "short",
           "label": "msg/s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -149,7 +127,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -176,9 +163,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -188,6 +176,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(  pulsar_subscription_msg_rate_out{      cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
@@ -199,9 +191,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local delivery rate",
       "tooltip": {
         "shared": true,
@@ -210,9 +200,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -222,23 +210,18 @@
           "format": "short",
           "label": "msg / s",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:6814",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -246,7 +229,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -271,9 +263,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -283,6 +276,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
@@ -294,9 +291,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local publish throughput (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -305,9 +300,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -317,23 +310,17 @@
           "format": "Bps",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:6677",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -341,8 +328,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -369,9 +365,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -381,6 +378,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(  pulsar_subscription_msg_throughput_out{    cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
@@ -392,9 +393,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local delivery throughput (bytes/s)",
       "tooltip": {
         "shared": true,
@@ -403,9 +402,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -415,23 +412,18 @@
           "format": "Bps",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:6746",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -439,8 +431,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -467,9 +468,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -479,6 +481,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
@@ -489,6 +495,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
@@ -498,6 +508,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
@@ -508,9 +522,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Topics - Producers - Subscriptions - Consumers",
       "tooltip": {
         "shared": true,
@@ -519,9 +531,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -533,23 +543,17 @@
           "format": "short",
           "label": "count",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:6471",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -557,7 +561,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -584,9 +597,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -596,6 +610,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_subscription_back_log{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
@@ -607,9 +625,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Local backlog",
       "tooltip": {
         "shared": true,
@@ -618,9 +634,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -630,23 +644,18 @@
           "format": "short",
           "label": "Messages",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:6539",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -654,7 +663,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -681,9 +699,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -693,6 +712,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_subscription_delayed{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
@@ -704,9 +727,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Delayed Messages",
       "tooltip": {
         "shared": true,
@@ -715,9 +736,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -727,23 +746,18 @@
           "format": "short",
           "label": "Messages",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:6608",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -751,8 +765,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -779,9 +802,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -791,6 +815,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
@@ -802,9 +830,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Backlog Storage Size",
       "tooltip": {
         "shared": true,
@@ -813,9 +839,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -827,23 +851,17 @@
           "format": "decbytes",
           "label": "count",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:5883",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -851,8 +869,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -879,9 +906,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -891,6 +919,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "100*sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)/sum(pulsar_storage_backlog_quota_limit{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
@@ -902,9 +934,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Backlog Quota Utilization",
       "tooltip": {
         "shared": true,
@@ -913,9 +943,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -935,16 +963,12 @@
         {
           "$$hashKey": "object:6031",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -952,8 +976,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -980,9 +1013,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -992,6 +1026,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_offloaded_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
@@ -1003,9 +1041,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "2nd Tier Storage Size",
       "tooltip": {
         "shared": true,
@@ -1014,9 +1050,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": [
           "current"
@@ -1028,23 +1062,18 @@
           "format": "decbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:6175",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1052,7 +1081,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1077,9 +1115,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1089,6 +1128,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", remote_cluster!=\"local\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
@@ -1100,9 +1143,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Incoming replication rate | any → $cluster",
       "tooltip": {
         "shared": true,
@@ -1111,9 +1152,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1123,23 +1162,17 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:6677",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1147,7 +1180,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1172,9 +1214,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1184,6 +1227,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
@@ -1195,9 +1242,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Outgoing replication rate | $cluster → any",
       "tooltip": {
         "shared": true,
@@ -1206,9 +1251,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1218,23 +1261,17 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:6677",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1242,7 +1279,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1267,9 +1313,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1279,6 +1326,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
@@ -1290,9 +1341,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Replication backlog | $cluster → any",
       "tooltip": {
         "shared": true,
@@ -1301,9 +1350,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1313,23 +1360,17 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:6677",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1350,7 +1391,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
@@ -1375,9 +1425,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1392,6 +1443,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1402,6 +1457,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1412,6 +1471,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1422,6 +1485,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1432,6 +1499,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1442,6 +1513,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1452,6 +1527,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "hide": false,
@@ -1463,6 +1542,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
@@ -1472,6 +1555,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
@@ -1481,6 +1568,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1492,9 +1583,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Storage Write Latency",
       "tooltip": {
         "shared": true,
@@ -1503,9 +1592,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1514,22 +1601,16 @@
           "format": "short",
           "label": "msg / s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1537,7 +1618,16 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 6,
       "fillGradient": 0,
       "gridPos": {
@@ -1562,9 +1652,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1579,6 +1670,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1589,6 +1684,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1599,6 +1698,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1609,6 +1712,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1619,6 +1726,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1629,6 +1740,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1639,6 +1754,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1649,6 +1768,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1659,6 +1782,10 @@
           "step": 10
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
@@ -1670,9 +1797,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Storage entry size",
       "tooltip": {
         "shared": true,
@@ -1681,9 +1806,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1692,22 +1815,16 @@
           "format": "short",
           "label": "msg / s",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1715,8 +1832,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "description": "Rate of writes into storage (can be lower than publish rate, when batching is enabled)",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1741,9 +1867,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1753,6 +1880,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_write_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
@@ -1764,9 +1895,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Storage Write Rate",
       "tooltip": {
         "shared": true,
@@ -1775,9 +1904,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1787,23 +1914,18 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:7471",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1811,8 +1933,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "{{ PULSAR_CLUSTER }}",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DataSource}"
+      },
       "description": "Reads from bookies",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1837,9 +1968,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "9.5.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1849,6 +1981,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DataSource}"
+          },
           "expr": "sum(pulsar_storage_read_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
@@ -1860,9 +1996,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Storage read entry rate",
       "tooltip": {
         "shared": true,
@@ -1871,9 +2005,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1883,74 +2015,98 @@
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:7471",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 22,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "tags": [],
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
-        "definition": "",
         "hide": 0,
-        "includeAll": true,
-        "index": -1,
-        "label": "Cluster",
-        "multi": true,
+        "includeAll": false,
+        "label": "DataSource",
+        "multi": false,
+        "name": "DataSource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "snp.*",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
+        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pulsar Cluster",
+        "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "pulsar_storage_size{cluster=~\".+\"}",
+        "query": {
+          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "sort": 0,
+        "type": "query"
       },
       {
-        "allValue": null,
         "current": {
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "definition": "",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
@@ -1961,24 +2117,27 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
         },
-        "datasource": "{{ PULSAR_CLUSTER }}",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DataSource}"
+        },
         "definition": "",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": "Topic",
         "multi": true,
         "name": "topic",
@@ -1989,7 +2148,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
