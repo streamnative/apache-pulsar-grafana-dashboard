@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 71,
+  "id": 20,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -106,7 +106,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * sum( rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name)\n",
+          "expr": "100 * sum( rate(container_cpu_system_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name)\n",
           "interval": "",
           "legendFormat": "system",
           "refId": "A"
@@ -115,7 +115,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * sum( rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name)",
+          "expr": "100 * sum( rate(container_cpu_user_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "user",
           "refId": "B"
@@ -124,7 +124,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * sum( rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name)",
+          "expr": "100 * sum( rate(container_cpu_cfs_throttled_seconds_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "throttled",
           "refId": "C"
@@ -229,7 +229,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(container_memory_rss{pod=~\"$pod\", container!=\"\"}) by (pod_name)",
+          "expr": "sum(container_memory_rss{namespace!~\"kube-system\", pod=~\"$pod\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "RSS",
           "refId": "A"
@@ -238,7 +238,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(container_memory_swap{pod=~\"$pod\", container!=\"\"}) by (pod_name)",
+          "expr": "sum(container_memory_swap{namespace!~\"kube-system\", pod=~\"$pod\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Swap",
           "refId": "B"
@@ -247,7 +247,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(container_spec_memory_limit_bytes{pod=~\"$pod\", container!=\"\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_limit_bytes{namespace!~\"kube-system\", pod=~\"$pod\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Limit",
           "refId": "C"
@@ -256,7 +256,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(container_spec_memory_reservation_limit_bytes{pod=~\"$pod\", container!=\"\"}) by (pod_name)",
+          "expr": "sum(container_spec_memory_reservation_limit_bytes{namespace!~\"kube-system\", pod=~\"$pod\"}) by (pod_name)",
           "interval": "",
           "legendFormat": "Reserved",
           "refId": "D"
@@ -357,18 +357,22 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "8 * sum(rate(container_network_receive_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name)",
+          "editorMode": "code",
+          "expr": "8 * sum( rate(container_network_receive_bytes_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "In",
+          "range": true,
           "refId": "A"
         },
         {
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name)",
+          "editorMode": "code",
+          "expr": "- 8 * sum(rate(container_network_transmit_bytes_total{namespace!~\"kube-system\",pod=~\"$pod\"}[5m])) by (pod_name)",
           "interval": "",
           "legendFormat": "Out",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -469,7 +473,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(container_fs_writes_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name,device)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name,device)",
           "interval": "",
           "legendFormat": "Writes {{ device }}",
           "refId": "A"
@@ -478,7 +482,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "- sum(rate(container_fs_reads_bytes_total{pod=~\"$pod\", container!=\"\"}[5m])) by (pod_name,device)",
+          "expr": "- sum(rate(container_fs_reads_bytes_total{namespace!~\"kube-system\", pod=~\"$pod\"}[5m])) by (pod_name,device)",
           "interval": "",
           "legendFormat": "Reads {{ device }}",
           "refId": "B"
@@ -530,7 +534,6 @@
           "text": "All",
           "value": "$__all"
         },
-
         "hide": 0,
         "includeAll": false,
         "label": "DataSource",
@@ -550,50 +553,49 @@
           "text": "All",
           "value": "$__all"
         },
-
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "label_values(up{}, kubernetes_namespace)",
+        "description": "kubernetes_namespace",
         "hide": 0,
         "includeAll": false,
-        "label": "Pulsar Cluster",
+        "label": "namespace",
         "multi": false,
-        "name": "cluster",
+        "name": "namespace",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "label_values(up{}, kubernetes_namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "label_values(up{app=~\"$cluster\"}, kubernetes_pod_name)",
+        "definition": "label_values(up{job=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Pod",
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "label_values(up{app=~\"$cluster\"}, kubernetes_pod_name)",
+        "query": {
+          "query": "label_values(up{job=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
