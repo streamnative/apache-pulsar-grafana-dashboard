@@ -461,7 +461,7 @@
         "query": "prometheus",
         "queryValue": "",
         "refresh": 1,
-        "regex": "snp.*",
+        "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
       },

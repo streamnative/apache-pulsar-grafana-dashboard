@@ -8910,7 +8910,7 @@
         "query": "prometheus",
         "queryValue": "",
         "refresh": 1,
-        "regex": "snp.*",
+        "regex": "s",
         "skipUrlSync": false,
         "type": "datasource"
       },
