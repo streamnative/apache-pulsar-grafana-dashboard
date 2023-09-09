@@ -3057,7 +3057,7 @@
         "query": "prometheus",
         "queryValue": "",
         "refresh": 1,
-        "regex": "s",
+        "regex": "^(?!Prometheus).*$",
         "skipUrlSync": false,
         "type": "datasource"
       },
