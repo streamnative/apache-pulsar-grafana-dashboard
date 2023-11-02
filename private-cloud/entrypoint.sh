@@ -36,7 +36,7 @@ chmod 0400 /var/lib/grafana/grafana.ini
 if [ "x${GRAFANA_USE_BUILTIN_DASHBOARDS}" == "xtrue" ]; then
     for item in `ls /etc/grafana/provisioning/dashboard_templates`; do
       OUTPUT_FILE=$(echo ${item} | sed 's/\.j2//')
-      sed /etc/grafana/provisioning/dashboard_templates/${item} > /etc/grafana/provisioning/dashboards/${OUTPUT_FILE}
+      sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/; s/{{ GF_LOKI_DATASOURCE_NAME }}/${GF_LOKI_DATASOURCE_NAME}/" /etc/grafana/provisioning/dashboard_templates/${item} > /etc/grafana/provisioning/dashboards/${OUTPUT_FILE}
     done
 fi
 

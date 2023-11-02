@@ -55,10 +55,10 @@ COPY private-cloud/entrypoint.sh /pulsar_grafana_entrypoint.sh
 
 EXPOSE 3000
 
-# ENV PULSAR_PROMETHEUS_URL http://localhost:9090
-# ENV GF_LOKI_URL http://localhost:3100
-# ENV GF_LOKI_DATASOURCE_NAME pulsar-loki
-# ENV PULSAR_CLUSTER pulsar-cluster
+ENV PULSAR_PROMETHEUS_URL http://prometheus-server
+ENV GF_LOKI_URL http://localhost:3100
+ENV GF_LOKI_DATASOURCE_NAME pulsar-loki
+ENV PULSAR_CLUSTER pulsar-cluster
 ENV GF_PATHS_PROVISIONING /etc/grafana/provisioning
 
 ENTRYPOINT ["/pulsar_grafana_entrypoint.sh"]
