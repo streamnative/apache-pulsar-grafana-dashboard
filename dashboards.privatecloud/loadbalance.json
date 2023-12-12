@@ -101,9 +101,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_bandwidth_out_usage{cluster=~\"$cluster\", pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -186,9 +186,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_bandwidth_in_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_bandwidth_in_usage{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -271,9 +271,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_memory_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_memory_usage{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -356,9 +356,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_directMemory_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_directMemory_usage{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -441,9 +441,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_cpu_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_cpu_usage{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -526,9 +526,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_bundles_split_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_bundles_split_total{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -611,9 +611,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_unload_bundle_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_unload_bundle_total{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -696,9 +696,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_lb_unload_broker_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "expr": "pulsar_lb_unload_broker_total{cluster=~\"$cluster\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -782,9 +782,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_topics_count{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_topics_count{cluster=~\"$cluster\",pod=~\"$pod\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -868,9 +868,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(caffeine_cache_estimated_size{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",cache=~\"owned-bundles\"}) by (kubernetes_pod_name)",
+          "expr": "sum(caffeine_cache_estimated_size{cluster=~\"$cluster\",pod=~\"$pod\",cache=~\"owned-bundles\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -980,9 +980,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "100 *  pulsar_lb_resource_usage{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\"}",
+          "expr": "100 *  pulsar_lb_resource_usage{cluster=~\"$cluster\",pod=~\"$pod\", feature=\"max_ema\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1066,9 +1066,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "100 * pulsar_lb_resource_usage_stats{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"avg\"}",
+          "expr": "100 * pulsar_lb_resource_usage_stats{cluster=~\"$cluster\",pod=~\"$pod\", feature=\"max_ema\", stat=\"avg\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1152,9 +1152,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "pulsar_lb_resource_usage_stats{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\", feature=\"max_ema\", stat=\"std\"}",
+          "expr": "pulsar_lb_resource_usage_stats{cluster=~\"$cluster\",pod=~\"$pod\", feature=\"max_ema\", stat=\"std\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1238,9 +1238,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Success\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1324,9 +1324,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Skip\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1410,9 +1410,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}",
+          "expr": "pulsar_lb_assign_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -1496,7 +1496,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Success\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1582,7 +1582,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Skip\"}) by (reason)",
           "instant": false,
           "interval": "",
           "legendFormat": "{{ reason }}",
@@ -1669,7 +1669,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
+          "expr": "sum(pulsar_lb_unload_broker_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1755,7 +1755,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Success\"}) by (reason)",
           "instant": false,
           "interval": "",
           "legendFormat": "{{ reason }}",
@@ -1842,7 +1842,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Skip\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -1928,7 +1928,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (reason)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "queryType": "randomWalk",
@@ -2044,9 +2044,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Success\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Success\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2132,9 +2132,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Skip\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Skip\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2220,9 +2220,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_lb_bundles_split_breakdown_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2304,9 +2304,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"} [1m])) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -2420,9 +2420,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}[1m])) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -2508,7 +2508,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (state)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"} [1m])) by (state)",
           "interval": "",
           "legendFormat": "{{ state }}",
           "refId": "A"
@@ -2596,7 +2596,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (state)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_owner_lookup_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}[1m])) by (state)",
           "interval": "",
           "legendFormat": "{{ state }}",
           "refId": "A"
@@ -2654,9 +2654,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"}[1m])) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -2740,9 +2740,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}[1m])) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -2856,7 +2856,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"} [1m])) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -2969,7 +2969,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} [1m])) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_event_publish_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"} [1m])) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -3027,9 +3027,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"} [1m])) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"} [1m])) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -3113,9 +3113,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (kubernetes_pod_name)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}[1m] )) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -3229,7 +3229,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Total\"}[1m] )) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Total\"}[1m] )) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -3342,7 +3342,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"}[1m] )) by (event)",
+          "expr": "sum(increase(pulsar_sunit_state_chn_subscribe_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"}[1m] )) by (event)",
           "interval": "",
           "legendFormat": "{{ event }}",
           "refId": "A"
@@ -3400,7 +3400,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_sunit_state_chn_inactive_broker_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (result)",
+          "expr": "sum(pulsar_sunit_state_chn_inactive_broker_cleanup_ops_total{cluster=~\"$cluster\",pod=~\"$pod\"}) by (result)",
           "interval": "",
           "legendFormat": "{{ result }}",
           "queryType": "randomWalk",
@@ -3485,9 +3485,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_sunit_state_chn_su_tombstone_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_sunit_state_chn_su_tombstone_cleanup_ops_total{cluster=~\"$cluster\",pod=~\"$pod\"} ) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -3570,9 +3570,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_sunit_state_chn_orphan_su_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_sunit_state_chn_orphan_su_cleanup_ops_total{cluster=~\"$cluster\",pod=~\"$pod\"} ) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -3655,9 +3655,9 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_sunit_state_chn_cleanup_ops_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\",result=\"Failure\"} ) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_sunit_state_chn_cleanup_ops_total{cluster=~\"$cluster\",pod=~\"$pod\",result=\"Failure\"} ) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "queryType": "randomWalk",
           "refId": "A"
         }
@@ -3771,9 +3771,9 @@
             "uid": "${DataSource}"
           },
           "exemplar": false,
-          "expr": "sum(pulsar_sunit_state_chn_owned_su_total{cluster=\"$DataSource\",kubernetes_pod_name=~\"$kubernetes_pod_name\"} ) by (kubernetes_pod_name)",
+          "expr": "sum(pulsar_sunit_state_chn_owned_su_total{cluster=~\"$cluster\",pod=~\"$pod\"} ) by (pod)",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3848,19 +3848,19 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "definition": "pulsar_lb_memory_usage{cluster=~\"$cluster\", pod=~\".+\"}",
         "hide": 0,
         "includeAll": true,
-        "label": "kubernetes_pod_name",
+        "label": "pod",
         "multi": true,
-        "name": "kubernetes_pod_name",
+        "name": "pod",
         "options": [],
         "query": {
-          "query": "pulsar_lb_memory_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+          "query": "pulsar_lb_memory_usage{cluster=~\"$cluster\", pod=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
-        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -3881,7 +3881,7 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+        "definition": "caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$pod\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Cache Name",
@@ -3889,7 +3889,7 @@
         "name": "cache",
         "options": [],
         "query": {
-          "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}",
+          "query": "caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$pod\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
