@@ -1329,7 +1329,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(podbookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1913,7 +1913,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(podbookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2009,7 +2009,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(podbookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2105,7 +2105,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(podbookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"}) by (pod)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
