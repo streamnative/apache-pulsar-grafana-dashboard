@@ -195,7 +195,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 0)\n",
+          "expr": "count(bookie_SERVER_STATUS{cluster=~\"$cluster\", pod=~\"$pod\"} == 0)\n",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -263,7 +263,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
+          "expr": "100 * sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) / sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -275,7 +275,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) / sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s]))",
+          "expr": "100 * sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) / sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -370,7 +370,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -382,7 +382,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -393,7 +393,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -404,7 +404,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"} > 0)",
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -415,7 +415,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"} > 0)",
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -426,7 +426,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"} > 0)",
+          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -536,7 +536,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 \n* \ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} == 1)\n/\ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"})\n   ",
+          "expr": "100 \n* \ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", pod=~\"$pod\"} == 1)\n/\ncount(bookie_SERVER_STATUS{cluster=~\"$cluster\", pod=~\"$pod\"})\n   ",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -603,7 +603,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_WRITE_BYTES{cluster=~\"$cluster\"}[30s]))",
+          "expr": "sum(rate(bookie_WRITE_BYTES{cluster=~\"$cluster\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -615,7 +615,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_READ_BYTES{cluster=~\"$cluster\"}[30s]))",
+          "expr": "sum(rate(bookie_READ_BYTES{cluster=~\"$cluster\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -710,7 +710,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
+          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -722,7 +722,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s]))",
+          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -817,7 +817,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*bookie-ledgers.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*bookie-ledgers.*\"}))",
+          "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*ledgers.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*ledgers.*\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -915,7 +915,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*bookie-journal.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*bookie-journal.*\"}))",
+          "expr": "100 * (1 - (kubelet_volume_stats_available_bytes{persistentvolumeclaim=~\".*journal.*\"} /    kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*journal.*\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1013,11 +1013,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_ledger_dir__pulsar_data_bookkeeper_ledgers_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_ledger_dir__pulsar_data_bookkeeper_ledgers_usage{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1137,11 +1137,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_WRITE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_WRITE_BYTES{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1233,11 +1233,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_READ_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_READ_BYTES{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1329,11 +1329,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1425,11 +1425,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1521,11 +1521,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1619,11 +1619,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_READ_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_READ_ENTRY_IN_PROGRESS{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1717,11 +1717,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_BLOCKED{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_BLOCKED{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1815,11 +1815,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_READ_ENTRY_BLOCKED{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_READ_ENTRY_BLOCKED{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -1913,11 +1913,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -2009,11 +2009,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -2105,11 +2105,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -2201,11 +2201,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -2297,11 +2297,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -2393,11 +2393,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.999\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.999\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A",
           "step": 2
         }
@@ -2515,11 +2515,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_journal_JOURNAL_SYNC_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 4
         }
@@ -2611,11 +2611,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_journal_JOURNAL_ADD_ENTRY_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 4
         }
@@ -2707,11 +2707,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_QUEUE_SIZE{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -2802,11 +2802,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_FORCE_WRITE_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_FORCE_WRITE_QUEUE_SIZE{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -2897,11 +2897,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_journal_JOURNAL_CB_QUEUE_SIZE{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"} [30s])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_journal_JOURNAL_CB_QUEUE_SIZE{cluster=~\"$cluster\", pod=~\"$pod\"} [5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -2992,11 +2992,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3088,11 +3088,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3184,11 +3184,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_ADD_ENTRY{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"1.0\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3280,11 +3280,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.5\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.5\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 4
         }
@@ -3376,11 +3376,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"0.99\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"0.99\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 4
         }
@@ -3472,11 +3472,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\", quantile=\"1.0\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_journal_JOURNAL_SYNC{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\", quantile=\"1.0\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 4
         }
@@ -3594,11 +3594,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_ledgers_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_ledgers_count{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3690,11 +3690,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_entries_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_entries_count{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3786,11 +3786,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_write_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_write_cache_size{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3882,11 +3882,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_read_cache_size{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_read_cache_size{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -3978,11 +3978,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_read_cache_hits_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -4076,11 +4076,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])) by (kubernetes_pod_name)",
+          "expr": "sum(irate(bookie_read_cache_misses_count{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A",
           "step": 2
         }
@@ -4171,11 +4171,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -4264,11 +4264,11 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_ledger_writable_dirs{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -4357,22 +4357,22 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "major compaction - {{kubernetes_pod_name}}",
+          "legendFormat": "major compaction - {{pod}}",
           "refId": "A"
         },
         {
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "minor compaction - {{kubernetes_pod_name}}",
+          "legendFormat": "minor compaction - {{pod}}",
           "refId": "B"
         }
       ],
@@ -4463,22 +4463,22 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "compaction - {{kubernetes_pod_name}}",
+          "legendFormat": "compaction - {{pod}}",
           "refId": "A"
         },
         {
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[30s])) by (kubernetes_pod_name)",
+          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "deletion - {{kubernetes_pod_name}}",
+          "legendFormat": "deletion - {{pod}}",
           "refId": "B"
         }
       ],
@@ -4583,16 +4583,16 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "definition": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Bookie",
         "multi": true,
-        "name": "kubernetes_pod_name",
+        "name": "pod",
         "options": [],
-        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "query": "bookkeeper_server_ADD_ENTRY{cluster=~\"$cluster\", pod=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",

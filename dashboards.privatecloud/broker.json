@@ -1513,7 +1513,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_eviction_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1607,7 +1607,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_hit_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1701,7 +1701,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_miss_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1795,7 +1795,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])",
+          "expr": "irate(caffeine_cache_loads_total{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1889,7 +1889,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[1m])\n",
+          "expr": "idelta(caffeine_cache_load_duration_seconds_sum{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])/idelta(caffeine_cache_load_duration_seconds_count{cluster=~\"$cluster\", pod=~\"$broker\", cache=~\"$cache\"}[5m])\n",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
