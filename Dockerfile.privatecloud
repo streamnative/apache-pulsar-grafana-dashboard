@@ -50,7 +50,7 @@ USER grafana
 COPY private-cloud/grafana.ini /etc/grafana/grafana.ini
 COPY private-cloud/provisioning/dashboards.yml /etc/grafana/provisioning/dashboards/pulsar.yml
 COPY private-cloud/provisioning/datasources.yml /etc/grafana/provisioning/datasources/pulsar.yml
-COPY dashboards.kubernetes/* /etc/grafana/provisioning/dashboard_templates/
+COPY dashboards.privatecloud/* /etc/grafana/provisioning/dashboard_templates/
 COPY private-cloud/entrypoint.sh /pulsar_grafana_entrypoint.sh
 
 EXPOSE 3000
