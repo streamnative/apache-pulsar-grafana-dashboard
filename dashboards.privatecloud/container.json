@@ -557,8 +557,8 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "label_values(up{}, kubernetes_namespace)",
-        "description": "kubernetes_namespace",
+        "definition": "label_values(up{}, namespace)",
+        "description": "namespace",
         "hide": 0,
         "includeAll": false,
         "label": "namespace",
@@ -566,7 +566,7 @@
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(up{}, kubernetes_namespace)",
+          "query": "label_values(up{}, namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -585,7 +585,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "label_values(up{job=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
+        "definition": "label_values(up{cloud_streamnative_io_component=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", namespace=\"$namespace\"}, pod)",
         "hide": 0,
         "includeAll": false,
         "label": "Pod",
@@ -593,7 +593,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(up{job=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", kubernetes_namespace=\"$namespace\"}, kubernetes_pod_name)",
+          "query": "label_values(up{cloud_streamnative_io_component=~\"broker|proxy|bookie|zookeeper|recovery|function|sink|source\", namespace=\"$namespace\"}, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
