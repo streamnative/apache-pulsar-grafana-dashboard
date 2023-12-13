@@ -169,9 +169,9 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_BYTES_READ_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
+          "expr": "irate(replication_worker_NUM_BYTES_READ_sum{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -261,9 +261,9 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_ENTRIES_READ{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])",
+          "expr": "irate(replication_worker_NUM_ENTRIES_READ{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -352,9 +352,9 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_sum{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\", success=\"true\"}[1m])",
+          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_sum{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -444,7 +444,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_ENTRIES_WRITTEN{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}[1m])",
+          "expr": "irate(replication_worker_NUM_ENTRIES_WRITTEN{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
           "interval": "",
           "legendFormat": "$cluster",
           "refId": "A"
@@ -548,16 +548,16 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "definition": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", pod=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Bookie Recovery",
         "multi": true,
-        "name": "kubernetes_pod_name",
+        "name": "pod",
         "options": [],
-        "query": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", kubernetes_pod_name=~\".+\"}",
+        "query": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", pod=~\".+\"}",
         "refresh": 2,
-        "regex": "/.*[^_]kubernetes_pod_name=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
