@@ -80,7 +80,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_rate_in{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -180,7 +180,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(  pulsar_subscription_msg_rate_out{      cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(  pulsar_subscription_msg_rate_out{      cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -280,7 +280,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_throughput_in{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_throughput_in{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -382,7 +382,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(  pulsar_subscription_msg_throughput_out{    cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(  pulsar_subscription_msg_throughput_out{    cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"  }) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -485,7 +485,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_producers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_producers_count{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -499,7 +499,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_subscriptions_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_subscriptions_count{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "subscriptions",
@@ -512,7 +512,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_consumers_count{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_consumers_count{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "consumers",
@@ -614,7 +614,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_subscription_back_log{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(pulsar_subscription_back_log{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -716,7 +716,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_subscription_delayed{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
+          "expr": "sum(pulsar_subscription_delayed{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic, subscription)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -819,7 +819,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_storage_backlog_size{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -923,7 +923,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100*sum(pulsar_storage_backlog_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)/sum(pulsar_storage_backlog_quota_limit{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "100*sum(pulsar_storage_backlog_size{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)/sum(pulsar_storage_backlog_quota_limit{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1030,7 +1030,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_offloaded_size{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
+          "expr": "sum(pulsar_storage_offloaded_size{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, namespace, topic)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1132,7 +1132,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_replication_rate_in{cluster=~\"$cluster\", namespace=~\"$namespace\", remote_cluster!=\"local\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_rate_in{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", remote_cluster!=\"local\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1231,7 +1231,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_replication_rate_out{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_replication_rate_out{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1330,7 +1330,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_replication_backlog{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
+          "expr": "sum(pulsar_replication_backlog{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) by (cluster, remote_cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1447,7 +1447,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1461,7 +1461,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1475,7 +1475,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_5{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1489,7 +1489,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_10{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1503,7 +1503,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_20{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1517,7 +1517,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_50{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1531,7 +1531,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_100{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1546,7 +1546,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_200{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "100 - 200 ms",
@@ -1559,7 +1559,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "200 ms - 1 s",
@@ -1572,7 +1572,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1674,7 +1674,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_128{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_128{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1688,7 +1688,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_512{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_512{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1702,7 +1702,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_1_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_kb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1716,7 +1716,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_2_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_2_kb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1730,7 +1730,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_4_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_4_kb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1744,7 +1744,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_16_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_16_kb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1758,7 +1758,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_100_kb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_100_kb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1772,7 +1772,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_le_1_mb{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_le_1_mb{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1786,7 +1786,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_entry_size_overflow{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
+          "expr": "sum(pulsar_entry_size_overflow{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1884,7 +1884,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_storage_write_rate{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1985,7 +1985,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_read_rate{cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
+          "expr": "sum(pulsar_storage_read_rate{cloud_streamnative_io_cluster=~\"$cluster\", namespace=~\"$namespace\", topic=~\"$topic\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2067,7 +2067,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -2075,11 +2075,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -2105,7 +2105,7 @@
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_storage_size{namespace=~\".+\",cluster=~\"$cluster\"}",
+        "query": "pulsar_storage_size{namespace=~\".+\",cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -2136,7 +2136,7 @@
         "multi": true,
         "name": "topic",
         "options": [],
-        "query": "pulsar_storage_size{topic=~\".+\",namespace=~\"$namespace\",cluster=~\"$cluster\"}",
+        "query": "pulsar_storage_size{topic=~\".+\",namespace=~\"$namespace\",cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*topic=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

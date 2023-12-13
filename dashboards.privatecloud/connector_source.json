@@ -335,7 +335,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_source_received_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_source_received_total{cloud_streamnative_io_cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -425,7 +425,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_source_written_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_source_written_total{cloud_streamnative_io_cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -515,7 +515,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_source_source_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_source_source_exceptions_total{cloud_streamnative_io_cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -606,7 +606,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_source_system_exceptions_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
+          "expr": "sum(rate(pulsar_source_system_exceptions_total{cloud_streamnative_io_cluster=~\"$cluster\",exported_namespace=~\"$namespace\", exported_name=~\"$connector\" }[5m]) )by (cluster, fqfn)",
           "interval": "",
           "legendFormat": "{{cluster}}-{{fqfn}}",
           "refId": "A"
@@ -681,7 +681,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -689,11 +689,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -708,14 +708,14 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_source_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "definition": "pulsar_source_received_total{exported_namespace=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_source_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "query": "pulsar_source_received_total{exported_namespace=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -735,14 +735,14 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_source_received_total{exported_namespace=~\"$namespace\", cluster=~\"$cluster\"}",
+        "definition": "pulsar_source_received_total{exported_namespace=~\"$namespace\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Connector",
         "multi": false,
         "name": "connector",
         "options": [],
-        "query": "pulsar_source_received_total{exported_namespace=~\"$namespace\", cluster=~\"$cluster\"}",
+        "query": "pulsar_source_received_total{exported_namespace=~\"$namespace\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/\\,exported_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

@@ -78,7 +78,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_received_total{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_received_total{ cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
@@ -172,7 +172,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_processed_successfully_total{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_processed_successfully_total{ cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -266,7 +266,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{ cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
+          "expr": "sum(increase(pulsar_function_process_latency_ms_sum{ cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)/sum(increase(pulsar_function_process_latency_ms_count{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{exported_namespace}}/{{name}}",
           "refId": "A"
@@ -360,7 +360,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
+          "expr": "sum(pulsar_function_process_latency_ms{    quantile=\"0.99\",    cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}) by (cluster, exported_namespace, name, instance_id)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }}  - {{instance_id}}",
           "refId": "A"
@@ -454,7 +454,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "count(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
+          "expr": "count(pulsar_function_system_exceptions_total{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -548,7 +548,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_user_exceptions_total{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -642,7 +642,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_system_exceptions_total{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"         }[1m])    )by (cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{ exported_namespace }}/{{ name }} ",
           "refId": "A"
@@ -765,7 +765,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_function_user_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "expr": "pulsar_function_user_exception{cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -861,7 +861,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "pulsar_function_system_exception{cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
+          "expr": "pulsar_function_system_exception{cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"}",
           "format": "table",
           "interval": "",
           "legendFormat": "",
@@ -953,7 +953,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(increase(pulsar_function_user_metric_sum{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "expr": "sum(increase(pulsar_function_user_metric_sum{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)/sum(increase(pulsar_function_user_metric_count{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
@@ -1046,7 +1046,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_function_user_metric_count{           cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
+          "expr": "sum(rate(pulsar_function_user_metric_count{           cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\", name=~\"$function\"    }[1m])) by (metric, cluster, exported_namespace, name)",
           "interval": "",
           "legendFormat": "{{metric}}-[{{exported_namespace}}/{{name}}]",
           "refId": "A"
@@ -1124,7 +1124,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -1132,11 +1132,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -1154,14 +1154,14 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "definition": "pulsar_function_received_total{exported_namespace=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Namespace",
         "multi": true,
         "name": "namespace",
         "options": [],
-        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cluster=~\"$cluster\"}",
+        "query": "pulsar_function_received_total{exported_namespace=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*exported_namespace=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
@@ -1184,14 +1184,14 @@
         "datasource": {
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
+        "definition": "pulsar_function_received_total{name=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Function",
         "multi": true,
         "name": "function",
         "options": [],
-        "query": "pulsar_function_received_total{name=~\".+\", cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
+        "query": "pulsar_function_received_total{name=~\".+\", cloud_streamnative_io_cluster=~\"$cluster\", exported_namespace=~\"$namespace\"}",
         "refresh": 2,
         "regex": "/\\,name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

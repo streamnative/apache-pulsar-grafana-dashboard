@@ -36,7 +36,7 @@
       },
       "id": 41,
       "panels": [],
-      "repeat": "kubernetes_pod_name",
+      "repeat": "pod",
       "targets": [
         {
           "datasource": {
@@ -46,7 +46,7 @@
           "refId": "A"
         }
       ],
-      "title": "$job - $kubernetes_pod_name",
+      "title": "$job - $pod",
       "type": "row"
     },
     {
@@ -104,7 +104,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{kubernetes_pod_name}}",
+          "legendFormat": "{{pod}}",
           "metric": "process_cpu_seconds_total",
           "refId": "A",
           "step": 20
@@ -523,7 +523,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -531,11 +531,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -584,7 +584,7 @@
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "jvm_memory_bytes_used{cluster=~\"$cluster\",cloud_streamnative_io_component=~\"$component\", pod=~\".+\"}",
+        "query": "jvm_memory_bytes_used{cloud_streamnative_io_cluster=~\"$cluster\",cloud_streamnative_io_component=~\"$component\", pod=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

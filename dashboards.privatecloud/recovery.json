@@ -78,7 +78,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(auditor_NUM_UNDER_REPLICATED_LEDGERS_count{cluster=~\"$cluster\", success=\"true\"})",
+          "expr": "sum(auditor_NUM_UNDER_REPLICATED_LEDGERS_count{cloud_streamnative_io_cluster=~\"$cluster\", success=\"true\"})",
           "interval": "",
           "legendFormat": "$cluster",
           "refId": "A"
@@ -169,7 +169,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_BYTES_READ_sum{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
+          "expr": "irate(replication_worker_NUM_BYTES_READ_sum{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -261,7 +261,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_ENTRIES_READ{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
+          "expr": "irate(replication_worker_NUM_ENTRIES_READ{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -352,7 +352,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_sum{cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
+          "expr": "irate(replication_worker_NUM_BYTES_WRITTEN_sum{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -444,7 +444,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "irate(replication_worker_NUM_ENTRIES_WRITTEN{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
+          "expr": "irate(replication_worker_NUM_ENTRIES_WRITTEN{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])",
           "interval": "",
           "legendFormat": "$cluster",
           "refId": "A"
@@ -517,7 +517,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -525,11 +525,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -548,14 +548,14 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", pod=~\".+\"}",
+        "definition": "replication_worker_NUM_BYTES_READ_count{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\".+\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Bookie Recovery",
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "replication_worker_NUM_BYTES_READ_count{cluster=~\"$cluster\", pod=~\".+\"}",
+        "query": "replication_worker_NUM_BYTES_READ_count{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\".+\"}",
         "refresh": 2,
         "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

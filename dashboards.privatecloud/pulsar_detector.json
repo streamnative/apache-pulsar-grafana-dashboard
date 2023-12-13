@@ -117,7 +117,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "increase(pulsar_detector_e2e_latency_ms_count{cluster=\"$cluster\",success=\"false\"} [5m] offset 5m)",
+          "expr": "increase(pulsar_detector_e2e_latency_ms_count{cloud_streamnative_io_cluster=\"$cluster\",success=\"false\"} [5m] offset 5m)",
           "hide": false,
           "interval": "",
           "legendFormat": "{{broker}}",
@@ -230,7 +230,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"0.5\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.5\", success=\"true\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -331,7 +331,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"0.75\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.75\", success=\"true\"}",
           "format": "time_series",
           "legendFormat": "{{broker}}",
           "range": true,
@@ -429,7 +429,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"0.9\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.9\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -526,7 +526,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"0.99\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.99\", success=\"true\"}",
           "interval": "",
           "legendFormat": "{{broker}}",
           "range": true,
@@ -624,7 +624,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"0.999\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.999\", success=\"true\"}",
           "interval": "",
           "legendFormat": "{{broker}}",
           "range": true,
@@ -722,7 +722,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_publish_latency_ms{cluster=\"$cluster\", quantile=\"1.0\", success=\"true\"}",
+          "expr": "pulsar_detector_publish_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"1.0\", success=\"true\"}",
           "interval": "",
           "legendFormat": "{{broker}}",
           "range": true,
@@ -829,7 +829,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"0.5\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.5\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -921,7 +921,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"0.75\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.75\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -1013,7 +1013,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"0.9\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.9\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -1105,7 +1105,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"0.99\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.99\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -1197,7 +1197,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"0.999\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"0.999\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -1289,7 +1289,7 @@
             "uid": "${DataSource}"
           },
           "editorMode": "code",
-          "expr": "pulsar_detector_e2e_latency_ms{cluster=\"$cluster\", quantile=\"1.0\", success=\"true\"}",
+          "expr": "pulsar_detector_e2e_latency_ms{cloud_streamnative_io_cluster=\"$cluster\", quantile=\"1.0\", success=\"true\"}",
           "legendFormat": "{{broker}}",
           "range": true,
           "refId": "A"
@@ -1334,7 +1334,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -1342,11 +1342,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"

@@ -74,7 +74,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_proxy_active_connections{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}) by (pod)",
+          "expr": "sum(pulsar_proxy_active_connections{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -165,7 +165,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_new_connections_total{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_new_connections_total{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -256,7 +256,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_rejected_connections_total{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_rejected_connections_total{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -346,7 +346,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_binary_ops_total{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops_total{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -434,7 +434,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_binary_ops_total{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_binary_ops_total{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -522,7 +522,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(jetty_requests_total{cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(jetty_requests_total{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -610,7 +610,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_lookup_requests{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_lookup_requests{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -701,7 +701,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_partitions_metadata_requests{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -792,7 +792,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_get_topics_of_namespace_requests{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -883,7 +883,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_rejected_lookup_requests{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -975,7 +975,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(rate(pulsar_proxy_rejected_partitions_metadata_requests{cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1067,7 +1067,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", \n            pod=~\"$pod\"}[5m]\n    )\n  ) \nby (pod)",
+          "expr": "sum(\n  rate(\n    pulsar_proxy_rejected_get_topics_of_namespace_requests{\n            cloud_streamnative_io_cluster=~\"$cluster\", cloud_streamnative_io_component=~\"proxy\", \n            pod=~\"$pod\"}[5m]\n    )\n  ) \nby (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1147,7 +1147,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -1155,11 +1155,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -1185,7 +1185,7 @@
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "pulsar_proxy_active_connections{pod=~\".+\", cloud_streamnative_io_component=~\"proxy\",cluster=~\"$cluster\"}",
+        "query": "pulsar_proxy_active_connections{pod=~\".+\", cloud_streamnative_io_component=~\"proxy\",cloud_streamnative_io_cluster=~\"$cluster\"}",
         "refresh": 2,
         "regex": "/.*[^_]pod=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,

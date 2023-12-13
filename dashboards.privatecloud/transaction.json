@@ -87,7 +87,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_created_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -155,7 +155,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_active_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_active_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -224,7 +224,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_committed_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -293,7 +293,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_timeout_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -361,7 +361,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
+          "expr": "sum(pulsar_txn_aborted_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"})",
           "interval": "",
           "legendFormat": "",
           "queryType": "randomWalk",
@@ -456,7 +456,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_created_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_created_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} - {{coordinator_id}}",
@@ -552,7 +552,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_committed_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_committed_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} - {{coordinator_id}}",
@@ -648,7 +648,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_aborted_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_aborted_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "legendFormat": "{{cluster}} - {{coordinator_id}}",
           "queryType": "randomWalk",
@@ -743,7 +743,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_timeout_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_timeout_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} - {{coordinator_id}}",
@@ -835,7 +835,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "irate(pulsar_txn_append_log_count{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
+          "expr": "irate(pulsar_txn_append_log_count{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}[1m])",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{cluster}} - {{coordinator_id}}",
@@ -925,7 +925,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_10{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_10{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "0 - 10 ms",
@@ -938,7 +938,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_20{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_20{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -951,7 +951,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_50{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_50{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -964,7 +964,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_100{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_100{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -977,7 +977,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_500{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_500{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -990,7 +990,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1003,7 +1003,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_5000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_5000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1016,7 +1016,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_15000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_15000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1029,7 +1029,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_30000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_30000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1042,7 +1042,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_60000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_60000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1055,7 +1055,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_300000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_300000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1068,7 +1068,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1081,7 +1081,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_1500000{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1094,7 +1094,7 @@
             "uid": "${DataSource}"
           },
           "exemplar": true,
-          "expr": "sum(pulsar_txn_execution_latency_le_overflow{cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
+          "expr": "sum(pulsar_txn_execution_latency_le_overflow{cloud_streamnative_io_cluster=~\"$cluster\", job=~\".*broker\", coordinator_id=~\"$coordinator_id\"}) / 60.0",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1143,7 +1143,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -1151,11 +1151,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
@@ -1170,7 +1170,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_txn_committed_count{cluster=~\"$cluster\", coordinator_id=~\".+\", }",
+        "definition": "pulsar_txn_committed_count{cloud_streamnative_io_cluster=~\"$cluster\", coordinator_id=~\".+\", }",
         "hide": 0,
         "includeAll": true,
         "label": "CoordinatorId",
@@ -1178,7 +1178,7 @@
         "name": "coordinator_id",
         "options": [],
         "query": {
-          "query": "pulsar_txn_committed_count{cluster=~\"$cluster\", coordinator_id=~\".+\", }",
+          "query": "pulsar_txn_committed_count{cloud_streamnative_io_cluster=~\"$cluster\", coordinator_id=~\".+\", }",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,

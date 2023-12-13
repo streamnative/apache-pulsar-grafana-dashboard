@@ -118,7 +118,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(node_cpu_seconds_total{cluster=~\"$cluster\", mode=\"system\"})",
+          "expr": "count(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\", mode=\"system\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -198,7 +198,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"})",
+          "expr": "sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -474,7 +474,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cluster=~\"$cluster\",}[1m]))\n  )\n)",
+          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\",}[1m]))\n  )\n)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -554,7 +554,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cluster=~\"$cluster\"} - node_memory_Cached_bytes{cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cluster=~\"$cluster\"}) * 100",
+          "expr": "sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_Cached_bytes{cloud_streamnative_io_cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"}) * 100",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -660,7 +660,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{cloud_streamnative_io_component=\"zookeeper\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{cloud_streamnative_io_component=\"zookeeper\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (pod))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -739,7 +739,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{cloud_streamnative_io_component=\"bookie\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{cloud_streamnative_io_component=\"bookie\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (pod))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -818,7 +818,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{cloud_streamnative_io_component=\"broker\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{cloud_streamnative_io_component=\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (pod))",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -898,7 +898,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{cloud_streamnative_io_component=\"proxy\", cluster=~\"$cluster\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{cloud_streamnative_io_component=\"proxy\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (pod))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -977,7 +977,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(count(up{cloud_streamnative_io_component=\"function\"}) by (kubernetes_pod_name))",
+          "expr": "count(count(up{cloud_streamnative_io_component=\"function\"}) by (pod))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1060,7 +1060,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"})",
+          "expr": "sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1143,7 +1143,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"})",
+          "expr": "sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1226,7 +1226,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_msg_backlog{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"})",
+          "expr": "sum(pulsar_msg_backlog{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1309,7 +1309,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{cloud_streamnative_io_component=\"zookeeper\", cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"zookeeper\", cluster=~\"$cluster\"})",
+          "expr": "100 * count(up{cloud_streamnative_io_component=\"zookeeper\", cloud_streamnative_io_cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"zookeeper\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1392,7 +1392,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{cloud_streamnative_io_component=\"bookie\", cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"bookie\", cluster=~\"$cluster\"})",
+          "expr": "100 * count(up{cloud_streamnative_io_component=\"bookie\", cloud_streamnative_io_cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"bookie\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1475,7 +1475,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{cloud_streamnative_io_component=\"broker\", cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"broker\", cluster=~\"$cluster\"})",
+          "expr": "100 * count(up{cloud_streamnative_io_component=\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1558,7 +1558,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * count(up{cloud_streamnative_io_component=\"proxy\", cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"proxy\", cluster=~\"$cluster\"})",
+          "expr": "100 * count(up{cloud_streamnative_io_component=\"proxy\", cloud_streamnative_io_cluster=~\"$cluster\"} == 1) / count(up{cloud_streamnative_io_component=\"proxy\", cloud_streamnative_io_cluster=~\"$cluster\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1734,7 +1734,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1830,7 +1830,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1928,7 +1928,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_msg_backlog{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_msg_backlog{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2026,7 +2026,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_rate_in{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_in{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2038,7 +2038,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_rate_out{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_rate_out{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2160,7 +2160,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
+          "expr": "topk(10, sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2255,7 +2255,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (namespace))",
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (namespace))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2324,7 +2324,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_throughput_in{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_in{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2336,7 +2336,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_throughput_out{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "sum(pulsar_throughput_out{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (cluster)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2450,7 +2450,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_0_5{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_0_5{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2464,7 +2464,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2478,7 +2478,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_5{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_5{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2492,7 +2492,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_10{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_10{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2506,7 +2506,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_20{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_20{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2520,7 +2520,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_50{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_50{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2534,7 +2534,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_100{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_100{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -2549,7 +2549,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_200{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_200{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2563,7 +2563,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_le_1000{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_le_1000{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2577,7 +2577,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(pulsar_storage_write_latency_overflow{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) / 60.0",
+          "expr": "sum(pulsar_storage_write_latency_overflow{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) / 60.0",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2700,7 +2700,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": " topk(10, sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
+          "expr": " topk(10, sum(pulsar_storage_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2795,7 +2795,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "topk(10, sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cluster=~\"$cluster\"}) by (topic))",
+          "expr": "topk(10, sum(pulsar_storage_backlog_size{cloud_streamnative_io_component=~\"broker\", cloud_streamnative_io_cluster=~\"$cluster\"}) by (topic))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2884,10 +2884,10 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (kubernetes_pod_name)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (kubernetes_pod_name)))",
+          "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (pod)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (pod)))",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "B"
         }
       ],
@@ -2975,7 +2975,7 @@
           "expr": "(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 ",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ kubernetes_pod_name }}",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -3049,7 +3049,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "pulsar_version_info{cluster=~\".+\"}",
+        "definition": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Pulsar Cluster",
@@ -3057,11 +3057,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "pulsar_version_info{cluster=~\".+\"}",
+          "query": "pulsar_version_info{cloud_streamnative_io_cluster=~\".+\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*[^_]cluster=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*[^_]cloud_streamnative_io_cluster=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
