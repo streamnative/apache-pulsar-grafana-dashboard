@@ -1013,7 +1013,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_ledger_dir__pulsar_data_bookkeeper_ledgers_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
+          "expr": "sum(bookie_ledger_dir_data_bookkeeper_ledgers_usage{cluster=~\"$cluster\", kubernetes_pod_name=~\"$kubernetes_pod_name\"}) by (kubernetes_pod_name)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
