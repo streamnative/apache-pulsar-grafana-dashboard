@@ -41,7 +41,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ steps.date.outputs.date }}
             VCS_REF=v${{ inputs.version }}
-            VERSION={{ inputs.version }}
+            VERSION=${{ inputs.version }}
 
       - name: Build and push private
         if: ${{ github.event.inputs.dockerfile == 'Dockerfile.private' }}
