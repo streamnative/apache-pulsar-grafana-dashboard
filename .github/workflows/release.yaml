@@ -27,6 +27,10 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Get the date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Build and push k8s
         if: ${{ github.event.inputs.dockerfile == 'Dockerfile.kubernetes' }}
         uses: docker/build-push-action@v5
@@ -34,6 +38,10 @@ jobs:
           push: true
           tags: streamnative/apache-pulsar-grafana-dashboard-k8s:${{ inputs.version }}
           file: ${{ inputs.dockerfile }}
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            VCS_REF=v${{ inputs.version }}
+            VERSION={{ inputs.version }}
 
       - name: Build and push private
         if: ${{ github.event.inputs.dockerfile == 'Dockerfile.private' }}
@@ -42,3 +50,7 @@ jobs:
           push: true
           tags: streamnative/private-cloud-grafana:${{ inputs.version }}
           file: ${{ inputs.dockerfile }}
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            VCS_REF=v${{ inputs.version }}
+            VERSION={{ inputs.version }}
