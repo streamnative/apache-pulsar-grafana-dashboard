@@ -9,8 +9,10 @@ on:
         description: e.g. 0.1.0
       dockerfile:
         required: true
-        type: string
-        description: e.g. Dockerfile.kubernetes
+         type: choice
+         options:
+          - Dockerfile.kubernetes
+          - Dockerfile.privatecloud
 jobs:
   docker:
     runs-on: ubuntu-latest
