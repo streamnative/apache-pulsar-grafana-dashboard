@@ -53,4 +53,4 @@ jobs:
           build-args: |
             BUILD_DATE=${{ steps.date.outputs.date }}
             VCS_REF=v${{ inputs.version }}
-            VERSION={{ inputs.version }}
+            VERSION=${{ inputs.version }}
