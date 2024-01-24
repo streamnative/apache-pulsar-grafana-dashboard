@@ -1,0 +1,56 @@
+name: Release Docker Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        type: string
+        description: e.g. 0.1.0
+      dockerfile:
+        required: true
+         type: choice
+         options:
+          - Dockerfile.kubernetes
+          - Dockerfile.privatecloud
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: v${{ inputs.version }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Get the date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Build and push k8s
+        if: ${{ github.event.inputs.dockerfile == 'Dockerfile.kubernetes' }}
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: streamnative/apache-pulsar-grafana-dashboard-k8s:${{ inputs.version }}
+          file: ${{ inputs.dockerfile }}
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            VCS_REF=v${{ inputs.version }}
+            VERSION=${{ inputs.version }}
+
+      - name: Build and push private
+        if: ${{ github.event.inputs.dockerfile == 'Dockerfile.private' }}
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: streamnative/private-cloud-grafana:${{ inputs.version }}
+          file: ${{ inputs.dockerfile }}
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            VCS_REF=v${{ inputs.version }}
+            VERSION=${{ inputs.version }}
