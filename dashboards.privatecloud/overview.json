@@ -118,7 +118,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "count(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\", mode=\"system\"})",
+          "expr": "count(node_cpu_seconds_total{mode=\"system\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -198,7 +198,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"})",
+          "expr": "sum(node_memory_MemTotal_bytes{})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -474,7 +474,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\",mode=\"idle\"}[1m]))\n    / \n   sum(increase(node_cpu_seconds_total{cloud_streamnative_io_cluster=~\"$cluster\",}[1m]))\n  )\n)",
+          "expr": "100 * ( 1 - \n   ( sum(increase(node_cpu_seconds_total{mode=\"idle\"}[5m]))\n    / \n   sum(increase(node_cpu_seconds_total{}[5m]))\n  )\n)",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -554,7 +554,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_MemFree_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_Buffers_bytes{cloud_streamnative_io_cluster=~\"$cluster\"} - node_memory_Cached_bytes{cloud_streamnative_io_cluster=~\"$cluster\"}) / sum(node_memory_MemTotal_bytes{cloud_streamnative_io_cluster=~\"$cluster\"}) * 100",
+          "expr": "sum(node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{} - node_memory_Buffers_bytes{} - node_memory_Cached_bytes{}) / sum(node_memory_MemTotal_bytes{}) * 100",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -2884,7 +2884,7 @@
             "type": "prometheus",
             "uid": "${DataSource}"
           },
-          "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (pod)\n/ \nsum(increase(node_cpu_seconds_total[1m])) by (pod)))",
+          "expr": "100 * (1 - (sum(increase(node_cpu_seconds_total{mode=\"idle\"}[5m])) by (pod)\n/ \nsum(increase(node_cpu_seconds_total[5m])) by (pod)))",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{ pod }}",
