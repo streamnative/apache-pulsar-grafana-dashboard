@@ -45,7 +45,7 @@ jobs:
             VERSION=${{ inputs.version }}
 
       - name: Build and push private
-        if: ${{ github.event.inputs.dockerfile == 'Dockerfile.private' }}
+        if: ${{ github.event.inputs.dockerfile == 'Dockerfile.privatecloud' }}
         uses: docker/build-push-action@v5
         with:
           push: true
