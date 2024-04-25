@@ -3978,7 +3978,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_read_cache_hits_count{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
+          "expr": "sum(irate(bookie_read_cache_hits{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4076,7 +4076,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(irate(bookie_read_cache_misses_count{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\", success=\"true\"}[5m])) by (pod)",
+          "expr": "sum(irate(bookie_read_cache_misses{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -4463,7 +4463,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(irate(bookie_RECLAIMED_COMPACTION_SPACE_BYTES{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4474,7 +4474,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(rate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
+          "expr": "sum(irate(bookie_RECLAIMED_DELETION_SPACE_BYTES{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}[5m])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
