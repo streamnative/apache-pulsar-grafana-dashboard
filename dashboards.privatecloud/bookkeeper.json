@@ -4171,7 +4171,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_DELETED_LEDGER_COUNT{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
+          "expr": "sum(bookie_DELETED_LEDGER_TOTAL{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4357,7 +4357,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_MAJOR_COMPACTION_COUNT{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
+          "expr": "sum(bookie_MAJOR_COMPACTION_TOTAL{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -4368,7 +4368,7 @@
           "datasource": {
             "uid": "${DataSource}"
           },
-          "expr": "sum(bookie_MINOR_COMPACTION_COUNT{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
+          "expr": "sum(bookie_MINOR_COMPACTION_TOTAL{cloud_streamnative_io_cluster=~\"$cluster\", pod=~\"$pod\"}) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
