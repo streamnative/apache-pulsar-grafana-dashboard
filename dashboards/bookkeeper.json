@@ -363,7 +363,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"})",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -372,35 +372,35 @@
           "step": 2
         },
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"})",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "add (p999)",
           "refId": "B"
         },
         {
-          "expr": "avg(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"})",
+          "expr": "avg(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "add (p50)",
           "refId": "C"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"})",
+          "expr": "avg(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "read (p99)",
           "refId": "D"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"})",
+          "expr": "avg(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "read (p999)",
           "refId": "E"
         },
         {
-          "expr": "avg(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"})",
+          "expr": "avg(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "read (p50)",
@@ -937,7 +937,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+              "expr": "sum(irate(bookkeeper_server_ADD_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1024,7 +1024,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(irate(bookkeeper_server_READ_ENTRY_REQUEST_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
+              "expr": "sum(irate(bookkeeper_server_READ_ENTRY_count{job=~\"$job\", instance=~\"$instance\"}[30s])) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1111,7 +1111,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1198,7 +1198,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1285,7 +1285,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_ADD_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_ADD_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1372,7 +1372,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.5\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1459,7 +1459,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.99\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1546,7 +1546,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(bookkeeper_server_READ_ENTRY_REQUEST{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"}) by (instance)",
+              "expr": "sum(bookkeeper_server_READ_ENTRY{job=~\"$job\", instance=~\"$instance\", success=\"true\", quantile=\"0.999\"}) by (instance)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
