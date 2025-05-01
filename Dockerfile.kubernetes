@@ -17,7 +17,7 @@
 # under the License.
 #
 
-FROM grafana/grafana:9.5.6-ubuntu
+FROM grafana/grafana:11.6.1
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -34,10 +34,12 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 USER root
 
-RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y python3-pip procps
-RUN pip3 install j2cli
+RUN apk add --no-cache \
+            bash \
+            py3-pip \
+            procps
+
+RUN pip3 install --break-system-packages --no-cache-dir j2cli
 
 USER grafana
 
