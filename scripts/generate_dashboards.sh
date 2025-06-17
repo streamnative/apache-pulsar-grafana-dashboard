@@ -102,7 +102,7 @@ else
 
   # apply environment variables to pulsar datasource provisioning yaml file
   cp ${DASHBOARD_HOME}/conf/provisioning/datasources.yml ${DASHBOARD_HOME}/target/datasources.yml
-  j2 ${DASHBOARD_HOME}/target/datasources.yml > ${DATASOURCES_OUTPUT_DIR}/pulsar.yml
+  j2 --import-env= --undefined ${DASHBOARD_HOME}/target/datasources.yml > ${DATASOURCES_OUTPUT_DIR}/pulsar.yml
 
   echo "Your pulsar data source is generated as ${DATASOURCES_OUTPUT_DIR}/pulsar.yml"
 
@@ -113,7 +113,7 @@ else
 
     # Only attempt to render via jinja2 if the file is a jinja2 template
     if [[ "${item}" == *".j2" ]]; then
-      j2 ${DASHBOARD_HOME}/dashboards.template/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
+      j2 --import-env= --undefined ${DASHBOARD_HOME}/dashboards.template/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     else
       sed "s/{{ PULSAR_CLUSTER }}/${PULSAR_CLUSTER}/" ${DASHBOARD_HOME}/dashboards.template/${item} > ${DASHBOARDS_OUTPUT_DIR}/${OUTPUT_FILE}
     fi
